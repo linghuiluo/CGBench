@@ -1,0 +1,29 @@
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:include="layout :: head(title=~{::title},links=~{})">
+		<title>All the medication!</title>
+	</head>
+	<body th:include="layout :: body" th:with="content=~{::content}">
+		<div th:fragment="content">
+			<h2>Welcome to MagpiePharmacy, your one-stop-shop for all kinds of medication!</h2>
+			<form class="form-search" name="f" th:action="@{/search}" method="post">
+						<input type="text" id="search" name="medName" placeholder="Aspiration" style="height:30px"/>
+						<button type="submit" class="btn">Search</button> 
+			</form>
+			<div class="products">
+				<div class="productCard" th:each="product : ${products}">
+					<a th:href="'/product?medicationId=' + ${product.id}">
+						<div class="productImg" th:style="'background-image: url(' + @{/resources/img/medication/} + ${product.imageUrl} +'); '"></div>
+					</a>
+       				<h3 th:text="${product.name}"></h3>
+       				<span th:text="${product.price} + ' &#x20ac'"></span>
+					<form th:if="${#httpServletRequest.remoteUser != null}" name="f" th:action="@{/order}" method="post">
+						<label for="qty">Quantity:</label> 
+						<input type="number" id="qty" name="qty" value="0"/>
+						<input type="hidden" name="medicationId" th:value="${product.id}">
+						<button type="submit" class="btn">Order</button> 
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

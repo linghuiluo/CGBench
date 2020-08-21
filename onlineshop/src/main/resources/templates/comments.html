@@ -1,0 +1,11 @@
+<html xmlns:th="http://www.thymeleaf.org">
+	<body>
+		<div th:fragment="comments">
+			<div th:each="comment : ${comments}">
+				<b th:text="${comment.user.firstName} + ' ' + ${comment.user.lastName}"></b>
+				<span th:text="${comment.createdDate}"></span>
+				<div th:text="${comment.text}"></div>
+			</div>
+		</div>
+	</body>
+</html>

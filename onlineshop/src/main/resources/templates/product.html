@@ -1,0 +1,43 @@
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:include="layout :: head(title=~{::title},links=~{})">
+		<title>All the medication!</title>
+	</head>
+	<body th:include="layout :: body" th:with="content=~{::content}">
+		<div th:fragment="content">
+			Welcome to MagpiePharmacy, your one-stop-shop for all kinds of medication!
+			<div class="productCard">
+				<div class="productImg" th:style="'background-image: url(' + @{/resources/img/medication/} + ${medication.imageUrl} +'); '"></div>
+   				<h3 th:text="${medication.name}"></h3>
+   				<span th:text="${medication.price} + ' &#x20ac'"></span>
+				<form th:if="${#httpServletRequest.remoteUser != null}" name="f" th:action="@{/order}" method="post">
+					<label for="qty">Quantity:</label> 
+					<input type="number" id="qty" name="qty" value="0"/>
+					<input type="hidden" name="medicationId" th:value="${medication.id}">
+					<button type="submit" class="btn">Order</button> 
+				</form>
+				<div style="white-space: pre-line">
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. 
+
+Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. 
+
+Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. 
+
+Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. 
+
+Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis. </div>
+			</div>
+			<br/>
+			<form th:if="${#httpServletRequest.remoteUser != null}" name="commentForm" th:action="@{/comment}" method="post">
+				<label for="comment">Leave a comment:</label> 
+				<textarea id="comment" name="comment"></textarea>
+				<input type="hidden" name="medicationId" th:value="${medication.id}">
+				<button type="submit" class="btn">Comment</button>
+			</form>
+			<div id="comments" >
+				<th:block th:each="comment : ${comments}">
+					<div th:replace="comment :: comment(comment=${comment})"></div>
+				</th:block>
+			</div>
+		</div>
+	</body>
+</html>

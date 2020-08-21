@@ -1,0 +1,51 @@
+body {
+    background-color: #f5f5f5;
+}
+
+#main-content {
+    max-width: 940px;
+    padding: 2em 3em;
+    margin: 0 auto 20px;
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+#messages {
+	display: flex;
+	flex-flow: column;
+}
+
+
+.greeting {
+	border-radius: 0.25em;
+	background-color: lightblue;
+	padding: 13px;
+	margin-bottom: 13px;
+}
+.message {
+	width: fit-content;
+	width: -moz-fit-content;
+	width: -webkit-fit-content;
+	border: solid 1px #ccc;
+	border-radius: 0.25em;
+	background-color: lightgrey;
+	padding: 13px;
+	margin-bottom: 13px;
+}
+
+.message.own {
+	align-self: flex-end;
+	background-color: lightgreen;
+}
+
+.created {
+	font-size: small;
+}
+
+.name {
+	font-size: smaller;
+	font-weight: bold;
+}

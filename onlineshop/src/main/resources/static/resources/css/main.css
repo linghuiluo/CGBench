@@ -1,0 +1,37 @@
+body {
+    font-family: sans;
+    font-size: 1em;
+}
+
+p.error {
+    font-weight: bold;
+    color: red;
+}
+
+div.logout {
+    float: right;
+}
+
+.productImg {
+	width: 100%;
+	height: 200px;
+	background: no-repeat scroll center top #000; 
+	background-size: cover;
+}
+
+.products {
+	height: calc(100% - 121px);
+	overflow-y: auto; 
+}
+
+.productCard {
+	width: 800px;
+	max-width: 100%;
+	display: block;
+}
+
+.products .productCard {
+	width: 300px;
+	display: inline-block;
+}
+

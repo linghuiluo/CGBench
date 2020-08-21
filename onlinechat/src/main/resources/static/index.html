@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OnlineChat</title>
+    <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/main.css" rel="stylesheet">
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+    <script src="/app.js"></script>
+</head>
+<body>
+<noscript><h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies on Javascript being
+    enabled. Please enable
+    Javascript and reload this page!</h2></noscript>
+<div id="main-content" class="container">
+	<h2>Welcome to online Chat!</h2>
+    <div class="row">
+        <div class="col-md-6" style="display: none">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="connect">WebSocket connection:</label>
+                    <button id="connect" class="btn btn-default" type="submit">Connect</button>
+                    <button id="disconnect" class="btn btn-default" type="submit" disabled="disabled">Disconnect
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row" >
+        <div class="col-md-12">
+            <h4>Messages<h4>
+            <div id="conversation" style="height: calc(100vh - 300px); overflow: auto">
+                <div id="messages">
+                </div>
+            </div>
+        </div>
+    </div>
+            <form id="registerForm" class="form-inline">
+                <div class="form-group">
+                    <label for="name">What is your name?</label>
+                    <input type="text" id="name" class="form-control" placeholder="Your name here...">
+                </div>
+                <button id="login" class="btn btn-default" type="submit">Login</button>
+            </form>
+            <form id="enterChannelForm" class="form-inline">
+                <div class="form-group"  style="display: flex">
+                    <input type="text" id="channelId" class="form-control" placeholder="Channel ID" style="flex:1" >
+	                <button id="enterChannel" class="btn btn-default" type="submit">Enter Channel</button>
+		            <button id="createChannel" class="btn btn-default">Create private channel</button>
+                </div>
+            </form>
+	<form id="messageForm" class="form-inline">
+                <div class="form-group" style="display: flex">
+                    <input type="text" id="message" class="form-control" style="flex:1" placeholder="Your message here...">
+		            <button id="send" class="btn btn-default" type="submit">Send</button>
+                </div>
+    </form>
+    <form id="privateMessageForm" class="form-inline">
+	     <span>Your Channel-id is:<span id="channelDisplay"></span></span><br/>
+         <div class="form-group" style="display: flex">
+            <input type="text" id="privateMessage" class="form-control" placeholder="Your message here..." style="flex:1">
+         	<button id="sendPrivate" class="btn btn-default" type="submit">Send private message</button>
+         </div>
+    </form>
+    <form id="fileForm" class="form-inline" action="upload" method="POST" enctype="multipart/form-data">
+		<div class="form-group" style="display: flex">
+			<input type="file" id="file" data-min-file-count="1" name="file" style="flex: 1">
+    		<button id="sendFile" class="btn btn-default" type="submit">Send File</button>
+		</div>
+    </form>
+</div>
+</body>
+</html>

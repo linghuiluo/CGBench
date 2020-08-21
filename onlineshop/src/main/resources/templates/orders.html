@@ -1,0 +1,33 @@
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:include="layout :: head(title=~{::title},links=~{})">
+		<title>Orders</title>
+	</head>
+	<body th:include="layout :: body" th:with="content=~{::content}">
+		<div th:fragment="content">
+			<table th:if="${orders.size() >0}">
+				<tr>
+					<th>Name</th>
+					<th>Medication</th>
+					<th>Price</th>
+					<th>Quantity</th>
+				</tr>
+   				<th:block th:each="order : ${orders}">
+      				<tr>
+         				<td th:text="${order.user.username}"></td>
+         				<td th:text="${order.orderedMedication.name}"></td>
+         				<td th:text="${order.orderedMedication.price} + ' &#x20ac'"></td>
+						<td th:text="'x ' + ${order.quantity}"></td>
+      				</tr>
+   				</th:block>
+			</table>
+			<span th:if="${orders.size() == 0}">No orders yet!</span>
+			<div style="display: flex; flex-flow: row;">
+				<form  th:if="${orders.size() >0}" action="deleteOrders" method="post" style="margin-right:  13px">
+					<input hidden name="fileName" th:value="${#httpServletRequest.remoteUser} + '/orders.csv'"></input>
+					<button class="btn">Delete Orders</button>
+				</form>
+				<a th:if="${orders.size() >0}" download th:href="'ordersFile?fileName=' + ${#httpServletRequest.remoteUser} + '/orders.csv'" class="btn" style="height: 20px">Download csv</a>
+			</div>
+		</div>
+	</body>
+</html>

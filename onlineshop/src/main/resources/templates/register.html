@@ -1,0 +1,29 @@
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:include="layout :: head(title=~{::title},links=~{})">
+		<title>Registration</title>
+	</head>
+	<body th:include="layout :: body" th:with="content=~{::content}">
+		<div th:fragment="content">
+			<form name="f" th:action="@{/register}" method="post">
+				<fieldset>
+					<legend>Register</legend>
+					<label for="username">Email</label> 
+					<input type="email"	id="username" name="username" /> 
+					<label for="firstname">Firstname</label> 
+					<input type="text"	id="firstname" name="firstname" />
+					<label for="lastname">Lastname</label> 
+					<input type="text"	id="lastname" name="lastname" />
+					<label for="address">Address</label> 
+					<input type="text"	id="address" name="address" />
+					<label for="password">Password</label>
+					<input type="password" id="password" name="password" /> 
+					<label for="password">Repeat Password</label>
+					<input type="password" id="repeat-password" name="password-repeat" /> 
+					<div class="form-actions">
+						<button type="submit" class="btn">Register</button>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+	</body>
+</html>

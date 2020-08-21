@@ -1,0 +1,6 @@
+<div th:fragment="comment(comment)">
+	<b th:text="${comment.user.firstName} + ' ' + ${comment.user.lastName}"></b>
+	<br/>
+	<span th:utext="${comment.text}"></span>
+	<!-- -->
+</div>
