@@ -9,3 +9,4 @@ Benchmark Suite For Call Graph Construction
 - teleforum
 - simplecontroller
 - simplerestcontroller
+- requestmapping
