@@ -7,3 +7,5 @@ Benchmark Suite For Call Graph Construction
 - onlineshop
 - onlinechat
 - teleforum
+- simplecontroller
+- simplerestcontroller
