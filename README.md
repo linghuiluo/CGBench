@@ -10,3 +10,4 @@ Benchmark Suite For Call Graph Construction
 - simplecontroller
 - simplerestcontroller
 - requestmapping
+- getmapping
