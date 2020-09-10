@@ -12,3 +12,8 @@ Benchmark Suite For Call Graph Construction
 - requestmapping
 - getmapping
 - postmapping
+- putmapping
+- deletemapping
+- patchmapping
+- requestparam
+- pathvariable
