@@ -2,15 +2,27 @@ package de.fraunhofer.iem.springbench.deletemapping.controllers;
 
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @RestController
 public class MyController {
     @DeleteMapping(value = "/delete", produces = MediaType.TEXT_PLAIN_VALUE)
-    public String deleteFileByID(@RequestParam String UID, @RequestParam String fileName) {
+    public String deleteFileByID(HttpServletRequest request, HttpServletResponse response) {
+
+        String UID = request.getParameter("UID");
+        String fileName = request.getParameter("fileName");
+
+        if (UID == null && fileName == null) {
+            return "Please provide both user id and file name";
+        } else if (UID == null) {
+            return "Please provide user id";
+        } else if (fileName == null) {
+            return "Please provide file name";
+        }
 
         String cmd = "del " + UID + "/" + fileName;
 
