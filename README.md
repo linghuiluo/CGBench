@@ -17,3 +17,4 @@ Benchmark Suite For Call Graph Construction
 - patchmapping
 - requestparam
 - pathvariable
+- requestattribute
