@@ -15,6 +15,12 @@ These dynamic features are challenging for static analysis writers especially fo
 * Taint flows: 
   * Trust Boundary Violation
     * Description: The user can send a user name over PathVariable annotation. The handler method uses this value to set the session object  without authenticating the username and its password, therefore there exist the trust boundary violation.
-    * Source: value of the PathVariable annotation in the handler method login. (line 16).
-    * Sink: the second parameter of the method call setAttribute within the handler method login (line 24).
+    * Source: value of the PathVariable annotation in 
+        * Line(s): 16
+        * Class: MyController
+        * Method: login
+    * Sink: the second parameter of the method call setAttribute in
+        * Line(s): 24
+        * Class: MyController
+        * Method: login
 

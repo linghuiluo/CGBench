@@ -15,7 +15,13 @@ These dynamic features are challenging for static analysis writers especially fo
 * Taint flows: 
   * Command injection
     * Description: The user can send a message over a request parameter which is directly returned in the response body without proper sanitization. 
-    * Source: the return value of the method getParameter in SimpleRestController within the method sendMessageBack (line 13).
-    * Sink: the return statement of the method sendMessageBack (line 14).
+    * Source: the return value of the method getParameter in 
+        * Line(s): 13
+        * Class: SimpleRestController
+        * Method: sendMessageBack
+    * Sink: the return value of a method sendMessageBack in 
+        * Line(s): 14
+        * Class: SimpleRestController
+        * Method: sendMessageBack
 
 

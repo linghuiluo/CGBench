@@ -14,8 +14,13 @@ These dynamic features are challenging for static analysis writers especially fo
 * Description: This application shows a basic usage of the @PatchMapping annotation. 
 * Taint flows: 
   * SQL injection
-    * Description: The user can send a user id, and the new email id over request parameter through HttpServletRequest object. The handler method appends these values to form SQL update command to update the email and tries to execute it. 
-    SQL injection vulnerability exists, since user inputs are not sanitized.  
-    * Source: return value of getParameter method. (line 19 and 20).
-    * Sink: the first parameter of the method call executeUpdate within the method updateEmail (line 43).
+    * Description: The user can send an user id, and the new email id over request parameter through HttpServletRequest object. The handler method appends these values to form SQL update command to update the email and tries to execute it. SQL injection vulnerability exists, since user inputs are not sanitized.  
+    * Source: return value of getParameter method in
+        * Line(s): 19 and 20
+        * Class: MyController
+        * Method: changeEmail
+    * Sink: the first parameter of the method call executeUpdate in
+        * Line(s): 43
+        * Class: MyController
+        * Method: updateEmail
 

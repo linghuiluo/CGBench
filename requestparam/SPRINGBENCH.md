@@ -15,7 +15,13 @@ These dynamic features are challenging for static analysis writers especially fo
 * Taint flows: 
   * SQL injection
     * Description: This is similar to the test 004 with @RequestParam annotation. The user can send a user id over a RequestParam annotation. The handler method returns the data of that user stored in a database. SQL injection vulnerability exists.  
-    * Source: the value of the RequestParam annotation in MyController within the method index (line 13).
-    * Sink: the first parameter of the method call executeQuery within the method getValue (line 29).
+    * Source: the value of the RequestParam annotation in 
+        * Line(s): 13
+        * Class: MyController
+        * Method: index
+    * Sink: the first parameter of the method call executeQuery in
+        * Line(s): 29
+        * Class: MyController
+        * Method: getValue
 
 

@@ -14,8 +14,14 @@ These dynamic features are challenging for static analysis writers especially fo
 * Description: This application shows a basic usage of the @Controller annotation. A class annotated with @Controller can have handler methods which need to be considered as entry points for the call graph. The handler method in this application is annotated with @GetMapping. 
 * Taint flows: 
   * Command injection
-    * Description: The user can send a message over a request parameter which is directly returned in the response body without proper sanitization. 
-    * Source: the return value of the method getParameter in SimpleController within the method sendMessageBack (line 16).
-    * Sink: the first parameter of the constructor of ResponseEntity in SimpleController within the method sendMessageBack (line 16).
+    * Description: The user can send a message over a request parameter which is directly returned to the response body without proper sanitization. 
+    * Source: the return value of the method getParameter in 
+        * Line(s): 16
+        * Class: SimpleController
+        * Method: sendMessageBack
+    * Sink: the first parameter of the constructor of ResponseEntity in 
+        * Line(s): 16
+        * Class: SimpleController
+        * Method: sendMessageBack
 
 

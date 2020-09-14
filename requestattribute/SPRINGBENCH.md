@@ -15,7 +15,13 @@ These dynamic features are challenging for static analysis writers especially fo
 * Taint flows: 
   * Information Leak
     * Description: The user can send a message to encrypt over a request parameter. The handler method requests attribute crypt algorithm and the key size to encrypt the message. Information leak exists.  
-    * Source: value of the RequestAttribute annotations in MyController within the method encryptMessage (line 20 and 21).
-    * Sink: the first parameter of the method call append within the method encryptMessage (line 45).
+    * Source: value of the RequestAttribute annotations in 
+        * Line(s): 22 and 23
+        * Class: MyController
+        * Method: encryptMessage
+    * Sink: the first parameter of the method call append in
+        * Line(s): 45
+        * Class: MyController
+        * Method: encryptMessage
 
 

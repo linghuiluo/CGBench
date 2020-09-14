@@ -15,7 +15,13 @@ These dynamic features are challenging for static analysis writers especially fo
 * Taint flows: 
   * Send Redirect
     * Description: The user can send a URL over a request parameter which is then redirected by the servlet. The URL value is not sanitized before used. 
-    * Source: the return value of the method getParameter in Controller within the method forwardRequestUrl (line 18).
-    * Sink: the first parameter of the method call sendRedirect Controller within the method forwardRequestUrl (line 21).
+    * Source: the return value of the method getParameter in 
+        * Line(s): 18
+        * Class: Controller
+        * Method: forwardRequestUrl
+    * Sink: the first parameter of the method call sendRedirect in
+        * Line(s): 21
+        * Class: Controller
+        * Method: forwardRequestUrl
 
 

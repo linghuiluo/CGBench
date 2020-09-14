@@ -15,7 +15,13 @@ These dynamic features are challenging for static analysis writers especially fo
 * Taint flows: 
   * SQL injection
     * Description: The user can send a user id over a request parameter. The handler method returns the data of that user stored in a database. SQL injection vulnerability exists.  
-    * Source: the return value of the method getParameter in MyController within the method index (line 21).
-    * Sink: the first parameter of the method call executeQuery within the method getValue (line 38).
+    * Source: the return value of the method getParameter in 
+        * Line(s): 21
+        * Class: MyController
+        * Method: index
+    * Sink: the first parameter of the method call executeQuery in
+        * Line(s): 38
+        * Class: MyController
+        * Method: getValue
 
 

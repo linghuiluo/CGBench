@@ -11,7 +11,7 @@
 	<groupId>de.fraunhofer.iem.springbench</groupId>
 	<artifactId>pathvariable</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Path Variable</name>
+	<name>Path Variable Annotation</name>
 	<description>Simple Spring application with single controller that makes use of @PathVariable</description>
 
 	<properties>

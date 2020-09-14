@@ -14,8 +14,14 @@ These dynamic features are challenging for static analysis writers especially fo
 * Description: This application shows a basic usage of the @PostMapping annotation. It creates new post object for each POST request and created a folder with the content name. 
 * Taint flows: 
   * Command Injection
-    * Description: The user can send a a POST with a content through the request parameter. The handler created a post object and a folder. The value is not checked before the folder is created.  
-    * Source: the return value of the method getParameter in MyController within the method createPost (line 27).
-    * Sink: the first parameter of the method call exec in MyController within the method createPost (line 39).
+    * Description: The user can send a POST with a content through the request parameter. The handler created a post object and a folder. The value is not checked before the folder is created.  
+    * Source: the return value of the method getParameter in 
+        * Line(s): 27
+        * Class: MyController
+        * Method: createPost
+    * Sink: the first parameter of the method call exec in 
+        * Line(s): 39
+        * Class: MyController
+        * Method: createPost
 
 
