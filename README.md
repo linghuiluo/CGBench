@@ -20,3 +20,4 @@ Benchmark Suite For Call Graph Construction
 - requestattribute
 - matrixvariable
 - requestheader
+- requestpart
