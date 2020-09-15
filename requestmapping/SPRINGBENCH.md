@@ -13,7 +13,7 @@ These dynamic features are challenging for static analysis writers especially fo
 * Relevant Spring features: @RestController, @RequestMapping
 * Description: This application shows a basic usage of the @RequestMapping annotation. 
 * Taint flows: 
-  * Send Redirect
+  * Open Redirect Attack
     * Description: The user can send a URL over a request parameter which is then redirected by the servlet. The URL value is not sanitized before used. 
     * Source: the return value of the method getParameter in 
         * Line(s): 18
@@ -23,5 +23,7 @@ These dynamic features are challenging for static analysis writers especially fo
         * Line(s): 21
         * Class: Controller
         * Method: forwardRequestUrl
+    * Curl command:
+        * curl http://localhost:8080/home?url=http://iamevil.com/
 
 

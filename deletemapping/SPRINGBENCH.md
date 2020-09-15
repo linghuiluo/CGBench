@@ -24,4 +24,6 @@ These dynamic features are challenging for static analysis writers especially fo
         * Line(s): 32
         * Class: MyController
         * Method: deleteFileByID
+    * Curl command: 
+        * curl -X DELETE "http://localhost:8080/delete?UID=../../sensitivePath&fileName=sensitiveDirectory/sensitiveFile"
 

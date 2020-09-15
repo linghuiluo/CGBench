@@ -23,6 +23,7 @@ These dynamic features are challenging for static analysis writers especially fo
         * Line(s): 28
         * Class: MyController
         * Method: getValue
-    * Curl command: curl -X POST -F user="1' OR '1'='1" http://localhost:8080/
+    * Curl command: 
+        * curl -X POST -F user="1' OR '1'='1" http://localhost:8080/
 
 

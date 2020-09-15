@@ -23,4 +23,7 @@ These dynamic features are challenging for static analysis writers especially fo
         * Line(s): 43
         * Class: MyController
         * Method: updateEmail
-
+    * Curl command:
+        * curl -X PATCH "http://localhost:8080/changeEmail?newEmail=attacker@evil.com&UID=1%20OR%201%20=%201"
+    * URL decoded link: (Only for human understanding)
+        * http://localhost:8080/changeEmail?newEmail=attacker@evil.com&UID=1 OR 1 = 1

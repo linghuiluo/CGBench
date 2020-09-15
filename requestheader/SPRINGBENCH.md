@@ -23,5 +23,7 @@ These dynamic features are challenging for static analysis writers especially fo
         * Line(s): 19
         * Class: MyController
         * Method: forward
+    * Curl command:
+        * curl -H "referer:http://iamevil.com/" http://localhost:8080/
 
 

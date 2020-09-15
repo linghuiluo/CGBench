@@ -23,5 +23,9 @@ These dynamic features are challenging for static analysis writers especially fo
         * Line(s): 26
         * Class: MyController
         * Method: deleteFileByID
+    * Curl command:
+        * curl http://localhost:8080/retrieve/EID=1%20OR%201%20=%201;ENAME=dummy
+    * URL decoded link: (Only for human understanding)
+        * http://localhost:8080/retrieve/EID=1 OR 1 = 1;ENAME=dummy
 
 

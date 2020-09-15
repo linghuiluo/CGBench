@@ -23,5 +23,9 @@ These dynamic features are challenging for static analysis writers especially fo
         * Line(s): 39
         * Class: MyController
         * Method: createPost
+    * Curl command:
+        * curl -X POST http://localhost:8080/posts?content=attacker%3Brm%20-rf%20*
+    * URL decoded link: (Only for human understanding)
+        * http://localhost:8080/posts?content=attacker;rm -rf *
 
 

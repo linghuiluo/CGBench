@@ -23,5 +23,7 @@ These dynamic features are challenging for static analysis writers especially fo
         * Line(s): 14
         * Class: SimpleRestController
         * Method: sendMessageBack
+    * Curl command:
+        * curl http://localhost:8080/?message=alert(document.cookie);
 
 

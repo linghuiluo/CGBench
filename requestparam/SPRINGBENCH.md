@@ -23,5 +23,9 @@ These dynamic features are challenging for static analysis writers especially fo
         * Line(s): 29
         * Class: MyController
         * Method: getValue
+    * Curl command:
+        * curl http://localhost:8080/?user=2%27%20OR%20%271%27%20%3D%20%271
+    * URL decoded link: (Only for human understanding)
+        * http://localhost:8080/?user=2' OR '1' = '1
 
 

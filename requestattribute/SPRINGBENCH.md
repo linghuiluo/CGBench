@@ -23,5 +23,7 @@ These dynamic features are challenging for static analysis writers especially fo
         * Line(s): 45
         * Class: MyController
         * Method: encryptMessage
+    * Curl command:
+        * curl http://localhost:8080/encryptMyMessage?message=hello
 
 

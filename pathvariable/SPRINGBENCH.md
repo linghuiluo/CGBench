@@ -23,4 +23,6 @@ These dynamic features are challenging for static analysis writers especially fo
         * Line(s): 24
         * Class: MyController
         * Method: login
+    * Curl command:
+        * curl http://localhost:8080/ATTACKER/login?pass=IAMEVIL
 
