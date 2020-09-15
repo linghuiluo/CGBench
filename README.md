@@ -21,3 +21,4 @@ Benchmark Suite For Call Graph Construction
 - matrixvariable
 - requestheader
 - requestpart
+- cookievalue
