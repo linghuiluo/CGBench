@@ -20,7 +20,7 @@ These dynamic features are challenging for static analysis writers especially fo
         * Class: MyController
         * Method: someSensitiveOperation
     * Sink: the first parameter of the method call executeQuery in
-        * Line(s): 33
+        * Line(s): 32
         * Class: MyController
         * Method: validateUser
     * Curl command: 
