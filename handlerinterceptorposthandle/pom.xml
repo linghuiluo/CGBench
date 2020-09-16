@@ -11,7 +11,7 @@
 	<groupId>de.fraunhofer.iem.springbench</groupId>
 	<artifactId>handlerinterceptorposthandle</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>handlerinterceptorposthandle</name>
+	<name>Handler Interceptor postHandle</name>
 	<description>Simple Spring application with single controller that makes use of Handler Interceptor postHandle</description>
 
 	<properties>
