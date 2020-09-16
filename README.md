@@ -24,3 +24,4 @@ Benchmark Suite For Call Graph Construction
 - cookievalue
 - handlerinterceptorprehandle
 - handlerinterceptorposthandle
+- handlerinterceptoraftercompletion
