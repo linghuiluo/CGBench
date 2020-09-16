@@ -26,3 +26,4 @@ Benchmark Suite For Call Graph Construction
 - handlerinterceptorposthandle
 - handlerinterceptoraftercompletion
 - handlerinterceptoradapterprehandle
+- handlerinterceptoradapterposthandle
