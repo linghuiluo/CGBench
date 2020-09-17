@@ -31,3 +31,4 @@ Benchmark Suite For Call Graph Construction
 - modelattributewithaddattribute
 - modelattributewithreturnvalue
 - modelattributeonargumentlevel
+- modelattributeonargumentlevelwithfalsebinding
