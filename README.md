@@ -28,3 +28,4 @@ Benchmark Suite For Call Graph Construction
 - handlerinterceptoradapterprehandle
 - handlerinterceptoradapterposthandle
 - handlerinterceptoradapteraftercompletion
+- modelattributewithaddattribute
