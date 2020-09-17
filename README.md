@@ -30,3 +30,4 @@ Benchmark Suite For Call Graph Construction
 - handlerinterceptoradapteraftercompletion
 - modelattributewithaddattribute
 - modelattributewithreturnvalue
+- modelattributeonargumentlevel
