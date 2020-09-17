@@ -10,7 +10,7 @@ These dynamic features are challenging for static analysis writers especially fo
 * Test application: 023
 * ID: modelattributewithreturnvalue
 * Name: Model Attribute Annotation with return value
-* Relevant Spring features: @RestController, @RequestMapping, @ModelAttribute
+* Relevant Spring features: @RestController, @RequestMapping, @ModelAttribute (with return value)
 * Description: This application shows a basic usage of the @ModelAttribute annotation with return value on method level. 
 * Taint flows: 
   * Trust Boundary Violation Attack

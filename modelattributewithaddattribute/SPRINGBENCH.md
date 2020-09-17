@@ -10,7 +10,7 @@ These dynamic features are challenging for static analysis writers especially fo
 * Test application: 022
 * ID: modelattributewithaddattribute
 * Name: Model Attribute Annotation with addAttribute
-* Relevant Spring features: @RestController, @RequestMapping, @ModelAttribute
+* Relevant Spring features: @RestController, @RequestMapping, @ModelAttribute (with addAttribute)
 * Description: This application shows a basic usage of the @ModelAttribute annotation with addAttribute on method level. 
 * Taint flows: 
   * Trust Boundary Violation Attack
