@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html">
+    <title>${userName} orders</title>
+</head>
+<body>
+<h1>
+    <span th:utext="${userName} + ' ' + orders"></span>
+</h1>
+<hr/>
+<span th:utext="${orderedDisplayInformation}"></span>
+<hr/>
+<span th:utext="${orderedItemInformation}"></span>
+</body>
+</html>
