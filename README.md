@@ -36,3 +36,4 @@ Benchmark Suite For Call Graph Construction
 - {Comming soon}
 - springmvcwithjsp
 - springmvcwiththymeleaf
+- springmvcwithfreemarker
