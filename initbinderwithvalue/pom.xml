@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>de.fraunhofer.iem.springbench</groupId>
-	<artifactId>initbinder</artifactId>
+	<artifactId>initbinderwithvalue</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Init Binder Annotation</name>
-	<description>Simple Spring application with single controller that makes use of @InitBinder</description>
+	<name>Init Binder With Value</name>
+	<description>Simple Spring application with single controller that makes use of @InitBinder  with value</description>
 
 	<properties>
 		<java.version>11</java.version>

@@ -1,10 +1,10 @@
-package de.fraunhofer.iem.springbench.initbinder;
+package de.fraunhofer.iem.springbench.initbinderwithvalue;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class InitBinderApplicationTests {
+class InitBinderWithValueApplicationTests {
 
 	@Test
 	void contextLoads() {

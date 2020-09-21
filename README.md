@@ -37,5 +37,5 @@ Benchmark Suite For Call Graph Construction
 - springmvcwithjsp
 - springmvcwiththymeleaf
 - springmvcwithfreemarker
-- initbinder
+- initbinderwithvalue
 - initbinderwithoutvalue

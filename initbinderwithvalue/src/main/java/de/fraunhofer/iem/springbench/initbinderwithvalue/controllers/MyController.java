@@ -1,4 +1,4 @@
-package de.fraunhofer.iem.springbench.initbinder.controllers;
+package de.fraunhofer.iem.springbench.initbinderwithvalue.controllers;
 
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.http.MediaType;

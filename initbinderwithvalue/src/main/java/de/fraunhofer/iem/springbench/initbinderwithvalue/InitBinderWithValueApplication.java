@@ -1,13 +1,13 @@
-package de.fraunhofer.iem.springbench.initbinder;
+package de.fraunhofer.iem.springbench.initbinderwithvalue;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class InitBinderApplication {
+public class InitBinderWithValueApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(InitBinderApplication.class, args);
+        SpringApplication.run(InitBinderWithValueApplication.class, args);
     }
 
 }

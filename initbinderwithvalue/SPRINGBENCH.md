@@ -8,10 +8,10 @@ These dynamic features are challenging for static analysis writers especially fo
 # Simple Controller
 
 * Test application: 031
-* ID: initbinder
-* Name: Init Binder Annotation
-* Relevant Spring features: @RestController, @GetMapping, @RequestParam, @InitBinder
-* Description: This application shows a basic usage of the @InitBinder annotation. 
+* ID: initbinderwithvalue
+* Name: Init Binder Annotation with value
+* Relevant Spring features: @RestController, @GetMapping, @RequestParam, @InitBinder (with value)
+* Description: This application shows a basic usage of the @InitBinder annotation with value. 
 * Taint flows: 
   * Reflexive XSS
     * Description: The user can send a user id over a request parameter. The handler method returns the html page with the hello message with user id appended. Reflexive XSS vulnerability exists.  
