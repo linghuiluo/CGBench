@@ -24,8 +24,8 @@ These dynamic features are challenging for static analysis writers especially fo
         * Class: MyController
         * Method: index
     * Curl command: 
-        * curl http://localhost:8080/?user=%3Cscript%3E%20%20%20alert(%22Yourcookie%3D%22%20%2B%20document.cookie)%20%20%20%20%3C%2Fscript%3E
+        * curl http://localhost:8080/?userName=%3Cscript%3E%20%20%20alert(%22Yourcookie%3D%22%20%2B%20document.cookie)%20%20%20%20%3C%2Fscript%3E
     * URL decoded link: (Only for human understanding)
-        * http://localhost:8080/?user=<script>   alert("Yourcookie=" + document.cookie)    </script>
+        * http://localhost:8080/?userName=<script>   alert("Yourcookie=" + document.cookie)    </script>
 
 
