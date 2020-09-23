@@ -39,3 +39,4 @@ Benchmark Suite For Call Graph Construction
 - springmvcwithfreemarker
 - initbinderwithvalue
 - initbinderwithoutvalue
+- component
