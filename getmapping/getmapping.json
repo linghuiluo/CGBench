@@ -1,0 +1,42 @@
+{
+  "fileName": "getmapping.jar",
+  "findings": [
+    {
+      "source": {
+        "targetName": "getParameter",
+        "targetNo": 1,
+        "statement": "String user = request.getParameter(\"user\");",
+        "methodName": "public String index(HttpServletRequest request, HttpServletResponse response)",
+        "className": "de.fraunhofer.iem.springbench.getmapping.controllers.MyController",
+        "lineNo": 21
+      },
+      "sink": {
+        "targetName": "executeQuery",
+        "targetNo": 1,
+        "statement": "res = DriverManager.getConnection(\"jdbc:mysql://localhost:3306/mysql\", \"\", \"\").createStatement().executeQuery(\"SELECT * FROM  User where userId='\" + value + \"'\");",
+        "methodName": "public String getValue(String value)",
+        "className": "de.fraunhofer.iem.springbench.getmapping.controllers.MyController",
+        "lineNo": 38
+      },
+      "intermediateFlows": [
+        {
+          "statement": "return getValue(user);",
+          "methodName": "public String index(HttpServletRequest request, HttpServletResponse response)",
+          "className": "de.fraunhofer.iem.springbench.getmapping.controllers.MyController",
+          "lineNo": 25
+        },
+        {
+          "statement": "public String getValue(String value) {",
+          "methodName": "public String index(HttpServletRequest request, HttpServletResponse response)",
+          "className": "de.fraunhofer.iem.springbench.getmapping.controllers.MyController",
+          "lineNo": 29
+        }
+      ],
+      "description": "The user can send a user id over a request parameter. The handler method returns the data of that user stored in a database. SQL injection vulnerability exists.\n\ncurl http://localhost:8080/?user=1%27%20OR%20%271%27=%271",
+      "isNegative": false,
+      "attributes": {
+        "@GetMapping": true
+      }
+    }
+  ]
+}
