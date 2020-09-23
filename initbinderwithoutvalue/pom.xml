@@ -15,7 +15,8 @@
 	<description>Simple Spring application with single controller that makes use of @InitBinder without value</description>
 
 	<properties>
-		<java.version>11</java.version>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
 
 	<dependencies>
