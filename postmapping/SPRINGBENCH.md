@@ -16,11 +16,11 @@ These dynamic features are challenging for static analysis writers especially fo
   * Command Injection
     * Description: The user can send a POST with a content through the request parameter. The handler created a post object and a folder. The value is not checked before the folder is created.  
     * Source: the return value of the method getParameter in 
-        * Line(s): 27
+        * Line(s): 28
         * Class: MyController
         * Method: createPost
     * Sink: the first parameter of the method call exec in 
-        * Line(s): 39
+        * Line(s): 40
         * Class: MyController
         * Method: createPost
     * Curl command:
