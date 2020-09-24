@@ -1,0 +1,42 @@
+{
+  "fileName": "requestparam.jar",
+  "findings": [
+    {
+      "source": {
+        "targetName": "@RequestParam String user",
+        "targetNo": 1,
+        "statement": "public String index(@RequestParam String user) {",
+        "methodName": "public String index(@RequestParam String user)",
+        "className": "de.fraunhofer.iem.springbench.requestparam.controllers.MyController",
+        "lineNo": 13
+      },
+      "sink": {
+        "targetName": "executeQuery",
+        "targetNo": 1,
+        "statement": "res = DriverManager.getConnection(\"jdbc:mysql://localhost:3306/mysql\", \"\", \"\").createStatement().executeQuery(\"SELECT * FROM  User where userId='\" + value + \"'\");",
+        "methodName": "public String getValue(String value)",
+        "className": "de.fraunhofer.iem.springbench.requestparam.controllers.MyController",
+        "lineNo": 29
+      },
+      "intermediateFlows": [
+        {
+          "statement": "return getValue(user);",
+          "methodName": "public String index(@RequestParam String user)",
+          "className": "de.fraunhofer.iem.springbench.requestparam.controllers.MyController",
+          "lineNo": 16
+        },
+        {
+          "statement": "public String getValue(String value) {",
+          "methodName": "public String getValue(String value)",
+          "className": "de.fraunhofer.iem.springbench.requestparam.controllers.MyController",
+          "lineNo": 20
+        }
+      ],
+      "description": "This is similar to the test 004 with @RequestParam annotation. The user can send a user id over a RequestParam annotation. The handler method returns the data of that user stored in a database. SQL injection vulnerability exists.\n\ncurl http://localhost:8080/?user=2%27%20OR%20%271%27%20%3D%20%271",
+      "isNegative": false,
+      "attributes": {
+        "@RequestParam": true
+      }
+    }
+  ]
+}

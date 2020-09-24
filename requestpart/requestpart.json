@@ -1,0 +1,42 @@
+{
+  "fileName": "requestpart.jar",
+  "findings": [
+    {
+      "source": {
+        "targetName": "@RequestPart(\"user\") String user",
+        "targetNo": 1,
+        "statement": "public String index(@RequestPart(\"user\") String user) {",
+        "methodName": "public String index(@RequestPart(\"user\") String user)",
+        "className": "de.fraunhofer.iem.springbench.requestpart.controllers.MyController",
+        "lineNo": 13
+      },
+      "sink": {
+        "targetName": "executeQuery",
+        "targetNo": 1,
+        "statement": "res = DriverManager.getConnection(\"jdbc:mysql://localhost:3306/mysql\", \"\", \"\").createStatement().executeQuery(\"SELECT * FROM  User where userId='\" + value + \"'\");",
+        "methodName": "public String getValue(String value)",
+        "className": "de.fraunhofer.iem.springbench.requestpart.controllers.MyController",
+        "lineNo": 28
+      },
+      "intermediateFlows": [
+        {
+          "statement": "return getValue(user);",
+          "methodName": "public String index(@RequestPart(\"user\") String user)",
+          "className": "de.fraunhofer.iem.springbench.requestpart.controllers.MyController",
+          "lineNo": 16
+        },
+        {
+          "statement": "public String getValue(String value) {",
+          "methodName": "public String getValue(String value)",
+          "className": "de.fraunhofer.iem.springbench.requestpart.controllers.MyController",
+          "lineNo": 19
+        }
+      ],
+      "description": "This is similar to the test 004 with @RequestPart annotation. The user can send a user id over a RequestPart annotation. The handler method returns the data of that user stored in a database. SQL injection vulnerability exists.\n\ncurl -X POST -F user=\"1' OR '1'='1\" http://localhost:8080/",
+      "isNegative": false,
+      "attributes": {
+        "@RequestPart": true
+      }
+    }
+  ]
+}
