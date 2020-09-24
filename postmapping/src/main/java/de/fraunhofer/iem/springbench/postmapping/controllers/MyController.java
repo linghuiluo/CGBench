@@ -1,6 +1,7 @@
 package de.fraunhofer.iem.springbench.postmapping.controllers;
 
 import java.io.IOException;
+import java.net.URI;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -24,9 +25,9 @@ public class MyController {
     public ResponseEntity<Post> createPost(HttpServletRequest request,
                                         UriComponentsBuilder uriComponentsBuilder) {
 
-        var content = request.getParameter("content");
+        String content = request.getParameter("content");
 
-        var post = new Post();
+        Post post = new Post();
         post.setContent(content);
 
         post = postService.save(post);
@@ -43,7 +44,7 @@ public class MyController {
 
         UriComponents uriComponents =
                 uriComponentsBuilder.path("/posts/{id}").buildAndExpand(post.getId());
-        var location = uriComponents.toUri();
+        URI location = uriComponents.toUri();
 
         return ResponseEntity.created(location).build();
     }

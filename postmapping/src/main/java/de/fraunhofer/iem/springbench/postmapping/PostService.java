@@ -15,7 +15,7 @@ public class PostService {
 
 	public Post save(Post p) {
 
-		var post = new Post(counter.incrementAndGet(), p.getContent());
+		Post post = new Post(counter.incrementAndGet(), p.getContent());
 		this.posts.add(post);
 		return post;
 	}
