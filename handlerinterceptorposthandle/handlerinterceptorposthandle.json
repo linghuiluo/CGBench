@@ -1,0 +1,29 @@
+{
+  "fileName": "handlerinterceptorposthandle.jar",
+  "findings": [
+    {
+      "source": {
+        "targetName": "getParameter",
+        "targetNo": 1,
+        "statement": "MyLogger.writeLog(request.getParameter(\"user\") + \" is trying to logout.\");",
+        "methodName": "public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView)",
+        "className": "de.fraunhofer.iem.springbench.handlerinterceptorposthandle.Interceptor.MyInterceptor",
+        "lineNo": 16
+      },
+      "sink": {
+        "targetName": "info",
+        "targetNo": 1,
+        "statement": "logger.info(message);",
+        "methodName": "public static void writeLog(String message)",
+        "className": "de.fraunhofer.iem.springbench.handlerinterceptorposthandle.LOGGER.MyLogger",
+        "lineNo": 9
+      },
+      "intermediateFlows": [],
+      "description": "The user can send a user id over a request parameter. The postHandle method logs stating that the user is trying to logout with the user id passed by the user. Log injection exist.\n\ncurl http://localhost:8080/?user=attacker+logged+in+successfully%0D%0Aabc+",
+      "isNegative": false,
+      "attributes": {
+        "HandlerInterceptor postHandle method": true
+      }
+    }
+  ]
+}
