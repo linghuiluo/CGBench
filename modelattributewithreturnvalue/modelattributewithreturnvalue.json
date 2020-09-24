@@ -1,0 +1,29 @@
+{
+  "fileName": "modelattributewithreturnvalue.jar",
+  "findings": [
+    {
+      "source": {
+        "targetName": "getParameter",
+        "targetNo": 1,
+        "statement": "String userName = request.getParameter(\"userName\");",
+        "methodName": "public List<String> addUserName(HttpServletRequest request)",
+        "className": "de.fraunhofer.iem.springbench.modelattributewithreturnvalue.controllers.MyController",
+        "lineNo": 22
+      },
+      "sink": {
+        "targetName": "add",
+        "targetNo": 1,
+        "statement": "this.currentUserInRoom.add(userName);",
+        "methodName": "public List<String> addUserName(HttpServletRequest request)",
+        "className": "de.fraunhofer.iem.springbench.modelattributewithreturnvalue.controllers.MyController",
+        "lineNo": 27
+      },
+      "intermediateFlows": [],
+      "description": "The user can send a userName over a request parameter. The addUserName method adds the userName into the trusted data without authenticating, therefore Trust Boundary Violation attack exist.\n\ncurl http://localhost:8080/login?userName=IAmAttacker",
+      "isNegative": false,
+      "attributes": {
+        "@ModelAttribute with return value": true
+      }
+    }
+  ]
+}

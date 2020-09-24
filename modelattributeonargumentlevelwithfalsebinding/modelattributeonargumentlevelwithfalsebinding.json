@@ -1,0 +1,29 @@
+{
+  "fileName": "modelattributeonargumentlevelwithfalsebinding.jar",
+  "findings": [
+    {
+      "source": {
+        "targetName": "@ModelAttribute(value = \"DefaultSecurityInformation\", binding = false) Map<String, String> defaultSetting",
+        "targetNo": 1,
+        "statement": "public void index(@ModelAttribute(binding = false, value = \"DefaultSecurityInformation\") Map<String, String> defaultSetting, HttpServletResponse response) throws IOException {",
+        "methodName": "public Map<String, String> myAppDefaultSecurityInformation()",
+        "className": "de.fraunhofer.iem.springbench.modelattributeonargumentlevelwithfalsebinding.controllers.MyController",
+        "lineNo": 27
+      },
+      "sink": {
+        "targetName": "append",
+        "targetNo": 1,
+        "statement": "response.getWriter().append(\"Server is running with the default setting: \").append(defaultSetting.toString());",
+        "methodName": "public void index(@ModelAttribute(binding = false, value = \"DefaultSecurityInformation\") Map<String, String> defaultSetting, HttpServletResponse response)",
+        "className": "de.fraunhofer.iem.springbench.modelattributeonargumentlevelwithfalsebinding.controllers.MyController",
+        "lineNo": 30
+      },
+      "intermediateFlows": [],
+      "description": "The handler method leaks the sensitive information stored in the Model.\n\ncurl http://localhost:8080/",
+      "isNegative": false,
+      "attributes": {
+        "@ModelAttribute on argument level with false binding": true
+      }
+    }
+  ]
+}
