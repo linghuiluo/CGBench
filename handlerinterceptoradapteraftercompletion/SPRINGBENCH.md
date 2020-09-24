@@ -16,7 +16,7 @@ These dynamic features are challenging for static analysis writers especially fo
   * Log injection
     * Description: The user can send a user id over a request parameter. The afterCompletion method logs stating that the user is logged out with the user id passed by the user. Log injection exist.  
     * Source: the return value of the method getParameter in 
-        * Line(s): 17
+        * Line(s): 12
         * Class: MyInterceptor
         * Method: afterCompletion
     * Sink: the first parameter of the method call info in
