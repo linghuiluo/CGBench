@@ -1,0 +1,54 @@
+{
+  "fileName": "springmvcwithfreemarker.jar",
+  "findings": [
+    {
+      "source": {
+        "targetName": "getParameter",
+        "targetNo": 1,
+        "statement": "return request.getParameter(\"userName\");",
+        "methodName": "public String newUser(HttpServletRequest request)",
+        "className": "de.fraunhofer.iem.springbench.springmvcwithfreemarker.controller.MyController",
+        "lineNo": 19
+      },
+      "sink": {
+        "targetName": "executeQuery",
+        "targetNo": 1,
+        "statement": "model.addAttribute(\"orderedItemInformation\", DriverManager.getConnection(\"jdbc:mysql://localhost:3306/mysql\", \"\", \"\").createStatement().executeQuery(\"SELECT * FROM  OrderInformation where userName='\" + userName + \"'\").toString());",
+        "methodName": "public String printOrderedItemsInformation(@ModelAttribute(\"orderedDisplayInformation\") OrderedItemsInformationDisplayModel orderedItemsInformationDisplayModel, Model model)",
+        "className": "de.fraunhofer.iem.springbench.springmvcwithfreemarker.controller.MyController",
+        "lineNo": 57
+      },
+      "intermediateFlows": [
+        {
+          "statement": "public void populateCitiesAndLanguages(@ModelAttribute(\"userName\") String userName, Model model) {",
+          "methodName": "public void populateCitiesAndLanguages(@ModelAttribute(\"userName\") String userName, Model model)",
+          "className": "de.fraunhofer.iem.springbench.springmvcwithfreemarker.controller.MyController",
+          "lineNo": 24
+        },
+        {
+          "statement": "orderedItemsInformationDisplayModel.setUserName(userName);",
+          "methodName": "public void populateCitiesAndLanguages(@ModelAttribute(\"userName\") String userName, Model model)",
+          "className": "de.fraunhofer.iem.springbench.springmvcwithfreemarker.controller.MyController",
+          "lineNo": 26
+        },
+        {
+          "statement": "public String printOrderedItemsInformation(@ModelAttribute(\"orderedDisplayInformation\") OrderedItemsInformationDisplayModel orderedItemsInformationDisplayModel, Model model) {",
+          "methodName": "public String printOrderedItemsInformation(@ModelAttribute(\"orderedDisplayInformation\") OrderedItemsInformationDisplayModel orderedItemsInformationDisplayModel, Model model)",
+          "className": "de.fraunhofer.iem.springbench.springmvcwithfreemarker.controller.MyController",
+          "lineNo": 40
+        },
+        {
+          "statement": "String userName = orderedItemsInformationDisplayModel.getUserName();",
+          "methodName": "public String printOrderedItemsInformation(@ModelAttribute(\"orderedDisplayInformation\") OrderedItemsInformationDisplayModel orderedItemsInformationDisplayModel, Model model)",
+          "className": "de.fraunhofer.iem.springbench.springmvcwithfreemarker.controller.MyController",
+          "lineNo": 41
+        }
+      ],
+      "description": "The user can send a userName over a request parameter. The handler method returns the data of that user's order stored in a database. SQL injection vulnerability exists.\n\ncurl http://localhost:8080/?userName=attacker%27%20OR%20%271%27%20=%20%271",
+      "isNegative": false,
+      "attributes": {
+        "Spring MVC with Freemarker view": true
+      }
+    }
+  ]
+}
