@@ -1,0 +1,29 @@
+{
+  "fileName": "requestmapping.jar",
+  "findings": [
+    {
+      "source": {
+        "targetName": "getParameter",
+        "targetNo": 1,
+        "statement": "String url = request.getParameter(\"url\");",
+        "methodName": "public void forwardRequestUrl(HttpServletRequest request, HttpServletResponse response)",
+        "className": "de.fraunhofer.iem.springbench.requestmapping.controllers.Controller",
+        "lineNo": 18
+      },
+      "sink": {
+        "targetName": "sendRedirect",
+        "targetNo": 1,
+        "statement": "response.sendRedirect(url);",
+        "methodName": "public void forwardRequestUrl(HttpServletRequest request, HttpServletResponse response)",
+        "className": "de.fraunhofer.iem.springbench.requestmapping.controllers.Controller",
+        "lineNo": 21
+      },
+      "intermediateFlows": [],
+      "description": "The user can send a URL over a request parameter which is then redirected by the servlet. The URL value is not sanitized before used.\n\ncurl http://localhost:8080/home?url=http://iamevil.com/",
+      "isNegative": false,
+      "attributes": {
+        "@RequestMapping": true
+      }
+    }
+  ]
+}

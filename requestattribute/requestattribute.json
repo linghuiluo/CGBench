@@ -1,0 +1,79 @@
+{
+  "fileName": "requestattribute.jar",
+  "findings": [
+    {
+      "source": {
+        "targetName": "@RequestAttribute(\"crypto_algorithm\") String algorithm",
+        "targetNo": 1,
+        "statement": "public void encryptMessage(@RequestAttribute(\"crypto_algorithm\") String algorithm, @RequestAttribute(\"key_size\") String key_size, HttpServletRequest request, HttpServletResponse response) throws IOException {",
+        "methodName": "public void encryptMessage(@RequestAttribute(\"crypto_algorithm\") String algorithm, @RequestAttribute(\"key_size\") String key_size, HttpServletRequest request, HttpServletResponse response)",
+        "className": "de.fraunhofer.iem.springbench.requestattribute.controllers.MyController",
+        "lineNo": 25
+      },
+      "sink": {
+        "targetName": "append",
+        "targetNo": 1,
+        "statement": "response.getWriter().append(responseMessage);",
+        "methodName": "public void encryptMessage(@RequestAttribute(\"crypto_algorithm\") String algorithm, @RequestAttribute(\"key_size\") String key_size, HttpServletRequest request, HttpServletResponse response)",
+        "className": "de.fraunhofer.iem.springbench.requestattribute.controllers.MyController",
+        "lineNo": 45
+      },
+      "intermediateFlows": [
+        {
+          "statement": "responseMessage = \"Message encrypted using \" + algorithm + key_size;",
+          "methodName": "public void encryptMessage(@RequestAttribute(\"crypto_algorithm\") String algorithm, @RequestAttribute(\"key_size\") String key_size, HttpServletRequest request, HttpServletResponse response)",
+          "className": "de.fraunhofer.iem.springbench.requestattribute.controllers.MyController",
+          "lineNo": 37
+        },
+        {
+          "statement": "responseMessage = \"Failed to encrypt the message using \" + algorithm + key_size;",
+          "methodName": "public void encryptMessage(@RequestAttribute(\"crypto_algorithm\") String algorithm, @RequestAttribute(\"key_size\") String key_size, HttpServletRequest request, HttpServletResponse response)",
+          "className": "de.fraunhofer.iem.springbench.requestattribute.controllers.MyController",
+          "lineNo": 37
+        }
+      ],
+      "description": "The user can send a message to encrypt over a request parameter. The handler method requests attribute crypt algorithm and the key size to encrypt the message. Information leak exists.\n\ncurl http://localhost:8080/encryptMyMessage?message=hello",
+      "isNegative": false,
+      "attributes": {
+        "@RequestAttribute": true
+      }
+    },
+    {
+      "source": {
+        "targetName": "@RequestAttribute(\"key_size\") String key_size",
+        "targetNo": 1,
+        "statement": "public void encryptMessage(@RequestAttribute(\"crypto_algorithm\") String algorithm, @RequestAttribute(\"key_size\") String key_size, HttpServletRequest request, HttpServletResponse response) throws IOException {",
+        "methodName": "public void encryptMessage(@RequestAttribute(\"crypto_algorithm\") String algorithm, @RequestAttribute(\"key_size\") String key_size, HttpServletRequest request, HttpServletResponse response)",
+        "className": "de.fraunhofer.iem.springbench.requestattribute.controllers.MyController",
+        "lineNo": 25
+      },
+      "sink": {
+        "targetName": "append",
+        "targetNo": 1,
+        "statement": "response.getWriter().append(responseMessage);",
+        "methodName": "public void encryptMessage(@RequestAttribute(\"crypto_algorithm\") String algorithm, @RequestAttribute(\"key_size\") String key_size, HttpServletRequest request, HttpServletResponse response)",
+        "className": "de.fraunhofer.iem.springbench.requestattribute.controllers.MyController",
+        "lineNo": 45
+      },
+      "intermediateFlows": [
+        {
+          "statement": "responseMessage = \"Message encrypted using \" + algorithm + key_size;",
+          "methodName": "public void encryptMessage(@RequestAttribute(\"crypto_algorithm\") String algorithm, @RequestAttribute(\"key_size\") String key_size, HttpServletRequest request, HttpServletResponse response)",
+          "className": "de.fraunhofer.iem.springbench.requestattribute.controllers.MyController",
+          "lineNo": 37
+        },
+        {
+          "statement": "responseMessage = \"Failed to encrypt the message using \" + algorithm + key_size;",
+          "methodName": "public void encryptMessage(@RequestAttribute(\"crypto_algorithm\") String algorithm, @RequestAttribute(\"key_size\") String key_size, HttpServletRequest request, HttpServletResponse response)",
+          "className": "de.fraunhofer.iem.springbench.requestattribute.controllers.MyController",
+          "lineNo": 37
+        }
+      ],
+      "description": "The user can send a message to encrypt over a request parameter. The handler method requests attribute crypt algorithm and the key size to encrypt the message. Information leak exists.\n\ncurl http://localhost:8080/encryptMyMessage?message=hello",
+      "isNegative": false,
+      "attributes": {
+        "@RequestAttribute": true
+      }
+    }
+  ]
+}
