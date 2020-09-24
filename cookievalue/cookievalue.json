@@ -1,0 +1,79 @@
+{
+  "fileName": "cookievalue.jar",
+  "findings": [
+    {
+      "source": {
+        "targetName": "@CookieValue(value = \"userID\") String userID",
+        "targetNo": 1,
+        "statement": "public String someSensitiveOperation(@CookieValue(\"userID\") String userID, @CookieValue(\"password\") String password) {",
+        "methodName": "public String someSensitiveOperation(@CookieValue(\"userID\") String userID, @CookieValue(\"password\") String password)",
+        "className": "de.fraunhofer.iem.springbench.cookievalue.controllers.MyController",
+        "lineNo": 14
+      },
+      "sink": {
+        "targetName": "executeQuery",
+        "targetNo": 1,
+        "statement": "return DriverManager.getConnection(\"jdbc:mysql://localhost:3306/mysql\", \"\", \"\").createStatement().executeQuery(\"SELECT password FROM  UserAuth where userId='\" + userID + \"'\").getString(\"password\").equals(password);",
+        "methodName": "public boolean validateUser(String userID, String password)",
+        "className": "de.fraunhofer.iem.springbench.cookievalue.controllers.MyController",
+        "lineNo": 36
+      },
+      "intermediateFlows": [
+        {
+          "statement": "if (validateUser(userID, password)) {",
+          "methodName": "public String someSensitiveOperation(@CookieValue(\"userID\") String userID, @CookieValue(\"password\") String password)",
+          "className": "de.fraunhofer.iem.springbench.cookievalue.controllers.MyController",
+          "lineNo": 15
+        },
+        {
+          "statement": "public boolean validateUser(String userID, String password) {",
+          "methodName": "public String someSensitiveOperation(@CookieValue(\"userID\") String userID, @CookieValue(\"password\") String password)",
+          "className": "de.fraunhofer.iem.springbench.cookievalue.controllers.MyController",
+          "lineNo": 23
+        }
+      ],
+      "description": "The handler method uses the cookie value userID and password to validate the session and performs some sensitive information. Since cookie value can be changed by the user, and the proper sanitization not used for cookie values before using it in SQL commands, SQL injection vulnerability exists.\n\ncurl --cookie \"userID=victimuser%27%20UNION%20SELECT%20%27iamevil;password=iamevil\" http://localhost:8080/someSensitiveOperation",
+      "isNegative": false,
+      "attributes": {
+        "@CookieValue": true
+      }
+    },
+    {
+      "source": {
+        "targetName": "@CookieValue(value = \"password\") String password",
+        "targetNo": 1,
+        "statement": "public String someSensitiveOperation(@CookieValue(\"userID\") String userID, @CookieValue(\"password\") String password) {",
+        "methodName": "public String someSensitiveOperation(@CookieValue(\"userID\") String userID, @CookieValue(\"password\") String password)",
+        "className": "de.fraunhofer.iem.springbench.cookievalue.controllers.MyController",
+        "lineNo": 14
+      },
+      "sink": {
+        "targetName": "executeQuery",
+        "targetNo": 1,
+        "statement": "return DriverManager.getConnection(\"jdbc:mysql://localhost:3306/mysql\", \"\", \"\").createStatement().executeQuery(\"SELECT password FROM  UserAuth where userId='\" + userID + \"'\").getString(\"password\").equals(password);",
+        "methodName": "public boolean validateUser(String userID, String password)",
+        "className": "de.fraunhofer.iem.springbench.cookievalue.controllers.MyController",
+        "lineNo": 36
+      },
+      "intermediateFlows": [
+        {
+          "statement": "if (validateUser(userID, password)) {",
+          "methodName": "public String someSensitiveOperation(@CookieValue(\"userID\") String userID, @CookieValue(\"password\") String password)",
+          "className": "de.fraunhofer.iem.springbench.cookievalue.controllers.MyController",
+          "lineNo": 15
+        },
+        {
+          "statement": "public boolean validateUser(String userID, String password) {",
+          "methodName": "public String someSensitiveOperation(@CookieValue(\"userID\") String userID, @CookieValue(\"password\") String password)",
+          "className": "de.fraunhofer.iem.springbench.cookievalue.controllers.MyController",
+          "lineNo": 23
+        }
+      ],
+      "description": "The handler method uses the cookie value userID and password to validate the session and performs some sensitive information. Since cookie value can be changed by the user, and the proper sanitization not used for cookie values before using it in SQL commands, SQL injection vulnerability exists.\n\ncurl --cookie \"userID=victimuser%27%20UNION%20SELECT%20%27iamevil;password=iamevil\" http://localhost:8080/someSensitiveOperation",
+      "isNegative": false,
+      "attributes": {
+        "@CookieValue": true
+      }
+    }
+  ]
+}
