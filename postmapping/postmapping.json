@@ -1,0 +1,29 @@
+{
+  "fileName": "postmapping.jar",
+  "findings": [
+    {
+      "source": {
+        "targetName": "getParameter",
+        "targetNo": 1,
+        "statement": "String content = request.getParameter(\"content\");",
+        "methodName": "public ResponseEntity<Post> createPost(HttpServletRequest request, UriComponentsBuilder uriComponentsBuilder)",
+        "className": "de.fraunhofer.iem.springbench.postmapping.controllers.MyController",
+        "lineNo": 28
+      },
+      "sink": {
+        "targetName": "exec",
+        "targetNo": 1,
+        "statement": "Runtime.getRuntime().exec(\"mkdir \" + content.trim());",
+        "methodName": "public ResponseEntity<Post> createPost(HttpServletRequest request, UriComponentsBuilder uriComponentsBuilder)",
+        "className": "de.fraunhofer.iem.springbench.postmapping.controllers.MyController",
+        "lineNo": 40
+      },
+      "intermediateFlows": [],
+      "description": "The user can send a POST with a content through the request parameter. The handler created a post object and a folder. The value is not checked before the folder is created.\n\ncurl -X POST http://localhost:8080/posts?content=attacker%3Brm%20-rf%20*",
+      "isNegative": false,
+      "attributes": {
+        "@PostMapping": true
+      }
+    }
+  ]
+}
