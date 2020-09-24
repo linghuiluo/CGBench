@@ -1,0 +1,79 @@
+{
+  "fileName": "patchmapping.jar",
+  "findings": [
+    {
+      "source": {
+        "targetName": "getParameter",
+        "targetNo": 1,
+        "statement": "String UID = request.getParameter(\"UID\");",
+        "methodName": "public String changeEmail(HttpServletRequest request, HttpServletResponse response)",
+        "className": "de.fraunhofer.iem.springbench.patchmapping.controllers.MyController",
+        "lineNo": 19
+      },
+      "sink": {
+        "targetName": "executeUpdate",
+        "targetNo": 1,
+        "statement": "exitCode = DriverManager.getConnection(\"jdbc:mysql://localhost:3306/mysql\", \"\", \"\").createStatement().executeUpdate(\"update users set email = \" + newEmail + \" where id = \" + UID);",
+        "methodName": "public String updateEmail(String UID, String newEmail)",
+        "className": "de.fraunhofer.iem.springbench.patchmapping.controllers.MyController",
+        "lineNo": 43
+      },
+      "intermediateFlows": [
+        {
+          "statement": "return updateEmail(UID, newEmail);",
+          "methodName": "public String changeEmail(HttpServletRequest request, HttpServletResponse response)",
+          "className": "de.fraunhofer.iem.springbench.patchmapping.controllers.MyController",
+          "lineNo": 30
+        },
+        {
+          "statement": "public String updateEmail(String UID, String newEmail) {",
+          "methodName": "public String changeEmail(HttpServletRequest request, HttpServletResponse response)",
+          "className": "de.fraunhofer.iem.springbench.patchmapping.controllers.MyController",
+          "lineNo": 33
+        }
+      ],
+      "description": "The user can send an user id, and the new email id over request parameter through HttpServletRequest object. The handler method appends these values to form SQL update command to update the email and tries to execute it. SQL injection vulnerability exists, since user inputs are not sanitized.\n\ncurl -X PATCH \"http://localhost:8080/changeEmail?newEmail=attacker@evil.com&UID=1%20OR%201%20=%201\"",
+      "isNegative": false,
+      "attributes": {
+        "@PatchMapping": true
+      }
+    },
+    {
+      "source": {
+        "targetName": "getParameter",
+        "targetNo": 1,
+        "statement": "String newEmail = request.getParameter(\"newEmail\");",
+        "methodName": "public String changeEmail(HttpServletRequest request, HttpServletResponse response)",
+        "className": "de.fraunhofer.iem.springbench.patchmapping.controllers.MyController",
+        "lineNo": 20
+      },
+      "sink": {
+        "targetName": "executeUpdate",
+        "targetNo": 1,
+        "statement": "exitCode = DriverManager.getConnection(\"jdbc:mysql://localhost:3306/mysql\", \"\", \"\").createStatement().executeUpdate(\"update users set email = \" + newEmail + \" where id = \" + UID);",
+        "methodName": "public String updateEmail(String UID, String newEmail)",
+        "className": "de.fraunhofer.iem.springbench.patchmapping.controllers.MyController",
+        "lineNo": 43
+      },
+      "intermediateFlows": [
+        {
+          "statement": "return updateEmail(UID, newEmail);",
+          "methodName": "public String changeEmail(HttpServletRequest request, HttpServletResponse response)",
+          "className": "de.fraunhofer.iem.springbench.patchmapping.controllers.MyController",
+          "lineNo": 30
+        },
+        {
+          "statement": "public String updateEmail(String UID, String newEmail) {",
+          "methodName": "public String changeEmail(HttpServletRequest request, HttpServletResponse response)",
+          "className": "de.fraunhofer.iem.springbench.patchmapping.controllers.MyController",
+          "lineNo": 33
+        }
+      ],
+      "description": "The user can send an user id, and the new email id over request parameter through HttpServletRequest object. The handler method appends these values to form SQL update command to update the email and tries to execute it. SQL injection vulnerability exists, since user inputs are not sanitized.\n\ncurl -X PATCH \"http://localhost:8080/changeEmail?newEmail=attacker@evil.com&UID=1%20OR%201%20=%201\"",
+      "isNegative": false,
+      "attributes": {
+        "@PatchMapping": true
+      }
+    }
+  ]
+}
