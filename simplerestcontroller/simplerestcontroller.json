@@ -1,0 +1,29 @@
+{
+  "fileName": "simplerestcontroller.jar",
+  "findings": [
+    {
+      "source": {
+        "targetName": "getParameter",
+        "targetNo": 1,
+        "statement": "return \"Response from Rest Simple Controller. Received message: \" + request.getParameter(\"message\");",
+        "methodName": "public String sendMessageBack(HttpServletRequest request)",
+        "className": "de.fraunhofer.iem.springbench.simplerestcontroller.controllers.SimpleRestController",
+        "lineNo": 14
+      },
+      "sink": {
+        "targetName": "return",
+        "targetNo": 1,
+        "statement": "return \"Response from Rest Simple Controller. Received message: \" + request.getParameter(\"message\");",
+        "methodName": "public String sendMessageBack(HttpServletRequest request)",
+        "className": "de.fraunhofer.iem.springbench.simplerestcontroller.controllers.SimpleRestController",
+        "lineNo": 14
+      },
+      "intermediateFlows": [],
+      "description": "The user can send a message over a request parameter which is directly returned in the response body without proper sanitization.\n\ncurl http://localhost:8080/?message=alert(document.cookie);",
+      "isNegative": false,
+      "attributes": {
+        "@RestController": true
+      }
+    }
+  ]
+}

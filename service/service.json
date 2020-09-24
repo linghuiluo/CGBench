@@ -1,0 +1,42 @@
+{
+  "fileName": "service.jar",
+  "findings": [
+    {
+      "source": {
+        "targetName": "getParameter",
+        "targetNo": 1,
+        "statement": "String user = request.getParameter(\"userName\");",
+        "methodName": "public void index(HttpServletRequest request, HttpServletResponse response)",
+        "className": "de.fraunhofer.iem.springbench.service.controllers.MyController",
+        "lineNo": 17
+      },
+      "sink": {
+        "targetName": "append",
+        "targetNo": 1,
+        "statement": "response.getWriter().append(responseHTML);",
+        "methodName": "public void index(HttpServletRequest request, HttpServletResponse response)",
+        "className": "de.fraunhofer.iem.springbench.service.controllers.MyController",
+        "lineNo": 31
+      },
+      "intermediateFlows": [
+        {
+          "statement": "String responseHTML = ((HtmlPageCreationService) myContext.getBean(HtmlPageCreationService.class)).createHTML(user);",
+          "methodName": "public void index(HttpServletRequest request, HttpServletResponse response)",
+          "className": "de.fraunhofer.iem.springbench.service.controllers.MyController",
+          "lineNo": 25
+        },
+        {
+          "statement": "return \"<html>\\r\\n\\t<head>\\r\\n\\t\\t<meta charset=\\\"UTF-8\\\">\\r\\n\\t\\t<title>Hello World</title>\\r\\n\\t</head>\\r\\n\\t<body>\\r\\n\\t\\t<script>\\r\\n\\t\\t\\tvar c = \\\"secret=this is secret cookie;\\\" \\r\\n\\t\\t\\tdocument.cookie = c;\\r\\n\\t\\t</script>\\r\\n\\t\\t<pre>\\r\\n\\t\\t\\tHello \" + userName + \"!! Welcome to myWebsite\\r\\n.\\t\\t</pre>\\r\\n\\t</body>\\r\\n</html>\";",
+          "methodName": "public String createHTML(String userName)",
+          "className": "de.fraunhofer.iem.springbench.service.HtmlPageCreationService",
+          "lineNo": 9
+        }
+      ],
+      "description": "The user can send a user id over a request parameter. The handler method returns the html page with the hello message with user id appended. Reflexive XSS vulnerability exists.\n\ncurl http://localhost:8080/?userName=%3Cscript%3E%20%20%20alert(%22Yourcookie%3D%22%20%2B%20document.cookie)%20%20%20%20%3C%2Fscript%3E",
+      "isNegative": false,
+      "attributes": {
+        "@Service": true
+      }
+    }
+  ]
+}

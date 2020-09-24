@@ -1,0 +1,29 @@
+{
+  "fileName": "simplecontroller.jar",
+  "findings": [
+    {
+      "source": {
+        "targetName": "getParameter",
+        "targetNo": 1,
+        "statement": "return new ResponseEntity(\"Response from Simple Controller. Received message: \" + request.getParameter(\"message\"), HttpStatus.OK);",
+        "methodName": "public ResponseEntity<String> sendMessageBack(HttpServletRequest request)",
+        "className": "de.fraunhofer.iem.springbench.simplecontroller.controllers.SimpleController",
+        "lineNo": 16
+      },
+      "sink": {
+        "targetName": "ResponseEntity",
+        "targetNo": 1,
+        "statement": "return new ResponseEntity(\"Response from Simple Controller. Received message: \" + request.getParameter(\"message\"), HttpStatus.OK);",
+        "methodName": "public ResponseEntity<String> sendMessageBack(HttpServletRequest request)",
+        "className": "de.fraunhofer.iem.springbench.simplecontroller.controllers.SimpleController",
+        "lineNo": 16
+      },
+      "intermediateFlows": [],
+      "description": "The user can send a message over a request parameter which is directly returned to the response body without proper sanitization.\n\ncurl http://localhost:8080/?message=alert(document.cookie);",
+      "isNegative": false,
+      "attributes": {
+        "@Controller": true
+      }
+    }
+  ]
+}
