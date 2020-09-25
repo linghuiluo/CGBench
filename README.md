@@ -42,3 +42,4 @@ Benchmark Suite For Call Graph Construction
 - component
 - service
 - repository
+- bean
