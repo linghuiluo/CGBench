@@ -1,0 +1,42 @@
+{
+  "fileName": "repository.jar",
+  "findings": [
+    {
+      "source": {
+        "targetName": "getParameter",
+        "targetNo": 1,
+        "statement": "String user = request.getParameter(\"user\");",
+        "methodName": "public String index(HttpServletRequest request, HttpServletResponse response)",
+        "className": "de.fraunhofer.iem.springbench.repository.controllers.MyController",
+        "lineNo": 17
+      },
+      "sink": {
+        "targetName": "executeQuery",
+        "targetNo": 1,
+        "statement": "res = getConnection().createStatement().executeQuery(\"SELECT * FROM  User where userId='\" + userName + \"'\");",
+        "methodName": "public String retrieveUser(String userName)",
+        "className": "de.fraunhofer.iem.springbench.repository.repositories.UserRepository",
+        "lineNo": 24
+      },
+      "intermediateFlows": [
+        {
+          "statement": "return ((UserRepository) myContext.getBean(UserRepository.class)).retrieveUser(user);",
+          "methodName": "public String index(HttpServletRequest request, HttpServletResponse response)",
+          "className": "de.fraunhofer.iem.springbench.repository.controllers.MyController",
+          "lineNo": 28
+        },
+        {
+          "statement": "public String retrieveUser(String userName) {",
+          "methodName": "public String retrieveUser(String userName)",
+          "className": "de.fraunhofer.iem.springbench.repository.repositories.UserRepository",
+          "lineNo": 17
+        }
+      ],
+      "description": "The user can send a user id over a request parameter. The handler method returns the data of that user stored in a database. SQL injection vulnerability exists.\n\ncurl http://localhost:8080/?user=1%27%20OR%20%271%27=%271",
+      "isNegative": false,
+      "attributes": {
+        "@Repository": true
+      }
+    }
+  ]
+}
