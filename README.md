@@ -41,3 +41,4 @@ Benchmark Suite For Call Graph Construction
 - initbinderwithoutvalue
 - component
 - service
+- repository
