@@ -1,0 +1,54 @@
+{
+  "fileName": "bean.jar",
+  "findings": [
+    {
+      "source": {
+        "targetName": "getBean",
+        "targetNo": 1,
+        "statement": "HashMap<String, String> defaultSettings = (HashMap) myContext.getBean(\"defaultEncryptSettings\");",
+        "methodName": "public void encryptMessage(HttpServletRequest request, HttpServletResponse response)",
+        "className": "de.fraunhofer.iem.springbench.bean.controllers.MyController",
+        "lineNo": 23
+      },
+      "sink": {
+        "targetName": "append",
+        "targetNo": 1,
+        "statement": "response.getWriter().append(responseMessage);",
+        "methodName": "public void encryptMessage(HttpServletRequest request, HttpServletResponse response)",
+        "className": "de.fraunhofer.iem.springbench.bean.controllers.MyController",
+        "lineNo": 45
+      },
+      "intermediateFlows": [
+        {
+          "statement": "String algorithm = (String) defaultSettings.get(\"crypto_algorithm\");",
+          "methodName": "public void encryptMessage(HttpServletRequest request, HttpServletResponse response)",
+          "className": "de.fraunhofer.iem.springbench.bean.controllers.MyController",
+          "lineNo": 25
+        },
+        {
+          "statement": "String key_size = (String) defaultSettings.get(\"key_size\");",
+          "methodName": "public void encryptMessage(HttpServletRequest request, HttpServletResponse response)",
+          "className": "de.fraunhofer.iem.springbench.bean.controllers.MyController",
+          "lineNo": 26
+        },
+        {
+          "statement": "responseMessage = \"Message encrypted using \" + algorithm + key_size;",
+          "methodName": "public void encryptMessage(HttpServletRequest request, HttpServletResponse response)",
+          "className": "de.fraunhofer.iem.springbench.bean.controllers.MyController",
+          "lineNo": 37
+        },
+        {
+          "statement": "responseMessage = \"Failed to encrypt the message using \" + algorithm + key_size;",
+          "methodName": "public void encryptMessage(HttpServletRequest request, HttpServletResponse response)",
+          "className": "de.fraunhofer.iem.springbench.bean.controllers.MyController",
+          "lineNo": 37
+        }
+      ],
+      "description": "The user can send a message to encrypt over a request parameter. The handler method takes the crypt algorithm and the key size from the bean to encrypt the message. Information leak exists.\n\ncurl http://localhost:8080/encryptMyMessage?message=hello",
+      "isNegative": false,
+      "attributes": {
+        "@Bean": true
+      }
+    }
+  ]
+}
