@@ -27,7 +27,7 @@
         },
         {
           "statement": "public boolean validateUser(String userID, String password) {",
-          "methodName": "public String someSensitiveOperation(@CookieValue(\"userID\") String userID, @CookieValue(\"password\") String password)",
+          "methodName": "public boolean validateUser(String userID, String password)",
           "className": "de.fraunhofer.iem.springbench.cookievalue.controllers.MyController",
           "lineNo": 23
         }
@@ -64,7 +64,7 @@
         },
         {
           "statement": "public boolean validateUser(String userID, String password) {",
-          "methodName": "public String someSensitiveOperation(@CookieValue(\"userID\") String userID, @CookieValue(\"password\") String password)",
+          "methodName": "public boolean validateUser(String userID, String password)",
           "className": "de.fraunhofer.iem.springbench.cookievalue.controllers.MyController",
           "lineNo": 23
         }
