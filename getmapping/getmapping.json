@@ -27,7 +27,7 @@
         },
         {
           "statement": "public String getValue(String value) {",
-          "methodName": "public String index(HttpServletRequest request, HttpServletResponse response)",
+          "methodName": "public String getValue(String value)",
           "className": "de.fraunhofer.iem.springbench.getmapping.controllers.MyController",
           "lineNo": 29
         }
