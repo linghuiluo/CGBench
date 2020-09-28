@@ -27,7 +27,7 @@
         },
         {
           "statement": "public String updateEmail(String UID, String newEmail) {",
-          "methodName": "public String changeEmail(HttpServletRequest request, HttpServletResponse response)",
+          "methodName": "public String updateEmail(String UID, String newEmail)",
           "className": "de.fraunhofer.iem.springbench.patchmapping.controllers.MyController",
           "lineNo": 33
         }
@@ -64,7 +64,7 @@
         },
         {
           "statement": "public String updateEmail(String UID, String newEmail) {",
-          "methodName": "public String changeEmail(HttpServletRequest request, HttpServletResponse response)",
+          "methodName": "public String updateEmail(String UID, String newEmail)",
           "className": "de.fraunhofer.iem.springbench.patchmapping.controllers.MyController",
           "lineNo": 33
         }
