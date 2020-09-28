@@ -34,6 +34,7 @@
         {
           "statement": "public String printOrderedItemsInformation(@ModelAttribute(\"orderedDisplayInformation\") OrderedItemsInformationDisplayModel orderedItemsInformationDisplayModel, Model model) {",
           "methodName": "public String printOrderedItemsInformation(@ModelAttribute(\"orderedDisplayInformation\") OrderedItemsInformationDisplayModel orderedItemsInformationDisplayModel, Model model)",
+          "className": "de.fraunhofer.iem.springbench.springmvcwithjsp.controller.MyController",
           "lineNo": 40
         },
         {
