@@ -6,7 +6,7 @@
         "targetName": "@RequestParam(\"user\") String user",
         "targetNo": 1,
         "statement": "public void index(@RequestParam(\"user\") String user, HttpServletResponse response) throws IOException {",
-        "methodName": "public void initBinder(WebDataBinder dataBinder)",
+        "methodName": "public void index(@RequestParam(\"user\") String user, HttpServletResponse response)",
         "className": "de.fraunhofer.iem.springbench.initbinderwithoutvalue.controllers.MyController",
         "lineNo": 23
       },
@@ -27,7 +27,7 @@
         },
         {
           "statement": "private static String createHTML(String name) {",
-          "methodName": "public void index(@RequestParam(\"user\") String user, HttpServletResponse response)",
+          "methodName": "private static String createHTML(String name)",
           "className": "de.fraunhofer.iem.springbench.initbinderwithoutvalue.controllers.MyController",
           "lineNo": 35
         },
