@@ -6,7 +6,7 @@
         "targetName": "@ModelAttribute(value = \"DefaultSecurityInformation\", binding = false) Map<String, String> defaultSetting",
         "targetNo": 1,
         "statement": "public void index(@ModelAttribute(binding = false, value = \"DefaultSecurityInformation\") Map<String, String> defaultSetting, HttpServletResponse response) throws IOException {",
-        "methodName": "public Map<String, String> myAppDefaultSecurityInformation()",
+        "methodName": "public void index(@ModelAttribute(binding = false, value = \"DefaultSecurityInformation\") Map<String, String> defaultSetting, HttpServletResponse response)",
         "className": "de.fraunhofer.iem.springbench.modelattributeonargumentlevelwithfalsebinding.controllers.MyController",
         "lineNo": 27
       },
