@@ -53,7 +53,7 @@
       "intermediateFlows": [
         {
           "statement": "public void deleteOrders(String fileName, User user) {",
-          "methodName": "private void saveOrderToFile(ProductOrder order)",
+          "methodName": "public void deleteOrders(String fileName, User user)",
           "className": "onlineshop.service.ProductService",
           "lineNo": 68
         },
@@ -97,7 +97,7 @@
       "intermediateFlows": [
         {
           "statement": "public List<Medication> getProducts() {",
-          "methodName": "public List<ProductOrder> getOrders(User user)",
+          "methodName": "public List<Medication> getProducts()",
           "className": "onlineshop.service.ProductService",
           "lineNo": 86
         }
@@ -135,7 +135,7 @@
         },
         {
           "statement": "public Medication getMedication(long medicationId) {",
-          "methodName": "public Medication createProduct(String name, double price, String imageUrl)",
+          "methodName": "public Medication getMedication(long medicationId)",
           "className": "onlineshop.service.ProductService",
           "lineNo": 103
         }
@@ -167,7 +167,7 @@
       "intermediateFlows": [
         {
           "statement": "public Medication getMedication(long medicationId) {",
-          "methodName": "public Medication createProduct(String name, double price, String imageUrl)",
+          "methodName": "public Medication getMedication(long medicationId)",
           "className": "onlineshop.service.ProductService",
           "lineNo": 103
         }
@@ -231,7 +231,7 @@
       "intermediateFlows": [
         {
           "statement": "public User createNewUser(User user) {",
-          "methodName": "public User loadUserByUsername(String username)",
+          "methodName": "public User createNewUser(User user)",
           "className": "onlineshop.service.UserDetailsServiceImpl",
           "lineNo": 45
         },
@@ -293,7 +293,7 @@
         },
         {
           "statement": "public User createNewUser(User user) {",
-          "methodName": "public User loadUserByUsername(String username)",
+          "methodName": "public User createNewUser(User user)",
           "className": "onlineshop.service.UserDetailsServiceImpl",
           "lineNo": 45
         }
@@ -337,7 +337,7 @@
         },
         {
           "statement": "public User createNewUser(User user) {",
-          "methodName": "public User loadUserByUsername(String username)",
+          "methodName": "public User createNewUser(User user)",
           "className": "onlineshop.service.UserDetailsServiceImpl",
           "lineNo": 45
         }
@@ -381,7 +381,7 @@
         },
         {
           "statement": "public User createNewUser(User user) {",
-          "methodName": "public User loadUserByUsername(String username)",
+          "methodName": "public User createNewUser(User user)",
           "className": "onlineshop.service.UserDetailsServiceImpl",
           "lineNo": 45
         }
