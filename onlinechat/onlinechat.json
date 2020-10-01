@@ -1,0 +1,128 @@
+{
+  "fileName": "onlinechat.jar",
+  "findings": [
+    {
+      "source": {
+        "targetName": "count",
+        "targetNo": 1,
+        "statement": "private static int count = 5000;",
+        "methodName": "static variable",
+        "className": "onlinechat.crypto.KeyManagment",
+        "lineNo": 13
+      },
+      "sink": {
+        "targetName": "PBEKeySpec",
+        "targetNo": 1,
+        "statement": "PBEKeySpec spec = new PBEKeySpec(pwd, salt, count, 128);",
+        "methodName": "public static SecretKey getKey(char[] pwd, byte[] salt)",
+        "className": "onlinechat.crypto.KeyManagment",
+        "lineNo": 16
+      },
+      "intermediateFlows": [],
+      "description": "Too small iteration count = 5000 for PBEKeySpec\n\nFix:\nincrease count to 10000\n",
+      "isNegative": false,
+      "attributes": {
+        "FalseNegative": true
+      }
+    },
+    {
+      "source": {
+        "targetName": "password",
+        "targetNo": 1,
+        "statement": "this.channels.put(channelId, KeyManagment.getKey(new char[]{'3', '3', 'd', '6', 'c', '3', '1', 'd', '6', 'a', '3', '3', 'd', '8', 'c', '5', '3', 'd', '6', 'x'}, salt));",
+        "methodName": "private void createChannel(String channelId)",
+        "className": "onlinechat.api.ChatController",
+        "lineNo": 142
+      },
+      "sink": {
+        "targetName": "getKey",
+        "targetNo": 1,
+        "statement": "this.channels.put(channelId, KeyManagment.getKey(new char[]{'3', '3', 'd', '6', 'c', '3', '1', 'd', '6', 'a', '3', '3', 'd', '8', 'c', '5', '3', 'd', '6', 'x'}, salt));",
+        "methodName": "private void createChannel(String channelId)",
+        "className": "onlinechat.api.ChatController",
+        "lineNo": 142
+      },
+      "intermediateFlows": [],
+      "description": "Hard coded password\n\nFix:\ngenerate password\n",
+      "isNegative": false,
+      "attributes": {
+        "FalseNegative": true
+      }
+    },
+    {
+      "source": {
+        "targetName": "getName",
+        "targetNo": 1,
+        "statement": "user.setName(((LoginMessage) login.getPayload()).getName());",
+        "methodName": "public void login(Message<LoginMessage> login)",
+        "className": "onlinechat.api.ChatController",
+        "lineNo": 107
+      },
+      "sink": {
+        "targetName": "createQuery",
+        "targetNo": 1,
+        "statement": "user = (User) this.em.createQuery(\"Select u from User u where u.token = '\" + user.getToken() + \"'\", User.class).getSingleResult();",
+        "methodName": "public void login(Message<LoginMessage> login)",
+        "className": "onlinechat.api.ChatController",
+        "lineNo": 115
+      },
+      "intermediateFlows": [],
+      "description": "SQL Injection\n\nFix:\nPrepared statements/Repository/Named queries\n",
+      "isNegative": false,
+      "attributes": {
+        "FalseNegative": true,
+        "SQL Injection": true
+      }
+    },
+    {
+      "source": {
+        "targetName": "getPayload",
+        "targetNo": 1,
+        "statement": "UserMessage privateMessage = (UserMessage) wsMessage.getPayload();",
+        "methodName": "public void encryptedChat(Message<UserMessage> wsMessage)",
+        "className": "onlinechat.api.ChatController",
+        "lineNo": 75
+      },
+      "sink": {
+        "targetName": "convertAndSend",
+        "targetNo": 1,
+        "statement": "this.messageSender.convertAndSend(\"/topic/channels/\" + privateMessage.getChannel(), privateMessage);",
+        "methodName": "public void encryptedChat(Message<UserMessage> wsMessage)",
+        "className": "onlinechat.api.ChatController",
+        "lineNo": 84
+      },
+      "intermediateFlows": [],
+      "description": "Reflected XXS \n\nFix:\nHtmlUtils.htmlEscape(...) before saving messages\n",
+      "isNegative": false,
+      "attributes": {
+        "FalseNegative": true,
+        "Reflected XXS ": true
+      }
+    },
+    {
+      "source": {
+        "targetName": "@RequestParam String fileName",
+        "targetNo": 1,
+        "statement": "public void getFile(@RequestParam String fileName, HttpServletResponse response) throws IOException {",
+        "methodName": "public void getFile(@RequestParam String fileName, HttpServletResponse response)",
+        "className": "onlinechat.api.ChatController",
+        "lineNo": 187
+      },
+      "sink": {
+        "targetName": "FileInputStream",
+        "targetNo": 1,
+        "statement": "InputStream is = new FileInputStream(fileName);",
+        "methodName": "public void getFile(@RequestParam String fileName, HttpServletResponse response)",
+        "className": "onlinechat.api.ChatController",
+        "lineNo": 188
+      },
+      "intermediateFlows": [],
+      "description": "Path Traversal\n\nFix:\n\"see handleFileUpload\nStringUtils.cleanPath + filename.contains(..)\"\n",
+      "isNegative": false,
+      "attributes": {
+        "Path Traversal": true,
+        "FalseNegative": true
+      }
+    }
+  ]
+}
