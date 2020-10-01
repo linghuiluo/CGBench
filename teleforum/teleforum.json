@@ -1,0 +1,405 @@
+{
+  "fileName": "teleforum.jar",
+  "findings": [
+    {
+      "source": {
+        "targetName": "getParameter",
+        "targetNo": 1,
+        "statement": "thread.setName(request.getParameter(\"name\"));",
+        "methodName": "public void postSubmit(HttpServletRequest request, HttpServletResponse response)",
+        "className": "teleforum.api.ThreadController",
+        "lineNo": 47
+      },
+      "sink": {
+        "targetName": "sendRedirect",
+        "targetNo": 1,
+        "statement": "response.sendRedirect(str.toString());",
+        "methodName": "public void postSubmit(HttpServletRequest request, HttpServletResponse response)",
+        "className": "teleforum.api.ThreadController",
+        "lineNo": 51
+      },
+      "intermediateFlows": [
+        {
+          "statement": "str.append(thread.getName());",
+          "methodName": "public void postSubmit(HttpServletRequest request, HttpServletResponse response)",
+          "className": "teleforum.api.ThreadController",
+          "lineNo": 50
+        }
+      ],
+      "description": "Found a sensitive flow to sink [response.sendRedirect(str.toString());] from the source [request.getParameter(\"name\"));] at line 47 in ThreadController.java\n",
+      "isNegative": false,
+      "attributes": {
+        "Reflected XXS": true,
+		"TruePositive": true
+      }
+    },
+    {
+      "source": {
+        "targetName": "getParameter",
+        "targetNo": 1,
+        "statement": "String fileName = request.getParameter(\"image\");",
+        "methodName": "public void viewImage(HttpServletRequest request, HttpServletResponse response)",
+        "className": "teleforum.api.ImageController",
+        "lineNo": 53
+      },
+      "sink": {
+        "targetName": "write",
+        "targetNo": 1,
+        "statement": "response.getOutputStream().write(file);",
+        "methodName": "public void viewImage(HttpServletRequest request, HttpServletResponse response)",
+        "className": "teleforum.api.ImageController",
+        "lineNo": 61
+      },
+      "intermediateFlows": [
+        {
+          "statement": "str.append(fileName);",
+          "methodName": "public void viewImage(HttpServletRequest request, HttpServletResponse response)",
+          "className": "teleforum.api.ImageController",
+          "lineNo": 55
+        },
+        {
+          "statement": "byte[] file = Files.readAllBytes(new File(str.toString()).toPath());",
+          "methodName": "public void viewImage(HttpServletRequest request, HttpServletResponse response)",
+          "className": "teleforum.api.ImageController",
+          "lineNo": 58
+        }
+      ],
+      "description": "Found a sensitive flow to sink [response.getOutputStream().write(file);] from the source [request.getParameter(\"image\");] at line 53 in ImageController.java\n",
+      "isNegative": false,
+      "attributes": {
+        "Path Traversal": true,
+		"TruePositive": true
+      }
+    },
+    {
+      "source": {
+        "targetName": "getParameter",
+        "targetNo": 1,
+        "statement": "thread.setName(request.getParameter(\"name\"));",
+        "methodName": "public void postSubmit(HttpServletRequest request, HttpServletResponse response)",
+        "className": "teleforum.api.ThreadController",
+        "lineNo": 47
+      },
+      "sink": {
+        "targetName": "execute",
+        "targetNo": 1,
+        "statement": "this.jdbcTemplate.execute(\"INSERT INTO threads(name) VALUES ('\" + t.getName() + \"')\");",
+        "methodName": "public void addThread(Thread t)",
+        "className": "teleforum.service.ThreadService",
+        "lineNo": 40
+      },
+      "intermediateFlows": [
+        {
+          "statement": "this.threadService.addThread(thread);",
+          "methodName": "public void postSubmit(HttpServletRequest request, HttpServletResponse response)",
+          "className": "teleforum.api.ThreadController",
+          "lineNo": 48
+        },
+        {
+          "statement": "public void addThread(Thread t) {",
+          "methodName": "public Thread getThread(Integer id)",
+          "className": "teleforum.service.ThreadService",
+          "lineNo": 39
+        }
+      ],
+      "description": "Found a sensitive flow to sink [jdbcTemplate.execute(\"INSERT INTO threads(name) VALUES ('\"+ t.getName()+\"')\");] from the source [request.getParameter(\"name\"));] at line 47 in ThreadController.java\n",
+      "isNegative": false,
+      "attributes": {
+        "SQL Injection": true,
+		"TruePositive": true
+      }
+    },
+    {
+      "source": {
+        "targetName": "getParameter",
+        "targetNo": 1,
+        "statement": "post.setText(StringEscapeUtils.escapeSql(request.getParameter(\"text\")));",
+        "methodName": "public String postSubmit(HttpServletRequest request)",
+        "className": "teleforum.api.PostController",
+        "lineNo": 27
+      },
+      "sink": {
+        "targetName": "execute",
+        "targetNo": 1,
+        "statement": "this.jdbcTemplate.execute(\"INSERT INTO posts(name,text,threadid) VALUES ('\" + p.getName() + \"','\" + p.getText() + \"','\" + p.getThread() + \"')\");",
+        "methodName": "public void addPost(Post p)",
+        "className": "teleforum.service.PostService",
+        "lineNo": 25
+      },
+      "intermediateFlows": [
+        {
+          "statement": "this.postService.addPost(post);",
+          "methodName": "public String postSubmit(HttpServletRequest request)",
+          "className": "teleforum.api.PostController",
+          "lineNo": 29
+        },
+        {
+          "statement": "public void addPost(Post p) {",
+          "methodName": "public void reset()",
+          "className": "teleforum.service.PostService",
+          "lineNo": 24
+        }
+      ],
+      "description": "Found a sensitive flow to sink [jdbcTemplate.execute(\"INSERT INTO posts(name,text,threadid) VALUES ('\"+ p.getName()+\"','\"] from the source [request.getParameter(\"text\")));] at line 29 in PostController.java\n",
+      "isNegative": false,
+      "attributes": {
+        "SQL Injection": true,
+		"FalsePositive": true
+      }
+    },
+    {
+      "source": {
+        "targetName": "getParameter",
+        "targetNo": 1,
+        "statement": "post.setThread(Integer.parseInt(StringEscapeUtils.escapeSql(request.getParameter(\"thread\"))));",
+        "methodName": "public String postSubmit(HttpServletRequest request)",
+        "className": "teleforum.api.PostController",
+        "lineNo": 28
+      },
+      "sink": {
+        "targetName": "execute",
+        "targetNo": 1,
+        "statement": "this.jdbcTemplate.execute(\"INSERT INTO posts(name,text,threadid) VALUES ('\" + p.getName() + \"','\" + p.getText() + \"','\" + p.getThread() + \"')\");",
+        "methodName": "public void addPost(Post p)",
+        "className": "teleforum.service.PostService",
+        "lineNo": 25
+      },
+      "intermediateFlows": [
+        {
+          "statement": "public void addPost(Post p) {",
+          "methodName": "public void reset()",
+          "className": "teleforum.service.PostService",
+          "lineNo": 24
+        },
+        {
+          "statement": "this.postService.addPost(post);",
+          "methodName": "public String postSubmit(HttpServletRequest request)",
+          "className": "teleforum.api.PostController",
+          "lineNo": 29
+        }
+      ],
+      "description": "Found a sensitive flow to sink [jdbcTemplate.execute(\"INSERT INTO posts(name,text,threadid) VALUES ('\"+ p.getName()+\"','\"] from the source [request.getParameter(\"thread\"))));] at line 30 in PostController.java\n",
+      "isNegative": false,
+      "attributes": {
+        "SQL Injection": true,
+		"FalsePositive": true
+      }
+    },
+    {
+      "source": {
+        "targetName": "getParameter",
+        "targetNo": 1,
+        "statement": "String query = request.getParameter(\"query\");",
+        "methodName": "public String postSubmit(HttpServletRequest request, Model model)",
+        "className": "teleforum.api.MonitorController",
+        "lineNo": 33
+      },
+      "sink": {
+        "targetName": "persist",
+        "targetNo": 1,
+        "statement": "this.entityManager.persist(new Monitor(name, query, maxResults, caseSensitive));",
+        "methodName": "public void addMonitor(String name, String query, int maxResults, boolean caseSensitive)",
+        "className": "teleforum.service.MonitorService",
+        "lineNo": 32
+      },
+      "intermediateFlows": [
+        {
+          "statement": "this.monitorService.addMonitor(name, query, maxResults, Boolean.parseBoolean(request.getParameter(\"caseSensitive\")));",
+          "methodName": "public String postSubmit(HttpServletRequest request, Model model)",
+          "className": "teleforum.api.MonitorController",
+          "lineNo": 41
+        },
+        {
+          "statement": "public void addMonitor(String name, String query, int maxResults, boolean caseSensitive) {",
+          "methodName": "public List<Monitor> getMonitors()",
+          "className": "teleforum.service.MonitorService",
+          "lineNo": 31
+        }
+      ],
+      "description": "Found a sensitive flow to sink [entityManager.persist(new Monitor(name,query, maxResults, caseSensitive));] from the source [request.getParameter(\"query\");] at line 33 in MonitorController.java\n",
+      "isNegative": false,
+      "attributes": {
+        "Persistent XXS (need to be configured)": true,
+		"TruePositive": true
+      }
+    },
+    {
+      "source": {
+        "targetName": "getParameter",
+        "targetNo": 1,
+        "statement": "String query = request.getParameter(\"query\");",
+        "methodName": "public String postSubmit(HttpServletRequest request, Model model)",
+        "className": "teleforum.api.MonitorController",
+        "lineNo": 33
+      },
+      "sink": {
+        "targetName": "persist",
+        "targetNo": 1,
+        "statement": "this.entityManager.persist(new Monitor(name, query, maxResults, caseSensitive));",
+        "methodName": "public void addMonitor(String name, String query, int maxResults, boolean caseSensitive)",
+        "className": "teleforum.service.MonitorService",
+        "lineNo": 32
+      },
+      "intermediateFlows": [
+        {
+          "statement": "public void addMonitor(String name, String query, int maxResults, boolean caseSensitive) {",
+          "methodName": "public List<Monitor> getMonitors()",
+          "className": "teleforum.service.MonitorService",
+          "lineNo": 31
+        },
+        {
+          "statement": "this.monitorService.addMonitor(name, query, maxResults, Boolean.parseBoolean(request.getParameter(\"caseSensitive\")));",
+          "methodName": "public String postSubmit(HttpServletRequest request, Model model)",
+          "className": "teleforum.api.MonitorController",
+          "lineNo": 41
+        }
+      ],
+      "description": "Found a sensitive flow to sink [entityManager.persist(new Monitor(name,query, maxResults, caseSensitive));] from the source [request.getParameter(\"query\");] at line 33 in MonitorController.java\n",
+      "isNegative": false,
+      "attributes": {
+        "Persistent SQL (need to be configured)": true,
+		"TruePositive": true
+      }
+    },
+    {
+      "source": {
+        "targetName": "getParameter",
+        "targetNo": 1,
+        "statement": "String maxResultsString = request.getParameter(\"maxResults\");",
+        "methodName": "public String postSubmit(HttpServletRequest request, Model model)",
+        "className": "teleforum.api.MonitorController",
+        "lineNo": 35
+      },
+      "sink": {
+        "targetName": "persist",
+        "targetNo": 1,
+        "statement": "this.entityManager.persist(new Monitor(name, query, maxResults, caseSensitive));",
+        "methodName": "public void addMonitor(String name, String query, int maxResults, boolean caseSensitive)",
+        "className": "teleforum.service.MonitorService",
+        "lineNo": 32
+      },
+      "intermediateFlows": [
+        {
+          "statement": "this.monitorService.addMonitor(name, query, maxResults, Boolean.parseBoolean(request.getParameter(\"caseSensitive\")));",
+          "methodName": "public String postSubmit(HttpServletRequest request, Model model)",
+          "className": "teleforum.api.MonitorController",
+          "lineNo": 41
+        },
+        {
+          "statement": "public void addMonitor(String name, String query, int maxResults, boolean caseSensitive) {",
+          "methodName": "public List<Monitor> getMonitors()",
+          "className": "teleforum.service.MonitorService",
+          "lineNo": 31
+        }
+      ],
+      "description": "Found a sensitive flow to sink [entityManager.persist(new Monitor(name,query, maxResults, caseSensitive));] from the source [request.getParameter(\"maxResults\");] at line 35 in MonitorController.java\n",
+      "isNegative": false,
+      "attributes": {
+        "Persistent SQL (need to be configured)": true,
+		"FalsePositive": true
+      }
+    },
+    {
+      "source": {
+        "targetName": "getParameter",
+        "targetNo": 1,
+        "statement": "String name = request.getParameter(\"name\");",
+        "methodName": "public String postSubmit(HttpServletRequest request, Model model)",
+        "className": "teleforum.api.MonitorController",
+        "lineNo": 34
+      },
+      "sink": {
+        "targetName": "persist",
+        "targetNo": 1,
+        "statement": "this.entityManager.persist(new Monitor(name, query, maxResults, caseSensitive));",
+        "methodName": "public void addMonitor(String name, String query, int maxResults, boolean caseSensitive)",
+        "className": "teleforum.service.MonitorService",
+        "lineNo": 32
+      },
+      "intermediateFlows": [
+        {
+          "statement": "this.monitorService.addMonitor(name, query, maxResults, Boolean.parseBoolean(request.getParameter(\"caseSensitive\")));",
+          "methodName": "public String postSubmit(HttpServletRequest request, Model model)",
+          "className": "teleforum.api.MonitorController",
+          "lineNo": 41
+        },
+        {
+          "statement": "public void addMonitor(String name, String query, int maxResults, boolean caseSensitive) {",
+          "methodName": "public List<Monitor> getMonitors()",
+          "className": "teleforum.service.MonitorService",
+          "lineNo": 31
+        }
+      ],
+      "description": "Found a sensitive flow to sink [entityManager.persist(new Monitor(name,query, maxResults, caseSensitive));] from the source [request.getParameter(\"name\");] at line 34 in MonitorController.java\n",
+      "isNegative": false,
+      "attributes": {
+        "Persistent SQL (need to be configured)": true,
+		"FalsePositive": true
+      }
+    },
+    {
+      "source": {
+        "targetName": "getParameter",
+        "targetNo": 1,
+        "statement": "this.monitorService.addMonitor(name, query, maxResults, Boolean.parseBoolean(request.getParameter(\"caseSensitive\")));",
+        "methodName": "public String postSubmit(HttpServletRequest request, Model model)",
+        "className": "teleforum.api.MonitorController",
+        "lineNo": 41
+      },
+      "sink": {
+        "targetName": "persist",
+        "targetNo": 1,
+        "statement": "this.entityManager.persist(new Monitor(name, query, maxResults, caseSensitive));",
+        "methodName": "public void addMonitor(String name, String query, int maxResults, boolean caseSensitive)",
+        "className": "teleforum.service.MonitorService",
+        "lineNo": 32
+      },
+      "intermediateFlows": [
+        {
+          "statement": "public void addMonitor(String name, String query, int maxResults, boolean caseSensitive) {",
+          "methodName": "public List<Monitor> getMonitors()",
+          "className": "teleforum.service.MonitorService",
+          "lineNo": 31
+        }
+      ],
+      "description": "Found a sensitive flow to sink [entityManager.persist(new Monitor(name,query, maxResults, caseSensitive));] from the source [request.getParameter(\"caseSensitive\"));] at line 40 in MonitorController.java\n",
+      "isNegative": false,
+      "attributes": {
+        "Persistent SQL (need to be configured)": true,
+		"FalsePositive": true
+      }
+    },
+    {
+      "source": {
+        "targetName": "getFile",
+        "targetNo": 1,
+        "statement": "MultipartFile file = request.getFile(\"file\");",
+        "methodName": "public String submit(MultipartHttpServletRequest request, ModelMap modelMap)",
+        "className": "teleforum.api.ImageController",
+        "lineNo": 41
+      },
+      "sink": {
+        "targetName": "copy",
+        "targetNo": 1,
+        "statement": "Files.copy(file.getInputStream(), Paths.get(\"images/\" + filename, new String[0]), new CopyOption[]{StandardCopyOption.REPLACE_EXISTING});",
+        "methodName": "public String submit(MultipartHttpServletRequest request, ModelMap modelMap)",
+        "className": "teleforum.api.ImageController",
+        "lineNo": 46
+      },
+      "intermediateFlows": [
+        {
+          "statement": "String filename = file.getOriginalFilename();",
+          "methodName": "public String submit(MultipartHttpServletRequest request, ModelMap modelMap)",
+          "className": "teleforum.api.ImageController",
+          "lineNo": 43
+        }
+      ],
+      "description": "No Warning\n",
+      "isNegative": false,
+      "attributes": {
+        "Path Traversal (overwrite)": true,
+		"FalseNegative": true
+      }
+    }
+  ]
+}
