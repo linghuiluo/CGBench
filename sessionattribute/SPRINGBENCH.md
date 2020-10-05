@@ -7,7 +7,7 @@ These dynamic features are challenging for static analysis writers especially fo
 
 # Simple Controller
 
-* Test application: 037
+* Test application: 038
 * ID: sessionattribute
 * Name: Session Attribute Annotation
 * Relevant Spring features: @RestController, @GetMapping, @SessionAttribute
