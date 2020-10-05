@@ -1,0 +1,53 @@
+{
+  "fileName": "sessionattributes.jar",
+  "findings": [
+    {
+      "source": {
+        "targetName": "getParameter",
+        "targetNo": 1,
+        "statement": "String userName = request.getParameter(\"userName\");",
+        "methodName": "public String index(Model model, HttpServletRequest request)",
+        "className": "de.fraunhofer.iem.springbench.sessionattributes.controllers.MyController",
+        "lineNo": 16
+      },
+      "sink": {
+        "targetName": "addAttribute",
+        "targetNo": 1,
+        "statement": "model.addAttribute(\"userName\", userName);",
+        "methodName": "public String index(Model model, HttpServletRequest request)",
+        "className": "de.fraunhofer.iem.springbench.sessionattributes.controllers.MyController",
+        "lineNo": 19
+      },
+      "intermediateFlows": [],
+      "description": "The user can send a user id over a request parameter. The handler method stores the userName in the session attribute without sanitizing it and this attribute will be used by the jsp. Stored XSS vulnerability exists.\n\nCurl:\ncurl --cookie-jar cookies.txt -s -L http://localhost:8080/?userName=%3Cscript%3Ealert%28+document.cookie+%29%3B%3C%2Fscript%3E\ncurl --cookie cookies.txt --cookie-jar cookies.txt -s -L http://localhost:8080/sendMessage?message=hello",
+      "isNegative": false,
+      "attributes": {
+        "@SessionAttributes": true
+      }
+    },
+    {
+      "source": {
+        "targetName": "getParameter",
+        "targetNo": 1,
+        "statement": "model.addAttribute(\"message\", request.getParameter(\"message\"));",
+        "methodName": "public String sendMessage(HttpServletRequest request, Model model)",
+        "className": "de.fraunhofer.iem.springbench.sessionattributes.controllers.MyController",
+        "lineNo": 28
+      },
+      "sink": {
+        "targetName": "addAttribute",
+        "targetNo": 1,
+        "statement": "model.addAttribute(\"message\", request.getParameter(\"message\"));",
+        "methodName": "public String sendMessage(HttpServletRequest request, Model model)",
+        "className": "de.fraunhofer.iem.springbench.sessionattributes.controllers.MyController",
+        "lineNo": 29
+      },
+      "intermediateFlows": [],
+      "description": "The user can send a message over a request parameter. The handler method stores this in model attribute, that is used by the jsp immediately. Reflexive XSS vulnerability exists.\n\nCurl:\ncurl --cookie-jar cookies.txt -s -L http://localhost:8080/?userName=attacker\ncurl --cookie cookies.txt --cookie-jar cookies.txt -s -L http://localhost:8080/sendMessage?message=%3Cscript%3Ealert%28+document.cookie+%29%3B%3C%2Fscript%3E",
+      "isNegative": false,
+      "attributes": {
+        "@SessionAttributes": true
+      }
+    }
+  ]
+}
