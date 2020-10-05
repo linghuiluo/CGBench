@@ -25,9 +25,9 @@ These dynamic features are challenging for static analysis writers especially fo
         * Method: sendMessage
     * Curl command: (curl command should be run in the below order to perform the attack)
         * curl --cookie-jar cookies.txt -s -L http://localhost:8080/?userName=%3Cscript%3Ealert%28+document.cookie+%29%3B%3C%2Fscript%3E
-        * curl --cookie cookies.txt --cookie-jar cookies.txt -s -L http://localhost:8080/sendMessage
+        * curl --cookie cookies.txt --cookie-jar cookies.txt -s -L http://localhost:8080/sendMessage?message=hello
     * URL decoded link: (Only for human understanding)
         * http://localhost:8080/?userName=<script>   alert("Yourcookie=" + document.cookie)    </script>
-        * http://localhost:8080/sendMessage
+        * http://localhost:8080/sendMessage?message=hello
 
 
