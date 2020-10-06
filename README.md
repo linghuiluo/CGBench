@@ -43,5 +43,6 @@ Benchmark Suite For Call Graph Construction
 - service
 - repository
 - bean
-- {Comming soon}
+- beanwithclassxmlconfiguration
 - sessionattribute
+- sessionattributes

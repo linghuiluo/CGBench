@@ -1,6 +1,8 @@
-package de.fraunhofer.iem.springbench.bean.controllers;
+package de.fraunhofer.iem.springbench.beanwithclassxmlconfiguration.controllers;
 
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import de.fraunhofer.iem.springbench.beanwithclassxmlconfiguration.beans.DefaultEncryptSettingsBean;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,11 +18,9 @@ public class MyController {
                                HttpServletResponse response) throws IOException {
         String message = request.getParameter("message");
 
-        AnnotationConfigApplicationContext myContext = new AnnotationConfigApplicationContext();
-        myContext.scan("de.fraunhofer.iem.springbench.bean");
-        myContext.refresh();
+        ApplicationContext myContext = new ClassPathXmlApplicationContext("DefaultEncryptSettingsConfig.xml");
 
-        HashMap<String, String> defaultSettings = (HashMap<String, String>) myContext.getBean("defaultEncryptSettings");
+        HashMap<String, String> defaultSettings = ((DefaultEncryptSettingsBean) myContext.getBean("defaultEncryptSettings")).getServerDefaultConfiguration();
 
         String algorithm = defaultSettings.get("crypto_algorithm");
         String key_size = defaultSettings.get("key_size");
