@@ -1,0 +1,79 @@
+{
+  "fileName": "sessionattribute.jar",
+  "findings": [
+    {
+      "source": {
+        "targetName": "getParameter",
+        "targetNo": 1,
+        "statement": "request.getSession(true).setAttribute(\"userName\", request.getParameter(\"userName\"));",
+        "methodName": "public String index(HttpServletRequest request)",
+        "className": "de.fraunhofer.iem.springbench.sessionattribute.controllers.MyController",
+        "lineNo": 17
+      },
+      "sink": {
+        "targetName": "append",
+        "targetNo": 1,
+        "statement": "response.getWriter().append(responseHTML);",
+        "methodName": "public void sendMessage(@SessionAttribute(\"userName\") String userName, HttpServletRequest request, HttpServletResponse response)",
+        "className": "de.fraunhofer.iem.springbench.sessionattribute.controllers.MyController",
+        "lineNo": 33
+      },
+      "intermediateFlows": [
+        {
+          "statement": "public void sendMessage(@SessionAttribute(\"userName\") String userName, HttpServletRequest request, HttpServletResponse response) throws IOException {",
+          "methodName": "public void sendMessage(@SessionAttribute(\"userName\") String userName, HttpServletRequest request, HttpServletResponse response)",
+          "className": "de.fraunhofer.iem.springbench.sessionattribute.controllers.MyController",
+          "lineNo": 24
+        },
+        {
+          "statement": "String responseHTML = new HtmlPageCreationComponent().createHTML(userName, request.getParameter(\"message\"));",
+          "methodName": "public void sendMessage(@SessionAttribute(\"userName\") String userName, HttpServletRequest request, HttpServletResponse response)",
+          "className": "de.fraunhofer.iem.springbench.sessionattribute.controllers.MyController",
+          "lineNo": 27
+        },
+        {
+          "statement": "return \"<html>\\r\\n\\t<head>\\r\\n\\t\\t<meta charset=\\\"UTF-8\\\">\\r\\n\\t\\t<title>Hello World</title>\\r\\n\\t</head>\\r\\n\\t<body>\\r\\n\\t\\t<script>\\r\\n\\t\\t\\tvar c = \\\"secret=this is secret cookie;\\\" \\r\\n\\t\\t\\tdocument.cookie = c;\\r\\n\\t\\t</script>\\r\\n\\t\\t<pre>\\r\\n\\t\\t\\t      \" + userName + \": \" + message + \"\\t\\t</pre>\\r\\n\\t</body>\\r\\n</html>\";",
+          "methodName": "public String createHTML(String userName, String message)",
+          "className": "de.fraunhofer.iem.springbench.sessionattribute.HtmlPageCreationComponent",
+          "lineNo": 6
+        }
+      ],
+      "description": "The user can send a user id over a request parameter. One handler method stores the userName in the session attribute and the other handler method uses this session attribute. Stored XSS vulnerability exists.\n\nCurl:\ncurl --cookie-jar cookies.txt -s -L http://localhost:8080/?userName=%3Cscript%3Ealert%28+document.cookie+%29%3B%3C%2Fscript%3E\ncurl --cookie cookies.txt --cookie-jar cookies.txt -s -L http://localhost:8080/sendMessage?message=hello",
+      "isNegative": false,
+      "attributes": {
+        "@SessionAttribute": true
+      }
+    },
+    {
+      "source": {
+        "targetName": "getParameter",
+        "targetNo": 1,
+        "statement": "String responseHTML = new HtmlPageCreationComponent().createHTML(userName, request.getParameter(\"message\"));",
+        "methodName": "public void sendMessage(@SessionAttribute(\"userName\") String userName, HttpServletRequest request, HttpServletResponse response)",
+        "className": "de.fraunhofer.iem.springbench.sessionattribute.controllers.MyController",
+        "lineNo": 27
+      },
+      "sink": {
+        "targetName": "append",
+        "targetNo": 1,
+        "statement": "response.getWriter().append(responseHTML);",
+        "methodName": "public void sendMessage(@SessionAttribute(\"userName\") String userName, HttpServletRequest request, HttpServletResponse response)",
+        "className": "de.fraunhofer.iem.springbench.sessionattribute.controllers.MyController",
+        "lineNo": 33
+      },
+      "intermediateFlows": [
+        {
+          "statement": "return \"<html>\\r\\n\\t<head>\\r\\n\\t\\t<meta charset=\\\"UTF-8\\\">\\r\\n\\t\\t<title>Hello World</title>\\r\\n\\t</head>\\r\\n\\t<body>\\r\\n\\t\\t<script>\\r\\n\\t\\t\\tvar c = \\\"secret=this is secret cookie;\\\" \\r\\n\\t\\t\\tdocument.cookie = c;\\r\\n\\t\\t</script>\\r\\n\\t\\t<pre>\\r\\n\\t\\t\\t      \" + userName + \": \" + message + \"\\t\\t</pre>\\r\\n\\t</body>\\r\\n</html>\";",
+          "methodName": "public String createHTML(String userName, String message)",
+          "className": "de.fraunhofer.iem.springbench.sessionattribute.HtmlPageCreationComponent",
+          "lineNo": 6
+        }
+      ],
+      "description": "The user can send a message over a request parameter and sends it in response body. Reflexive XSS vulnerability exists.",
+      "isNegative": false,
+      "attributes": {
+        "@SessionAttribute": true
+      }
+    }
+  ]
+}
