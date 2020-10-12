@@ -1,0 +1,17 @@
+<javax.servlet.http.HttpServletRequest: java.lang.String getParameter(java.lang.String)> -> _SOURCE_
+<javax.servlet.http.HttpServletRequest: java.lang.String getParameter(java.lang.String)> -> _SOURCE_
+<javax.servlet.http.HttpServletRequest: java.lang.String getParameter(java.lang.String)> -> _SOURCE_
+<javax.servlet.http.HttpServletRequest: java.lang.String getParameter(java.lang.String)> -> _SOURCE_
+<javax.servlet.http.HttpServletRequest: java.lang.String getParameter(java.lang.String)> -> _SOURCE_
+<javax.servlet.http.HttpServletRequest: java.lang.String getParameter(java.lang.String)> -> _SOURCE_
+<javax.servlet.http.HttpServletRequest: java.lang.String getParameter(java.lang.String)> -> _SOURCE_
+<javax.servlet.http.HttpServletRequest: java.lang.String getParameter(java.lang.String)> -> _SOURCE_
+<javax.servlet.http.HttpServletRequest: java.lang.String getParameter(java.lang.String)> -> _SOURCE_
+<javax.servlet.http.HttpServletRequest: java.lang.String getParameter(java.lang.String)> -> _SOURCE_
+<javax.servlet.http.HttpServletRequest: java.lang.String getParameter(java.lang.String)> -> _SOURCE_
+<javax.servlet.http.HttpServletResponse: void sendRedirect(java.lang.String)> -> _SINK_
+<java.io.File: boolean delete()> -> _SINK_
+<javax.persistence.EntityManager: javax.persistence.TypedQuery createQuery(java.lang.String,java.lang.Class)> -> _SINK_
+<javax.persistence.EntityManager: javax.persistence.TypedQuery createQuery(java.lang.String,java.lang.Class)> -> _SINK_
+<javax.persistence.EntityManager: javax.persistence.TypedQuery createQuery(java.lang.String,java.lang.Class)> -> _SINK_
+<org.apache.tomcat.util.http.fileupload.IOUtils: int copy(java.io.InputStream,java.io.OutputStream)> -> _SINK_

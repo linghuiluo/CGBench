@@ -1,0 +1,2 @@
+<java.util.Map: java.lang.Object get(java.lang.Object)> -> _SOURCE_
+<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)> -> _SINK_

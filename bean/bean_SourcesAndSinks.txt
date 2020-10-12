@@ -1,0 +1,2 @@
+<org.springframework.context.'annotation'.AnnotationConfigApplicationContext: java.lang.Object getBean(java.lang.String)> -> _SOURCE_
+<java.io.PrintWriter: java.io.PrintWriter append(java.lang.CharSequence)> -> _SINK_
