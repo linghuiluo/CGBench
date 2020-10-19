@@ -16,11 +16,11 @@ These dynamic features are challenging for static analysis writers especially fo
   * Reflexive XSS
     * Description: The user can send a user id over a request parameter. The handler method returns the user information, if invalid characters are provided then exception handler will send a string invalid user id with the given user id. Reflexive XSS vulnerability exists.  
     * Source: the return value of the getParameter method in 
-        * Line(s): 22
+        * Line(s): 26
         * Class: MyController
         * Method: retrieveUserInformation
-    * Sink: the return value of the exception handler invalidNumberExceptionHandler in
-        * Line(s): 17
+    * Sink: the first parameter of the method call append in
+        * Line(s): 21
         * Class: MyController
         * Method: invalidNumberExceptionHandler
     * Curl command: 
