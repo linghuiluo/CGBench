@@ -6,23 +6,31 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 @RestController
 public class MyController {
     @ExceptionHandler(value = {NumberFormatException.class})
-    protected String invalidNumberExceptionHandler(HttpServletRequest request) {
+    public void invalidNumberExceptionHandler(NumberFormatException ex, HttpServletResponse response) throws IOException {
 
-        String uid = request.getParameter("uid");
+        String uid = ex.getMessage();
 
-        return "Invalid user id = " + uid;
+        response.setContentType("text/html;charset=UTF-8");
+        response.setCharacterEncoding("UTF-8");
+        response.getWriter().append(uid);
     }
 
     @GetMapping(value = "/", produces = MediaType.TEXT_PLAIN_VALUE)
     public void retrieveUserInformation(HttpServletRequest request) {
         String uid = request.getParameter("uid");
 
-        int userID = Integer.parseInt(uid);  // throws NumberFormatException if user gives non-numbers
+        try {
+            int userID = Integer.parseInt(uid);  // throws NumberFormatException if user gives non-numbers
 
-        // retrieves the user information from the database using userID
+            // retrieves the user information from the database using userID
+        } catch (NumberFormatException ex) {
+            throw new NumberFormatException("invalid user id = " + uid);
+        }
     }
 }
