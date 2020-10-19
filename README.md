@@ -33,7 +33,7 @@ Benchmark Suite For Call Graph Construction
 - modelattributeonargumentlevel
 - modelattributeonargumentlevelwithfalsebinding
 - exceptionhandler
-- {Comming soon}
+- controlleradvice
 - springmvcwithjsp
 - springmvcwiththymeleaf
 - springmvcwithfreemarker
