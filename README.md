@@ -32,7 +32,7 @@ Benchmark Suite For Call Graph Construction
 - modelattributewithreturnvalue
 - modelattributeonargumentlevel
 - modelattributeonargumentlevelwithfalsebinding
-- {Comming soon}
+- exceptionhandler
 - {Comming soon}
 - springmvcwithjsp
 - springmvcwiththymeleaf
