@@ -5,25 +5,37 @@
       "source": {
         "targetName": "getParameter",
         "targetNo": 1,
-        "statement": "int userID = Integer.parseInt(request.getParameter(\"uid\"));",
+        "statement": "String uid = request.getParameter(\"uid\");",
         "methodName": "public void retrieveUserInformation(HttpServletRequest request)",
         "className": "de.fraunhofer.iem.springbench.exceptionhandler.controllers.MyController",
-        "lineNo": 24
+        "lineNo": 26
       },
       "sink": {
-        "targetName": "return",
+        "targetName": "append",
         "targetNo": 1,
-        "statement": "return \"Invalid user id = \" + request.getParameter(\"uid\");",
-        "methodName": "public String invalidNumberExceptionHandler(HttpServletRequest request)",
+        "statement": "response.getWriter().append(uid);",
+        "methodName": "public void invalidNumberExceptionHandler(NumberFormatException ex, HttpServletResponse response)",
         "className": "de.fraunhofer.iem.springbench.exceptionhandler.controllers.MyController",
-        "lineNo": 17
+        "lineNo": 21
       },
       "intermediateFlows": [
         {
-          "statement": "public String invalidNumberExceptionHandler(HttpServletRequest request) {",
-          "methodName": "public String invalidNumberExceptionHandler(HttpServletRequest request)",
+          "statement": "throw new NumberFormatException(\"invalid user id = \" + uid);",
+          "methodName": "public void retrieveUserInformation(HttpServletRequest request)",
           "className": "de.fraunhofer.iem.springbench.exceptionhandler.controllers.MyController",
-          "lineNo": 14
+          "lineNo": 33
+        },
+        {
+          "statement": "public void invalidNumberExceptionHandler(NumberFormatException ex, HttpServletResponse response) throws IOException {",
+          "methodName": "public void invalidNumberExceptionHandler(NumberFormatException ex, HttpServletResponse response)",
+          "className": "de.fraunhofer.iem.springbench.exceptionhandler.controllers.MyController",
+          "lineNo": 16
+        },
+        {
+          "statement": "String uid = ex.getMessage();",
+          "methodName": "public void invalidNumberExceptionHandler(NumberFormatException ex, HttpServletResponse response)",
+          "className": "de.fraunhofer.iem.springbench.exceptionhandler.controllers.MyController",
+          "lineNo": 17
         }
       ],
       "description": "The user can send a user id over a request parameter. The handler method returns the user information, if invalid characters are provided then exception handler will send a string invalid user id with the given user id. Reflexive XSS vulnerability exists.\n\nCurl:\ncurl http://localhost:8080/?uid=%3Cscript%3E%20%20%20alert(%22Yourcookie%3D%22%20%2B%20document.cookie)%20%20%20%20%3C%2Fscript%3E",
