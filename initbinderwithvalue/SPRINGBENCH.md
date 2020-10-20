@@ -14,7 +14,7 @@ These dynamic features are challenging for static analysis writers especially fo
 * Description: This application shows a basic usage of the @InitBinder annotation with value. 
 * Taint flows: 
   * Reflexive XSS
-    * Description: The user can send a user id over a request parameter. The handler method returns the html page with the hello message with user id appended. Reflexive XSS vulnerability exists.  
+    * Description: The user can send a user id over a request parameter. The inithandler method trims all the spaces and sends a respone with Trimming username with the appended user id. Reflexive XSS vulnerability exists.  
     * Source: the value of the RequestParam annotation in 
         * Line(s): 25
         * Class: MyController

@@ -1,44 +1,25 @@
 {
-  "fileName": "initbinderwithvalue.jar",
+  "fileName": "organized-app.jar",
   "findings": [
     {
       "source": {
-        "targetName": "@RequestParam(\"user\") String user",
+        "targetName": "getParameter",
         "targetNo": 1,
-        "statement": "public void index(@RequestParam(\"user\") String user, HttpServletResponse response) throws IOException {",
-        "methodName": "public void index(@RequestParam(\"user\") String user, HttpServletResponse response)",
+        "statement": "String user = request.getParameter(\"user\");",
+        "methodName": "public void initBinder(HttpServletRequest request, HttpServletResponse response, WebDataBinder dataBinder)",
         "className": "de.fraunhofer.iem.springbench.initbinderwithvalue.controllers.MyController",
-        "lineNo": 23
+        "lineNo": 25
       },
       "sink": {
         "targetName": "append",
         "targetNo": 1,
-        "statement": "response.getWriter().append(responseHTML);",
-        "methodName": "public void index(@RequestParam(\"user\") String user, HttpServletResponse response)",
+        "statement": "response.getWriter().append(\"Trimming username: \" + user + \".........\\n\\n\");",
+        "methodName": "public void initBinder(HttpServletRequest request, HttpServletResponse response, WebDataBinder dataBinder)",
         "className": "de.fraunhofer.iem.springbench.initbinderwithvalue.controllers.MyController",
-        "lineNo": 30
+        "lineNo": 29
       },
-      "intermediateFlows": [
-        {
-          "statement": "String responseHTML = createHTML(user);",
-          "methodName": "public void index(@RequestParam(\"user\") String user, HttpServletResponse response)",
-          "className": "de.fraunhofer.iem.springbench.initbinderwithvalue.controllers.MyController",
-          "lineNo": 24
-        },
-        {
-          "statement": "private static String createHTML(String name) {",
-          "methodName": "private static String createHTML(String name)",
-          "className": "de.fraunhofer.iem.springbench.initbinderwithvalue.controllers.MyController",
-          "lineNo": 35
-        },
-        {
-          "statement": "return \"<html>\\r\\n\\t<head>\\r\\n\\t\\t<meta charset=\\\"UTF-8\\\">\\r\\n\\t\\t<title>Hello World</title>\\r\\n\\t</head>\\r\\n\\t<body>\\r\\n\\t\\t<script>\\r\\n\\t\\t\\tvar c = \\\"secret=this is secret cookie;\\\" \\r\\n\\t\\t\\tdocument.cookie = c;\\r\\n\\t\\t</script>\\r\\n\\t\\t<pre>\\r\\n\\t\\t\\tHello \" + name + \"!! Welcome to myWebsite\\r\\n.\\t\\t</pre>\\r\\n\\t</body>\\r\\n</html>\";",
-          "methodName": "private static String createHTML(String name)",
-          "className": "de.fraunhofer.iem.springbench.initbinderwithvalue.controllers.MyController",
-          "lineNo": 36
-        }
-      ],
-      "description": "The user can send a user id over a request parameter. The handler method returns the html page with the hello message with user id appended. Reflexive XSS vulnerability exists.\n\ncurl http://localhost:8080/?user=%3Cscript%3E%20%20%20alert(%22Yourcookie%3D%22%20%2B%20document.cookie)%20%20%20%20%3C%2Fscript%3E",
+      "intermediateFlows": [],
+      "description": "The user can send a user id over a request parameter. The inithandler method trims all the spaces and sends a respone with Trimming username with the appended user id. Reflexive XSS vulnerability exists.\n\nCurl:\ncurl http://localhost:8080/?user=%3Cscript%3E%20%20%20alert(%22Yourcookie%3D%22%20%2B%20document.cookie)%20%20%20%20%3C%2Fscript%3E",
       "isNegative": false,
       "attributes": {
         "Init Binder Annotation with value": true
