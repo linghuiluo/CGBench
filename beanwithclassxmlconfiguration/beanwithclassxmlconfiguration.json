@@ -1,14 +1,14 @@
 {
-  "fileName": "beanwithclassxmlconfiguration.jar",
+  "fileName": "organized-app.jar",
   "findings": [
     {
       "source": {
-        "targetName": "getServerDefaultConfiguration",
+        "targetName": "getSettings",
         "targetNo": 1,
-        "statement": "HashMap<String, String> defaultSettings = ((DefaultEncryptSettingsBean) new ClassPathXmlApplicationContext(\"DefaultEncryptSettingsConfig.xml\").getBean(\"defaultEncryptSettings\")).getServerDefaultConfiguration();",
-        "methodName": "public void encryptMessage(HttpServletRequest request, HttpServletResponse response)",
-        "className": "de.fraunhofer.iem.springbench.beanwithclassxmlconfiguration.controllers.MyController",
-        "lineNo": 23
+        "statement": "HashMap<String, String> defaultConfig = getSettings();",
+        "methodName": "public HashMap<String, String> getServerDefaultConfiguration()",
+        "className": "de.fraunhofer.iem.springbench.beanwithclassxmlconfiguration.beans.DefaultEncryptSettingsBean",
+        "lineNo": 7
       },
       "sink": {
         "targetName": "append",
@@ -19,6 +19,18 @@
         "lineNo": 45
       },
       "intermediateFlows": [
+        {
+          "statement": "return defaultConfig;",
+          "methodName": "public HashMap<String, String> getServerDefaultConfiguration()",
+          "className": "de.fraunhofer.iem.springbench.beanwithclassxmlconfiguration.beans.DefaultEncryptSettingsBean",
+          "lineNo": 11
+        },
+        {
+          "statement": "HashMap<String, String> defaultSettings = ((DefaultEncryptSettingsBean) new ClassPathXmlApplicationContext(\"DefaultEncryptSettingsConfig.xml\").getBean(\"defaultEncryptSettings\")).getServerDefaultConfiguration();",
+          "methodName": "public void encryptMessage(HttpServletRequest request, HttpServletResponse response)",
+          "className": "de.fraunhofer.iem.springbench.beanwithclassxmlconfiguration.controllers.MyController",
+          "lineNo": 23
+        },
         {
           "statement": "String algorithm = (String) defaultSettings.get(\"crypto_algorithm\");",
           "methodName": "public void encryptMessage(HttpServletRequest request, HttpServletResponse response)",
