@@ -15,10 +15,10 @@ These dynamic features are challenging for static analysis writers especially fo
 * Taint flows: 
   * Information leak
     * Description: The user can send a message to encrypt over a request parameter. The handler method takes the crypt algorithm and the key size from the bean to encrypt the message. Information leak exists.  
-    * Source: the return value of the method getBean in 
-        * Line(s): 23
-        * Class: MyController
-        * Method: encryptMessage
+    * Source: the return value of the method getSettings in 
+        * Line(s): 12
+        * Class: MyConfiguration
+        * Method: getServerDefaultConfiguration
     * Sink: the first parameter of the method call append in
         * Line(s): 45
         * Class: MyController
