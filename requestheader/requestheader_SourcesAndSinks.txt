@@ -1,1 +1,2 @@
+org.springframework.web.bind.annotation.RequestHeader -> _PARAMETER_SOURCE_
 <javax.servlet.http.HttpServletResponse: void sendRedirect(java.lang.String)> -> _SINK_

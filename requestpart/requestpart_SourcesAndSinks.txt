@@ -1,1 +1,2 @@
+org.springframework.web.bind.annotation.RequestPart -> _PARAMETER_SOURCE_
 <java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)> -> _SINK_
