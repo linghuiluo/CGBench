@@ -1,0 +1,2 @@
+org.springframework.web.bind.annotation.PathVariable -> _PARAMETER_SOURCE_
+<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)> -> _SINK_
