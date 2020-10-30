@@ -1,2 +1,2 @@
-<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)> -> _SINK_
+org.springframework.web.bind.annotation.CookieValue -> _PARAMETER_SOURCE_
 <java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)> -> _SINK_

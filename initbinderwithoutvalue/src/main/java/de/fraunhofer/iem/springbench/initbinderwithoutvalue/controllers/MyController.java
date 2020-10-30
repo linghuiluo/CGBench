@@ -37,8 +37,9 @@ public class MyController {
     }
 
     @GetMapping(value = "/", produces = MediaType.TEXT_PLAIN_VALUE)
-    public void index(@RequestParam("user") String user, HttpServletResponse response) throws IOException {
+    public void index(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
+        String user = request.getParameter("user");
         // Authenticate the user and continue with the process,
         // Here, we will consider that authentication fails and response with Invalid username
 
