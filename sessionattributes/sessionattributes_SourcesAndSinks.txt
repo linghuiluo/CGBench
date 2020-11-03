@@ -1,0 +1,2 @@
+<javax.servlet.http.HttpServletRequest: java.lang.String getParameter(java.lang.String)> -> _SOURCE_
+<org.springframework.ui.Model: org.springframework.ui.Model addAttribute(java.lang.String, java.lang.Object)> -> _SINK_

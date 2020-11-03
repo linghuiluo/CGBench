@@ -1,0 +1,2 @@
+<de.fraunhofer.iem.springbench.beanwithclassxmlconfiguration.beans.DefaultEncryptSettingsBean: java.util.HashMap getSettings()> -> _SOURCE_
+<java.io.PrintWriter: java.io.PrintWriter append(java.lang.CharSequence)> -> _SINK_
