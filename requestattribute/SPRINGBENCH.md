@@ -14,9 +14,21 @@ These dynamic features are challenging for static analysis writers especially fo
 * Description: This application shows a basic usage of the @RequestAttribute annotation. 
 * Taint flows: 
   * Information Leak
-    * Description: The user can send a message to encrypt over a request parameter. The handler method requests attribute crypt algorithm and the key size to encrypt the message. Information leak exists.  
+    * Description: The user can send a message to encrypt over a request parameter. The handler method requests attribute crypt algorithm to encrypt the message. Information leak exists.  
     * Source: value of the RequestAttribute annotations in 
-        * Line(s): 22 and 23
+        * Line(s): 22
+        * Class: MyController
+        * Method: encryptMessage
+    * Sink: the first parameter of the method call append in
+        * Line(s): 45
+        * Class: MyController
+        * Method: encryptMessage
+    * Curl command:
+        * curl http://localhost:8080/encryptMyMessage?message=hello
+  * Information Leak
+    * Description: The user can send a message to encrypt over a request parameter. The handler method requests attribute key size to encrypt the message. Information leak exists.  
+    * Source: value of the RequestAttribute annotations in 
+        * Line(s): 23
         * Class: MyController
         * Method: encryptMessage
     * Sink: the first parameter of the method call append in
