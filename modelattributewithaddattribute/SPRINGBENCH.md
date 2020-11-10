@@ -13,18 +13,33 @@ These dynamic features are challenging for static analysis writers especially fo
 * Relevant Spring features: @RestController, @RequestMapping, @ModelAttribute (with addAttribute)
 * Description: This application shows a basic usage of the @ModelAttribute annotation with addAttribute on method level. 
 * Taint flows: 
-  * Trust Boundary Violation Attack
-    * Description: The user can send a userName over a request parameter. The addUserName method adds the userName into the trusted data without authenticating, therefore Trust Boundary Violation attack exist.  
+  * XSS Attack
+    * Description: The user can send a userName over a request parameter. This userName will be added in the model, later this model will be sent in the response body through the append method call, therefore XSS attack exist.  
     * Source: the return value of the method getParameter in 
         * Line(s): 23
         * Class: MyController
         * Method: addUserName
-    * Sink: the first parameter of the method call add in
-        * Line(s): 28
+    * Sink: the first parameter of the method call append in
+        * Line(s): 48
         * Class: MyController
-        * Method: addUserName
+        * Method: login
     * Curl command: 
-        * curl http://localhost:8080/login?userName=IAmAttacker (performs the attack)
-        * curl http://localhost:8080/currentUser (no attack is present in this command)
+        * curl http://localhost:8080/login?userName=%3Cscript%3E%20%20%20alert(%22Yourcookie%3D%22%20%2B%20document.cookie)%20%20%20%20%3C%2Fscript%3E
+    * URL decoded link: (Only for human understanding)
+		* http://localhost:8080/login?userName=<script> alert("Yourcookie=" + document.cookie) </script>
+  * Trust Boundary Violation Attack
+    * Description: The user can send a user id over a request parameter. This userName will be sent in the response through append method call, therefore Reflexive XSS attack exist.
+    * Source: the return value of the method getParameter in 
+        * Line(s): 39
+        * Class: MyController
+        * Method: login
+    * Sink: the first parameter of the method call append in
+        * Line(s): 48
+        * Class: MyController
+        * Method: login
+    * Curl command: 
+        * curl http://localhost:8080/login?userName=%3Cscript%3E%20%20%20alert(%22Yourcookie%3D%22%20%2B%20document.cookie)%20%20%20%20%3C%2Fscript%3E
+    * URL decoded link: (Only for human understanding)
+		* http://localhost:8080/login?userName=<script> alert("Yourcookie=" + document.cookie) </script>
 
 
