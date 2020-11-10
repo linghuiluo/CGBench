@@ -11,15 +11,58 @@
         "lineNo": 23
       },
       "sink": {
-        "targetName": "add",
+        "targetName": "append",
         "targetNo": 1,
-        "statement": "this.currentUserInRoom.add(userName);",
-        "methodName": "public void addUserName(HttpServletRequest request, Model model)",
+        "statement": "response.getWriter().append(\"Welcome!!! \").append(userName).append(model.toString());",
+        "methodName": "public void login(HttpServletRequest request, HttpServletResponse response, Model model)",
         "className": "de.fraunhofer.iem.springbench.modelattributewithaddattribute.controllers.MyController",
-        "lineNo": 28
+        "lineNo": 48
+      },
+      "intermediateFlows": [
+        {
+          "statement": "this.currentUserInRoom.add(userName);",
+          "methodName": "public void addUserName(HttpServletRequest request, Model model)",
+          "className": "de.fraunhofer.iem.springbench.modelattributewithaddattribute.controllers.MyController",
+          "lineNo": 28
+        },
+        {
+          "statement": "model.addAttribute(\"CurrentUsersInChatRoom\", this.currentUserInRoom);",
+          "methodName": "public void addUserName(HttpServletRequest request, Model model)",
+          "className": "de.fraunhofer.iem.springbench.modelattributewithaddattribute.controllers.MyController",
+          "lineNo": 32
+        },
+        {
+          "statement": "public void login(HttpServletRequest request, HttpServletResponse response, Model model) throws IOException {",
+          "methodName": "public void login(HttpServletRequest request, HttpServletResponse response, Model model)",
+          "className": "de.fraunhofer.iem.springbench.modelattributewithaddattribute.controllers.MyController",
+          "lineNo": 38
+        }
+      ],
+      "description": "The user can send a userName over a request parameter. This userName will be added in the model, later this model will be sent in the response body through the append method call, therefore XSS attack exist.\n\nCurl:\ncurl http://localhost:8080/login?userName=%3Cscript%3E%20%20%20alert(%22Yourcookie%3D%22%20%2B%20document.cookie)%20%20%20%20%3C%2Fscript%3E",
+      "isNegative": false,
+      "attributes": {
+        "@ModelAttribute with addAttribute": true
+      }
+    },
+    {
+      "source": {
+        "targetName": "getParameter",
+        "targetNo": 1,
+        "statement": "String userName = request.getParameter(\"userName\");",
+        "methodName": "public void login(HttpServletRequest request, HttpServletResponse response, Model model)",
+        "className": "de.fraunhofer.iem.springbench.modelattributewithaddattribute.controllers.MyController",
+        "lineNo": 39
+      },
+      "sink": {
+        "targetName": "append",
+        "targetNo": 1,
+        "statement": "response.getWriter().append(\"Welcome!!! \").append(userName).append(model.toString());",
+        "methodName": "public void login(HttpServletRequest request, HttpServletResponse response, Model model)",
+        "className": "de.fraunhofer.iem.springbench.modelattributewithaddattribute.controllers.MyController",
+        "lineNo": 48
       },
       "intermediateFlows": [],
-      "description": "The user can send a userName over a request parameter. The addUserName method adds the userName into the trusted data without authenticating, therefore Trust Boundary Violation attack exist.\n\ncurl http://localhost:8080/login?userName=IAmAttacker",
+      "description": "The user can send a user id over a request parameter. This userName will be sent in the response through append method call, therefore Reflexive XSS attack exist.\n\nCurl:\ncurl http://localhost:8080/login?userName=%3Cscript%3E%20%20%20alert(%22Yourcookie%3D%22%20%2B%20document.cookie)%20%20%20%20%3C%2Fscript%3E",
       "isNegative": false,
       "attributes": {
         "@ModelAttribute with addAttribute": true
