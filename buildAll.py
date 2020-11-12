@@ -29,7 +29,7 @@ def buildAllapps(cgbench):
                    if f.endswith(".jar"):
                        print(f)
                        fromFile = os.path.join(targetDir, f)
-                       toFile = os.path.join(allBenchmarks, f)
+                       toFile = os.path.join(allBenchmarks, d+".jar")
                        copyfile(fromFile,toFile)
     os.system("ls "+allBenchmarks)
           
