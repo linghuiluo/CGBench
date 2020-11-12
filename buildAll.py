@@ -23,7 +23,7 @@ def buildAllapps(cgbench):
                 toFile = os.path.join(allBenchmarks, ssFile)
                 copyfile(fromFile,toFile) 
            print("building "+d)
-           os.system("mvn install")
+           os.system("mvn install -DskipTests")
            if os.path.exists(targetDir):
                for f in os.listdir(targetDir):
                    if f.endswith(".jar"):
