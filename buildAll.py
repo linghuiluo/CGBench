@@ -7,7 +7,7 @@ Created on Thu Nov 12 09:57:31 2020
 import os
 from shutil import copyfile
 
-num = 2
+num = 100
 def buildAllapps(cgbench):
     allBenchmarks = os.path.join(cgbench, "allBenchmarks") 
     if not os.path.exists(allBenchmarks):
