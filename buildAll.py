@@ -7,10 +7,12 @@ Created on Thu Nov 12 09:57:31 2020
 import os
 from shutil import copyfile
 
+num = 5
 def buildAllapps(cgbench):
     allBenchmarks = os.path.join(cgbench, "allBenchmarks") 
     if not os.path.exists(allBenchmarks):
         os.mkdir(allBenchmarks)
+    count = 0
     for d in os.listdir(cgbench):      
         pomFile = os.path.join(cgbench, d, "pom.xml")
         appDir = os.path.join(cgbench, d)
@@ -31,6 +33,9 @@ def buildAllapps(cgbench):
                        fromFile = os.path.join(targetDir, f)
                        toFile = os.path.join(allBenchmarks, d+".jar")
                        copyfile(fromFile,toFile)
+                       count = count + 1
+                       if count == num:
+                          return;
     os.system("ls "+allBenchmarks)
           
 cgbench = os.path.dirname(os.path.abspath(__file__))           
