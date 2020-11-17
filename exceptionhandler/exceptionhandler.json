@@ -2,13 +2,21 @@
   "fileName": "exceptionhandler.jar",
   "findings": [
     {
+      "id": "exceptionhandler1",
       "source": {
         "targetName": "getParameter",
         "targetNo": 1,
         "statement": "String uid = request.getParameter(\"uid\");",
         "methodName": "public void retrieveUserInformation(HttpServletRequest request)",
         "className": "de.fraunhofer.iem.springbench.exceptionhandler.controllers.MyController",
-        "lineNo": 26
+        "lineNo": 26,
+        "type": "methodinvocation",
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "uid = interfaceinvoke request.<javax.servlet.http.HttpServletRequest: java.lang.String getParameter(java.lang.String)>(\"uid\")"
+          }
+        ]
       },
       "sink": {
         "targetName": "append",
@@ -16,7 +24,14 @@
         "statement": "response.getWriter().append(uid);",
         "methodName": "public void invalidNumberExceptionHandler(NumberFormatException ex, HttpServletResponse response)",
         "className": "de.fraunhofer.iem.springbench.exceptionhandler.controllers.MyController",
-        "lineNo": 21
+        "lineNo": 21,
+        "type": "methodinvocation",
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "virtualinvoke $r0.<java.io.PrintWriter: java.io.PrintWriter append(java.lang.CharSequence)>(uid)"
+          }
+        ]
       },
       "intermediateFlows": [
         {

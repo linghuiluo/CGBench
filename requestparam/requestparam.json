@@ -2,13 +2,20 @@
   "fileName": "requestparam.jar",
   "findings": [
     {
+	  "id": "spring1",
       "source": {
         "targetName": "@RequestParam String user",
         "targetNo": 1,
         "statement": "public String index(@RequestParam String user) {",
         "methodName": "public String index(@RequestParam String user)",
         "className": "de.fraunhofer.iem.springbench.requestparam.controllers.MyController",
-        "lineNo": 13
+        "lineNo": 13,
+		"IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "user := @parameter0: java.lang.String"
+          }
+        ]
       },
       "sink": {
         "targetName": "executeQuery",
@@ -16,7 +23,13 @@
         "statement": "res = DriverManager.getConnection(\"jdbc:mysql://localhost:3306/mysql\", \"\", \"\").createStatement().executeQuery(\"SELECT * FROM  User where userId='\" + value + \"'\");",
         "methodName": "public String getValue(String value)",
         "className": "de.fraunhofer.iem.springbench.requestparam.controllers.MyController",
-        "lineNo": 29
+        "lineNo": 29,
+		"IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "res = interfaceinvoke st.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>(query)"
+          }
+        ]
       },
       "intermediateFlows": [
         {

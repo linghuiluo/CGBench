@@ -2,13 +2,21 @@
   "fileName": "bean.jar",
   "findings": [
     {
+      "id": "bean1",
       "source": {
         "targetName": "getSettings",
         "targetNo": 1,
         "statement": "HashMap<String, String> defaultConfig = getSettings();",
         "methodName": "public HashMap<String, String> getServerDefaultConfiguration()",
         "className": "de.fraunhofer.iem.springbench.bean.configurations.MyConfiguration",
-        "lineNo": 12
+        "lineNo": 12,
+        "type": "methodinvocation",
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "defaultConfig = specialinvoke this.<de.fraunhofer.iem.springbench.bean.configurations.MyConfiguration: java.util.HashMap getSettings()>()"
+          }
+        ]
       },
       "sink": {
         "targetName": "append",
@@ -16,7 +24,14 @@
         "statement": "response.getWriter().append(responseMessage);",
         "methodName": "public void encryptMessage(HttpServletRequest request, HttpServletResponse response)",
         "className": "de.fraunhofer.iem.springbench.bean.controllers.MyController",
-        "lineNo": 45
+        "lineNo": 45,
+        "type": "methodinvocation",
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "virtualinvoke $r9.<java.io.PrintWriter: java.io.PrintWriter append(java.lang.CharSequence)>(responseMessage)"
+          }
+        ]
       },
       "intermediateFlows": [
         {

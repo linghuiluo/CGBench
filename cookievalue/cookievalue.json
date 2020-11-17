@@ -2,13 +2,21 @@
   "fileName": "cookievalue.jar",
   "findings": [
     {
+      "id": "cookievalue1",
       "source": {
         "targetName": "@CookieValue(value = \"userID\") String userID",
         "targetNo": 1,
         "statement": "public String someSensitiveOperation(@CookieValue(\"userID\") String userID, @CookieValue(\"password\") String password) {",
         "methodName": "public String someSensitiveOperation(@CookieValue(\"userID\") String userID, @CookieValue(\"password\") String password)",
         "className": "de.fraunhofer.iem.springbench.cookievalue.controllers.MyController",
-        "lineNo": 14
+        "lineNo": 14,
+        "type": "@parameter0",
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "userID := @parameter0: java.lang.String"
+          }
+        ]
       },
       "sink": {
         "targetName": "executeQuery",
@@ -16,7 +24,14 @@
         "statement": "return DriverManager.getConnection(\"jdbc:mysql://localhost:3306/mysql\", \"\", \"\").createStatement().executeQuery(\"SELECT password FROM  UserAuth where userId='\" + userID + \"'\").getString(\"password\").equals(password);",
         "methodName": "public boolean validateUser(String userID, String password)",
         "className": "de.fraunhofer.iem.springbench.cookievalue.controllers.MyController",
-        "lineNo": 36
+        "lineNo": 32,
+        "type": "methodinvocation",
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "res = interfaceinvoke st.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>(query)"
+          }
+        ]
       },
       "intermediateFlows": [
         {
@@ -39,13 +54,21 @@
       }
     },
     {
+      "id": "cookievalue2",
       "source": {
         "targetName": "@CookieValue(value = \"password\") String password",
         "targetNo": 1,
         "statement": "public String someSensitiveOperation(@CookieValue(\"userID\") String userID, @CookieValue(\"password\") String password) {",
         "methodName": "public String someSensitiveOperation(@CookieValue(\"userID\") String userID, @CookieValue(\"password\") String password)",
         "className": "de.fraunhofer.iem.springbench.cookievalue.controllers.MyController",
-        "lineNo": 14
+        "lineNo": 14,
+        "type": "@parameter1",
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "password := @parameter1: java.lang.String"
+          }
+        ]
       },
       "sink": {
         "targetName": "executeQuery",
@@ -53,7 +76,14 @@
         "statement": "return DriverManager.getConnection(\"jdbc:mysql://localhost:3306/mysql\", \"\", \"\").createStatement().executeQuery(\"SELECT password FROM  UserAuth where userId='\" + userID + \"'\").getString(\"password\").equals(password);",
         "methodName": "public boolean validateUser(String userID, String password)",
         "className": "de.fraunhofer.iem.springbench.cookievalue.controllers.MyController",
-        "lineNo": 36
+        "lineNo": 32,
+        "type": "methodinvocation",
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "res = interfaceinvoke st.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>(query)"
+          }
+        ]
       },
       "intermediateFlows": [
         {

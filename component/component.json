@@ -2,13 +2,21 @@
   "fileName": "component.jar",
   "findings": [
     {
+      "id": "component1",
       "source": {
         "targetName": "getParameter",
         "targetNo": 1,
         "statement": "String user = request.getParameter(\"userName\");",
         "methodName": "public void index(HttpServletRequest request, HttpServletResponse response)",
         "className": "de.fraunhofer.iem.springbench.component.controllers.MyController",
-        "lineNo": 17
+        "lineNo": 17,
+        "type": "methodinvocation",
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "user = interfaceinvoke request.<javax.servlet.http.HttpServletRequest: java.lang.String getParameter(java.lang.String)>(\"userName\")"
+          }
+        ]
       },
       "sink": {
         "targetName": "append",
@@ -16,7 +24,14 @@
         "statement": "response.getWriter().append(responseHTML);",
         "methodName": "public void index(HttpServletRequest request, HttpServletResponse response)",
         "className": "de.fraunhofer.iem.springbench.component.controllers.MyController",
-        "lineNo": 31
+        "lineNo": 31,
+        "type": "methodinvocation",
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "virtualinvoke $r3.<java.io.PrintWriter: java.io.PrintWriter append(java.lang.CharSequence)>(responseHTML)"
+          }
+        ]
       },
       "intermediateFlows": [
         {

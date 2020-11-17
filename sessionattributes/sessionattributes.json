@@ -8,7 +8,8 @@
         "statement": "String userName = request.getParameter(\"userName\");",
         "methodName": "public String index(Model model, HttpServletRequest request)",
         "className": "de.fraunhofer.iem.springbench.sessionattributes.controllers.MyController",
-        "lineNo": 16
+        "lineNo": 16,
+        "type": "methodinvocation"
       },
       "sink": {
         "targetName": "addAttribute",
@@ -32,7 +33,8 @@
         "statement": "model.addAttribute(\"message\", request.getParameter(\"message\"));",
         "methodName": "public String sendMessage(HttpServletRequest request, Model model)",
         "className": "de.fraunhofer.iem.springbench.sessionattributes.controllers.MyController",
-        "lineNo": 28
+        "lineNo": 28,
+        "type": "methodinvocation"
       },
       "sink": {
         "targetName": "addAttribute",
@@ -40,7 +42,7 @@
         "statement": "model.addAttribute(\"message\", request.getParameter(\"message\"));",
         "methodName": "public String sendMessage(HttpServletRequest request, Model model)",
         "className": "de.fraunhofer.iem.springbench.sessionattributes.controllers.MyController",
-        "lineNo": 29
+        "lineNo": 28
       },
       "intermediateFlows": [],
       "description": "The user can send a message over a request parameter. The handler method stores this in model attribute, that is used by the jsp immediately. Reflexive XSS vulnerability exists.\n\nCurl:\ncurl --cookie-jar cookies.txt -s -L http://localhost:8080/?userName=attacker\ncurl --cookie cookies.txt --cookie-jar cookies.txt -s -L http://localhost:8080/sendMessage?message=%3Cscript%3Ealert%28+document.cookie+%29%3B%3C%2Fscript%3E",

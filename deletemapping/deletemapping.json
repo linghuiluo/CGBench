@@ -2,13 +2,21 @@
   "fileName": "deletemapping.jar",
   "findings": [
     {
+      "id": "deletemapping1",
       "source": {
         "targetName": "getParameter",
         "targetNo": 1,
         "statement": "String UID = request.getParameter(\"UID\");",
         "methodName": "public String deleteFileByID(HttpServletRequest request, HttpServletResponse response)",
         "className": "de.fraunhofer.iem.springbench.deletemapping.controllers.MyController",
-        "lineNo": 16
+        "lineNo": 16,
+        "type": "methodinvocation",
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "UID = interfaceinvoke request.<javax.servlet.http.HttpServletRequest: java.lang.String getParameter(java.lang.String)>(\"UID\")"
+          }
+        ]
       },
       "sink": {
         "targetName": "exec",
@@ -16,7 +24,14 @@
         "statement": "int exitCode = Runtime.getRuntime().exec(\"del \" + UID + \"/\" + fileName).exitValue();",
         "methodName": "public String deleteFileByID(HttpServletRequest request, HttpServletResponse response)",
         "className": "de.fraunhofer.iem.springbench.deletemapping.controllers.MyController",
-        "lineNo": 32
+        "lineNo": 31,
+        "type": "methodinvocation",
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "process = virtualinvoke $r5.<java.lang.Runtime: java.lang.Process exec(java.lang.String)>(cmd)"
+          }
+        ]
       },
       "intermediateFlows": [],
       "description": "The user can send an user id, and the file name over request parameter through HttpServletRequest object. The handler method appends these values to form a remove command and tries to execute the remove command. Command injection vulnerability exists, since user inputs are not sanitized.\n\ncurl -X DELETE \"http://localhost:8080/delete?UID=../../sensitivePath&fileName=sensitiveDirectory/sensitiveFile\"",
@@ -26,13 +41,21 @@
       }
     },
     {
+      "id": "deletemapping2",
       "source": {
         "targetName": "getParameter",
         "targetNo": 1,
         "statement": "String fileName = request.getParameter(\"fileName\");",
         "methodName": "public String deleteFileByID(HttpServletRequest request, HttpServletResponse response)",
         "className": "de.fraunhofer.iem.springbench.deletemapping.controllers.MyController",
-        "lineNo": 17
+        "lineNo": 17,
+        "type": "methodinvocation",
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "fileName = interfaceinvoke request.<javax.servlet.http.HttpServletRequest: java.lang.String getParameter(java.lang.String)>(\"fileName\")"
+          }
+        ]
       },
       "sink": {
         "targetName": "exec",
@@ -40,7 +63,14 @@
         "statement": "int exitCode = Runtime.getRuntime().exec(\"del \" + UID + \"/\" + fileName).exitValue();",
         "methodName": "public String deleteFileByID(HttpServletRequest request, HttpServletResponse response)",
         "className": "de.fraunhofer.iem.springbench.deletemapping.controllers.MyController",
-        "lineNo": 32
+        "lineNo": 31,
+        "type": "methodinvocation",
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "process = virtualinvoke $r5.<java.lang.Runtime: java.lang.Process exec(java.lang.String)>(cmd)"
+          }
+        ]
       },
       "intermediateFlows": [],
       "description": "The user can send an user id, and the file name over request parameter through HttpServletRequest object. The handler method appends these values to form a remove command and tries to execute the remove command. Command injection vulnerability exists, since user inputs are not sanitized.\n\ncurl -X DELETE \"http://localhost:8080/delete?UID=../../sensitivePath&fileName=sensitiveDirectory/sensitiveFile\"",
