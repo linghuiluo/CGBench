@@ -2,13 +2,21 @@
   "fileName": "handlerinterceptoradapterposthandle.jar",
   "findings": [
     {
+      "id": "handlerinterceptoradapterposthandle1",
       "source": {
         "targetName": "getParameter",
         "targetNo": 1,
         "statement": "MyLogger.writeLog(request.getParameter(\"user\") + \" is trying to logout.\");",
         "methodName": "public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView)",
         "className": "de.fraunhofer.iem.springbench.handlerinterceptoradapterposthandle.Interceptor.MyInterceptor",
-        "lineNo": 16
+        "lineNo": 14,
+        "type": "methodinvocation",
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "user = interfaceinvoke request.<javax.servlet.http.HttpServletRequest: java.lang.String getParameter(java.lang.String)>(\"user\")"
+          }
+        ]
       },
       "sink": {
         "targetName": "info",
@@ -16,7 +24,14 @@
         "statement": "logger.info(message);",
         "methodName": "public static void writeLog(String message)",
         "className": "de.fraunhofer.iem.springbench.handlerinterceptoradapterposthandle.LOGGER.MyLogger",
-        "lineNo": 9
+        "lineNo": 9,
+        "type": "methodinvocation",
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "virtualinvoke $r0.<java.util.logging.Logger: void info(java.lang.String)>(message)"
+          }
+        ]
       },
       "intermediateFlows": [],
       "description": "The user can send a user id over a request parameter. The postHandle method logs stating that the user is trying to logout with the user id passed by the user. Log injection exist.\n\ncurl http://localhost:8080/?user=attacker+logged+in+successfully%0D%0Aabc+",
