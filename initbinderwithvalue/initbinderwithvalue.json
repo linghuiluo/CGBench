@@ -2,13 +2,21 @@
   "fileName": "initbinderwithvalue.jar",
   "findings": [
     {
+      "id": "initbinderwithvalue1",
       "source": {
         "targetName": "getParameter",
         "targetNo": 1,
         "statement": "String user = request.getParameter(\"user\");",
         "methodName": "public void initBinder(HttpServletRequest request, HttpServletResponse response, WebDataBinder dataBinder)",
         "className": "de.fraunhofer.iem.springbench.initbinderwithvalue.controllers.MyController",
-        "lineNo": 25
+        "lineNo": 25,
+        "type": "methodinvocation",
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "user = interfaceinvoke request.<javax.servlet.http.HttpServletRequest: java.lang.String getParameter(java.lang.String)>(\"user\")"
+          }
+        ]
       },
       "sink": {
         "targetName": "append",
@@ -16,7 +24,14 @@
         "statement": "response.getWriter().append(\"Trimming username: \" + user + \".........\\n\\n\");",
         "methodName": "public void initBinder(HttpServletRequest request, HttpServletResponse response, WebDataBinder dataBinder)",
         "className": "de.fraunhofer.iem.springbench.initbinderwithvalue.controllers.MyController",
-        "lineNo": 29
+        "lineNo": 29,
+        "type": "methodinvocation",
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "virtualinvoke $r0.<java.io.PrintWriter: java.io.PrintWriter append(java.lang.CharSequence)>($r5)"
+          }
+        ]
       },
       "intermediateFlows": [],
       "description": "The user can send a user id over a request parameter. The inithandler method trims all the spaces and sends a respone with Trimming username with the appended user id. Reflexive XSS vulnerability exists.\n\nCurl:\ncurl http://localhost:8080/?user=%3Cscript%3E%20%20%20alert(%22Yourcookie%3D%22%20%2B%20document.cookie)%20%20%20%20%3C%2Fscript%3E",
