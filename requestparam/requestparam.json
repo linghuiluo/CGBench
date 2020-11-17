@@ -2,7 +2,7 @@
   "fileName": "requestparam.jar",
   "findings": [
     {
-	  "id": "spring1",
+	  "id": "requestparam1",
       "source": {
         "targetName": "@RequestParam String user",
         "targetNo": 1,
@@ -10,6 +10,7 @@
         "methodName": "public String index(@RequestParam String user)",
         "className": "de.fraunhofer.iem.springbench.requestparam.controllers.MyController",
         "lineNo": 13,
+        "type": "@parameter0",
 		"IRs": [
           {
             "type": "Jimple",
@@ -24,6 +25,7 @@
         "methodName": "public String getValue(String value)",
         "className": "de.fraunhofer.iem.springbench.requestparam.controllers.MyController",
         "lineNo": 29,
+        "type": "methodinvocation",
 		"IRs": [
           {
             "type": "Jimple",

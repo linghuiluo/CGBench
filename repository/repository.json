@@ -2,13 +2,21 @@
   "fileName": "repository.jar",
   "findings": [
     {
+      "id": "repository1",
       "source": {
         "targetName": "getParameter",
         "targetNo": 1,
         "statement": "String user = request.getParameter(\"user\");",
         "methodName": "public String index(HttpServletRequest request, HttpServletResponse response)",
         "className": "de.fraunhofer.iem.springbench.repository.controllers.MyController",
-        "lineNo": 17
+        "lineNo": 17,
+        "type": "methodinvocation",
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "user = interfaceinvoke request.<javax.servlet.http.HttpServletRequest: java.lang.String getParameter(java.lang.String)>(\"user\")"
+          }
+        ]
       },
       "sink": {
         "targetName": "executeQuery",
@@ -16,7 +24,14 @@
         "statement": "res = getConnection().createStatement().executeQuery(\"SELECT * FROM  User where userId='\" + userName + \"'\");",
         "methodName": "public String retrieveUser(String userName)",
         "className": "de.fraunhofer.iem.springbench.repository.repositories.UserRepository",
-        "lineNo": 24
+        "lineNo": 24,
+        "type": "methodinvocation",
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "res = interfaceinvoke st.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>(query)"
+          }
+        ]
       },
       "intermediateFlows": [
         {

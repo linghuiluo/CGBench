@@ -2,13 +2,21 @@
   "fileName": "requestmapping.jar",
   "findings": [
     {
+      "id": "requestmapping1",
       "source": {
         "targetName": "getParameter",
         "targetNo": 1,
         "statement": "String url = request.getParameter(\"url\");",
         "methodName": "public void forwardRequestUrl(HttpServletRequest request, HttpServletResponse response)",
         "className": "de.fraunhofer.iem.springbench.requestmapping.controllers.Controller",
-        "lineNo": 18
+        "lineNo": 18,
+        "type": "methodinvocation",
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "url = interfaceinvoke request.<javax.servlet.http.HttpServletRequest: java.lang.String getParameter(java.lang.String)>(\"url\")"
+          }
+        ]
       },
       "sink": {
         "targetName": "sendRedirect",
@@ -16,7 +24,14 @@
         "statement": "response.sendRedirect(url);",
         "methodName": "public void forwardRequestUrl(HttpServletRequest request, HttpServletResponse response)",
         "className": "de.fraunhofer.iem.springbench.requestmapping.controllers.Controller",
-        "lineNo": 21
+        "lineNo": 21,
+        "type": "methodinvocation",
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "interfaceinvoke response.<javax.servlet.http.HttpServletResponse: void sendRedirect(java.lang.String)>(url)"
+          }
+        ]
       },
       "intermediateFlows": [],
       "description": "The user can send a URL over a request parameter which is then redirected by the servlet. The URL value is not sanitized before used.\n\ncurl http://localhost:8080/home?url=http://iamevil.com/",

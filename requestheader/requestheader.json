@@ -2,13 +2,21 @@
   "fileName": "requestheader.jar",
   "findings": [
     {
+      "id": "requestheader1",
       "source": {
         "targetName": "@RequestHeader(\"referer\") String redirectLink",
         "targetNo": 1,
         "statement": "public void forward(@RequestHeader(\"referer\") String redirectLink, HttpServletResponse response) {",
         "methodName": "public void forward(@RequestHeader(\"referer\") String redirectLink, HttpServletResponse response)",
         "className": "de.fraunhofer.iem.springbench.requestheader.controllers.MyController",
-        "lineNo": 15
+        "lineNo": 13,
+        "type": "@parameter0",
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "redirectLink := @parameter0: java.lang.String"
+          }
+        ]
       },
       "sink": {
         "targetName": "sendRedirect",
@@ -16,7 +24,14 @@
         "statement": "response.sendRedirect(redirectLink);",
         "methodName": "public void forward(@RequestHeader(\"referer\") String redirectLink, HttpServletResponse response)",
         "className": "de.fraunhofer.iem.springbench.requestheader.controllers.MyController",
-        "lineNo": 19
+        "lineNo": 19,
+        "type": "methodinvocation",
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "interfaceinvoke response.<javax.servlet.http.HttpServletResponse: void sendRedirect(java.lang.String)>(redirectLink)"
+          }
+        ]
       },
       "intermediateFlows": [],
       "description": "The user can send a redirect url over a RequestHeader annotation through the field referer. The handler method redirects the request to the given link without any sanitization.\n\ncurl -H \"referer:http://iamevil.com/\" http://localhost:8080/",
