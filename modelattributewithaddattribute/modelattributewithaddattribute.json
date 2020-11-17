@@ -2,13 +2,21 @@
   "fileName": "modelattributewithaddattribute.jar",
   "findings": [
     {
+      "id": "modelattributewithaddattribute1",
       "source": {
         "targetName": "getParameter",
         "targetNo": 1,
         "statement": "String userName = request.getParameter(\"userName\");",
         "methodName": "public void addUserName(HttpServletRequest request, Model model)",
         "className": "de.fraunhofer.iem.springbench.modelattributewithaddattribute.controllers.MyController",
-        "lineNo": 23
+        "lineNo": 23,
+        "type": "methodinvocation",
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "userName = interfaceinvoke request.<javax.servlet.http.HttpServletRequest: java.lang.String getParameter(java.lang.String)>(\"userName\")"
+          }
+        ]
       },
       "sink": {
         "targetName": "append",
@@ -16,7 +24,14 @@
         "statement": "response.getWriter().append(\"Welcome!!! \").append(userName).append(model.toString());",
         "methodName": "public void login(HttpServletRequest request, HttpServletResponse response, Model model)",
         "className": "de.fraunhofer.iem.springbench.modelattributewithaddattribute.controllers.MyController",
-        "lineNo": 48
+        "lineNo": 48,
+        "type": "methodinvocation",
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "virtualinvoke $r2.<java.io.PrintWriter: java.io.PrintWriter append(java.lang.CharSequence)>($r3)"
+          }
+        ]
       },
       "intermediateFlows": [
         {
@@ -45,13 +60,21 @@
       }
     },
     {
+      "id": "modelattributewithaddattribute2",
       "source": {
         "targetName": "getParameter",
         "targetNo": 1,
         "statement": "String userName = request.getParameter(\"userName\");",
         "methodName": "public void login(HttpServletRequest request, HttpServletResponse response, Model model)",
         "className": "de.fraunhofer.iem.springbench.modelattributewithaddattribute.controllers.MyController",
-        "lineNo": 39
+        "lineNo": 39,
+        "type": "methodinvocation",
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "userName = interfaceinvoke request.<javax.servlet.http.HttpServletRequest: java.lang.String getParameter(java.lang.String)>(\"userName\")"
+          }
+        ]
       },
       "sink": {
         "targetName": "append",
@@ -59,7 +82,14 @@
         "statement": "response.getWriter().append(\"Welcome!!! \").append(userName).append(model.toString());",
         "methodName": "public void login(HttpServletRequest request, HttpServletResponse response, Model model)",
         "className": "de.fraunhofer.iem.springbench.modelattributewithaddattribute.controllers.MyController",
-        "lineNo": 48
+        "lineNo": 48,
+        "type": "methodinvocation",
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "$r2 = virtualinvoke $r1.<java.io.PrintWriter: java.io.PrintWriter append(java.lang.CharSequence)>(userName)"
+          }
+        ]
       },
       "intermediateFlows": [],
       "description": "The user can send a user id over a request parameter. This userName will be sent in the response through append method call, therefore Reflexive XSS attack exist.\n\nCurl:\ncurl http://localhost:8080/login?userName=%3Cscript%3E%20%20%20alert(%22Yourcookie%3D%22%20%2B%20document.cookie)%20%20%20%20%3C%2Fscript%3E",

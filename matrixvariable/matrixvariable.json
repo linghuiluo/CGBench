@@ -2,13 +2,21 @@
   "fileName": "matrixvariable.jar",
   "findings": [
     {
+      "id": "matrixvariable1",
       "source": {
         "targetName": "get",
         "targetNo": 1,
         "statement": "String employeeID = (String) retrieveParameters.get(\"EID\");",
         "methodName": "public String deleteFileByID(@MatrixVariable Map<String, String> retrieveParameters)",
         "className": "de.fraunhofer.iem.springbench.matrixvariable.controllers.MyController",
-        "lineNo": 14
+        "lineNo": 14,
+        "type": "methodinvocation",
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "$r0 = interfaceinvoke retrieveParameters.<java.util.Map: java.lang.Object get(java.lang.Object)>(\"EID\")"
+          }
+        ]
       },
       "sink": {
         "targetName": "executeQuery",
@@ -16,7 +24,14 @@
         "statement": "res = DriverManager.getConnection(\"jdbc:mysql://localhost:3306/mysql\", \"\", \"\").createStatement().executeQuery(\"SELECT * FROM  EMPLOYEE where EID=\" + employeeID);",
         "methodName": "public String deleteFileByID(@MatrixVariable Map<String, String> retrieveParameters)",
         "className": "de.fraunhofer.iem.springbench.matrixvariable.controllers.MyController",
-        "lineNo": 26
+        "lineNo": 26,
+        "type": "methodinvocation",
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "res = interfaceinvoke st.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>(query)"
+          }
+        ]
       },
       "intermediateFlows": [],
       "description": "The user can send a employee id over a MatrixVariable annotation. The handler method returns the data of that employee stored in a database. SQL injection vulnerability exists.\n\ncurl http://localhost:8080/retrieve/EID=1%20OR%201%20=%201;ENAME=dummy",

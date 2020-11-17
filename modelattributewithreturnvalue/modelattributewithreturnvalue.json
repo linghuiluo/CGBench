@@ -2,13 +2,21 @@
   "fileName": "modelattributewithreturnvalue.jar",
   "findings": [
     {
+      "id": "modelattributewithreturnvalue1",
       "source": {
         "targetName": "getParameter",
         "targetNo": 1,
         "statement": "String userName = request.getParameter(\"userName\");",
         "methodName": "public List<String> addUserName(HttpServletRequest request)",
         "className": "de.fraunhofer.iem.springbench.modelattributewithreturnvalue.controllers.MyController",
-        "lineNo": 22
+        "lineNo": 22,
+        "type": "methodinvocation",
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "userName = interfaceinvoke request.<javax.servlet.http.HttpServletRequest: java.lang.String getParameter(java.lang.String)>(\"userName\")"
+          }
+        ]
       },
       "sink": {
         "targetName": "add",
@@ -16,7 +24,14 @@
         "statement": "this.currentUserInRoom.add(userName);",
         "methodName": "public List<String> addUserName(HttpServletRequest request)",
         "className": "de.fraunhofer.iem.springbench.modelattributewithreturnvalue.controllers.MyController",
-        "lineNo": 27
+        "lineNo": 27,
+        "type": "methodinvocation",
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "interfaceinvoke $r1.<java.util.List: boolean add(java.lang.Object)>(userName)"
+          }
+        ]
       },
       "intermediateFlows": [],
       "description": "The user can send a userName over a request parameter. The addUserName method adds the userName into the trusted data without authenticating, therefore Trust Boundary Violation attack exist.\n\ncurl http://localhost:8080/login?userName=IAmAttacker",
