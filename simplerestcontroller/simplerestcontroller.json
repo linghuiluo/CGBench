@@ -2,13 +2,21 @@
   "fileName": "simplerestcontroller.jar",
   "findings": [
     {
+      "id": "simplerestcontroller1",
       "source": {
         "targetName": "getParameter",
         "targetNo": 1,
         "statement": "return \"Response from Rest Simple Controller. Received message: \" + request.getParameter(\"message\");",
         "methodName": "public String sendMessageBack(HttpServletRequest request)",
         "className": "de.fraunhofer.iem.springbench.simplerestcontroller.controllers.SimpleRestController",
-        "lineNo": 14
+        "lineNo": 13,
+        "type": "methodinvocation",
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "message = interfaceinvoke request.<javax.servlet.http.HttpServletRequest: java.lang.String getParameter(java.lang.String)>(\"message\")"
+          }
+        ]
       },
       "sink": {
         "targetName": "return",
@@ -16,7 +24,14 @@
         "statement": "return \"Response from Rest Simple Controller. Received message: \" + request.getParameter(\"message\");",
         "methodName": "public String sendMessageBack(HttpServletRequest request)",
         "className": "de.fraunhofer.iem.springbench.simplerestcontroller.controllers.SimpleRestController",
-        "lineNo": 14
+        "lineNo": 14,
+        "type": "methodinvocation",
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "return $r3"
+          }
+        ]
       },
       "intermediateFlows": [],
       "description": "The user can send a message over a request parameter which is directly returned in the response body without proper sanitization.\n\ncurl http://localhost:8080/?message=alert(document.cookie);",

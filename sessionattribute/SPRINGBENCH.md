@@ -32,7 +32,7 @@ These dynamic features are challenging for static analysis writers especially fo
   * Reflexive XSS
       * Description: The user can send a message over a request parameter. The handler method sends this message in response body. Reflexive XSS vulnerability exists.  
       * Source: the return value of the getParameter method in 
-          * Line(s): 25
+          * Line(s): 27
           * Class: MyController
           * Method: sendMessage
       * Sink: the first parameter of the method call append in

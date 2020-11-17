@@ -2,13 +2,21 @@
   "fileName": "sessionattribute.jar",
   "findings": [
     {
+      "id": "sessionattribute1",
       "source": {
         "targetName": "getParameter",
         "targetNo": 1,
         "statement": "request.getSession(true).setAttribute(\"userName\", request.getParameter(\"userName\"));",
         "methodName": "public String index(HttpServletRequest request)",
         "className": "de.fraunhofer.iem.springbench.sessionattribute.controllers.MyController",
-        "lineNo": 17
+        "lineNo": 17,
+        "type": "methodinvocation",
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "$r1 = interfaceinvoke request.<javax.servlet.http.HttpServletRequest: java.lang.String getParameter(java.lang.String)>(\"userName\")"
+          }
+        ]
       },
       "sink": {
         "targetName": "append",
@@ -16,7 +24,14 @@
         "statement": "response.getWriter().append(responseHTML);",
         "methodName": "public void sendMessage(@SessionAttribute(\"userName\") String userName, HttpServletRequest request, HttpServletResponse response)",
         "className": "de.fraunhofer.iem.springbench.sessionattribute.controllers.MyController",
-        "lineNo": 33
+        "lineNo": 33,
+        "type": "methodinvocation",
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "virtualinvoke $r2.<java.io.PrintWriter: java.io.PrintWriter append(java.lang.CharSequence)>(responseHTML)"
+          }
+        ]
       },
       "intermediateFlows": [
         {
@@ -45,13 +60,21 @@
       }
     },
     {
+      "id": "sessionattribute2",
       "source": {
         "targetName": "getParameter",
         "targetNo": 1,
         "statement": "String responseHTML = new HtmlPageCreationComponent().createHTML(userName, request.getParameter(\"message\"));",
         "methodName": "public void sendMessage(@SessionAttribute(\"userName\") String userName, HttpServletRequest request, HttpServletResponse response)",
         "className": "de.fraunhofer.iem.springbench.sessionattribute.controllers.MyController",
-        "lineNo": 27
+        "lineNo": 27,
+        "type": "methodinvocation",
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "$r1 = interfaceinvoke request.<javax.servlet.http.HttpServletRequest: java.lang.String getParameter(java.lang.String)>(\"message\")"
+          }
+        ]
       },
       "sink": {
         "targetName": "append",
@@ -59,7 +82,14 @@
         "statement": "response.getWriter().append(responseHTML);",
         "methodName": "public void sendMessage(@SessionAttribute(\"userName\") String userName, HttpServletRequest request, HttpServletResponse response)",
         "className": "de.fraunhofer.iem.springbench.sessionattribute.controllers.MyController",
-        "lineNo": 33
+        "lineNo": 33,
+        "type": "methodinvocation",
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "virtualinvoke $r2.<java.io.PrintWriter: java.io.PrintWriter append(java.lang.CharSequence)>(responseHTML)"
+          }
+        ]
       },
       "intermediateFlows": [
         {

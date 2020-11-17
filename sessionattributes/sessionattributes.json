@@ -2,6 +2,7 @@
   "fileName": "sessionattributes.jar",
   "findings": [
     {
+      "id": "sessionattributes1",
       "source": {
         "targetName": "getParameter",
         "targetNo": 1,
@@ -9,7 +10,13 @@
         "methodName": "public String index(Model model, HttpServletRequest request)",
         "className": "de.fraunhofer.iem.springbench.sessionattributes.controllers.MyController",
         "lineNo": 16,
-        "type": "methodinvocation"
+        "type": "methodinvocation",
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "userName = interfaceinvoke request.<javax.servlet.http.HttpServletRequest: java.lang.String getParameter(java.lang.String)>(\"userName\")"
+          }
+        ]
       },
       "sink": {
         "targetName": "addAttribute",
@@ -17,7 +24,14 @@
         "statement": "model.addAttribute(\"userName\", userName);",
         "methodName": "public String index(Model model, HttpServletRequest request)",
         "className": "de.fraunhofer.iem.springbench.sessionattributes.controllers.MyController",
-        "lineNo": 19
+        "lineNo": 19,
+        "type": "methodinvocation",
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "interfaceinvoke model.<org.springframework.ui.Model: org.springframework.ui.Model addAttribute(java.lang.String,java.lang.Object)>(\"userName\", userName)"
+          }
+        ]
       },
       "intermediateFlows": [],
       "description": "The user can send a user id over a request parameter. The handler method stores the userName in the session attribute without sanitizing it and this attribute will be used by the jsp. Stored XSS vulnerability exists.\n\nCurl:\ncurl --cookie-jar cookies.txt -s -L http://localhost:8080/?userName=%3Cscript%3Ealert%28+document.cookie+%29%3B%3C%2Fscript%3E\ncurl --cookie cookies.txt --cookie-jar cookies.txt -s -L http://localhost:8080/sendMessage?message=hello",
@@ -27,6 +41,7 @@
       }
     },
     {
+      "id": "sessionattributes2",
       "source": {
         "targetName": "getParameter",
         "targetNo": 1,
@@ -34,7 +49,13 @@
         "methodName": "public String sendMessage(HttpServletRequest request, Model model)",
         "className": "de.fraunhofer.iem.springbench.sessionattributes.controllers.MyController",
         "lineNo": 28,
-        "type": "methodinvocation"
+        "type": "methodinvocation",
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "$r0 = interfaceinvoke request.<javax.servlet.http.HttpServletRequest: java.lang.String getParameter(java.lang.String)>(\"message\")"
+          }
+        ]
       },
       "sink": {
         "targetName": "addAttribute",
@@ -42,7 +63,14 @@
         "statement": "model.addAttribute(\"message\", request.getParameter(\"message\"));",
         "methodName": "public String sendMessage(HttpServletRequest request, Model model)",
         "className": "de.fraunhofer.iem.springbench.sessionattributes.controllers.MyController",
-        "lineNo": 28
+        "lineNo": 28,
+        "type": "methodinvocation",
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "interfaceinvoke model.<org.springframework.ui.Model: org.springframework.ui.Model addAttribute(java.lang.String,java.lang.Object)>(\"message\", $r0)"
+          }
+        ]
       },
       "intermediateFlows": [],
       "description": "The user can send a message over a request parameter. The handler method stores this in model attribute, that is used by the jsp immediately. Reflexive XSS vulnerability exists.\n\nCurl:\ncurl --cookie-jar cookies.txt -s -L http://localhost:8080/?userName=attacker\ncurl --cookie cookies.txt --cookie-jar cookies.txt -s -L http://localhost:8080/sendMessage?message=%3Cscript%3Ealert%28+document.cookie+%29%3B%3C%2Fscript%3E",

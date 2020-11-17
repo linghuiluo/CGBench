@@ -36,7 +36,7 @@ These dynamic features are challenging for static analysis writers especially fo
           * Class: MyController
           * Method: sendMessage
       * Sink: the first parameter of the method call addAttribute in
-          * Line(s): 29
+          * Line(s): 28
           * Class: MyController
           * Method: sendMessage
       * Curl command: (curl command should be run in the below order to perform the attack)
