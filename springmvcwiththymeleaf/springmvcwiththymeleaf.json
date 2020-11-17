@@ -2,13 +2,21 @@
   "fileName": "springmvcwiththymeleaf.jar",
   "findings": [
     {
+      "id": "springmvcwiththymeleaf1",
       "source": {
         "targetName": "getParameter",
         "targetNo": 1,
         "statement": "return request.getParameter(\"userName\");",
         "methodName": "public String newUser(HttpServletRequest request)",
         "className": "de.fraunhofer.iem.springbench.springmvcwiththymeleaf.controller.MyController",
-        "lineNo": 19
+        "lineNo": 19,
+        "type": "methodinvocation",
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "$r0 = interfaceinvoke request.<javax.servlet.http.HttpServletRequest: java.lang.String getParameter(java.lang.String)>(\"userName\")"
+          }
+        ]
       },
       "sink": {
         "targetName": "executeQuery",
@@ -16,7 +24,14 @@
         "statement": "model.addAttribute(\"orderedItemInformation\", DriverManager.getConnection(\"jdbc:mysql://localhost:3306/mysql\", \"\", \"\").createStatement().executeQuery(\"SELECT * FROM  OrderInformation where userName='\" + userName + \"'\").toString());",
         "methodName": "public String printOrderedItemsInformation(@ModelAttribute(\"orderedDisplayInformation\") OrderedItemsInformationDisplayModel orderedItemsInformationDisplayModel, Model model)",
         "className": "de.fraunhofer.iem.springbench.springmvcwiththymeleaf.controller.MyController",
-        "lineNo": 57
+        "lineNo": 55,
+        "type": "methodinvocation",
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "res = interfaceinvoke st.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>(query)"
+          }
+        ]
       },
       "intermediateFlows": [
         {
