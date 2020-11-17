@@ -1,0 +1,63 @@
+{
+  "fileName": "putmapping.jar",
+  "findings": [
+    {
+      "id": "putmapping1",
+      "source": {
+        "targetName": "@PathVariable(\"id\") String id",
+        "targetNo": 1,
+        "statement": "public ResponseEntity<?> saveUser(@PathVariable(\"id\") String id) {",
+        "methodName": "public ResponseEntity<?> saveUser(@PathVariable(\"id\") String id)",
+        "className": "de.fraunhofer.iem.springbench.putmapping.controllers.MyController",
+        "lineNo": 18,
+        "type": "@parameter0",
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "id := @parameter0: java.lang.String"
+          }
+        ]
+      },
+      "sink": {
+        "targetName": "exec",
+        "targetNo": 1,
+        "statement": "res = st.executeQuery(query);",
+        "methodName": "public boolean exists(String id)",
+        "className": "de.fraunhofer.iem.springbench.putmapping.UsersRepository",
+        "lineNo": 21,
+        "type": "methodinvocation",
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "res = interfaceinvoke st.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>(query)"
+          }
+        ]
+      },
+      "intermediateFlows": [
+        {
+          "statement": "if (usersRepository.exists(id))",
+          "methodName": "public ResponseEntity<?> saveUser(@PathVariable(\"id\") String id)",
+          "className": "de.fraunhofer.iem.springbench.putmapping.controllers.MyController",
+          "lineNo": 19
+        },
+        {
+          "statement": "public boolean exists(String id) {",
+          "methodName": "public boolean exists(String id)",
+          "className": "de.fraunhofer.iem.springbench.putmapping.UsersRepository",
+          "lineNo": 11
+        },
+        {
+          "statement": "String query = \"SELECT password FROM  UserAuth where userId='\" + id + \"'\";",
+          "methodName": "public boolean exists(String id)",
+          "className": "de.fraunhofer.iem.springbench.putmapping.UsersRepository",
+          "lineNo": 19
+        }
+      ],
+      "description": "\n\ncurl -X PUT http://localhost:8080/user/5",
+      "isNegative": false,
+      "attributes": {
+        "@PutMapping": true
+      }
+    }
+  ]
+}
