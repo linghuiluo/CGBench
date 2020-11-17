@@ -2,13 +2,21 @@
   "fileName": "pathvariable.jar",
   "findings": [
     {
+      "id": "pathvariable1",
       "source": {
         "targetName": "@PathVariable String user",
         "targetNo": 1,
         "statement": "public void login(@PathVariable String user, HttpServletRequest request, HttpServletResponse response) {",
         "methodName": "public void login(@PathVariable String user, HttpServletRequest request, HttpServletResponse response)",
         "className": "de.fraunhofer.iem.springbench.pathvariable.controllers.MyController",
-        "lineNo": 16
+        "lineNo": 16,
+        "type": "@parameter0",
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "user := @parameter0: java.lang.String"
+          }
+        ]
       },
       "sink": {
         "targetName": "setAttribute",
@@ -16,7 +24,14 @@
         "statement": "mySession.setAttribute(\"user\", user);",
         "methodName": "public void login(@PathVariable String user, HttpServletRequest request, HttpServletResponse response)",
         "className": "de.fraunhofer.iem.springbench.pathvariable.controllers.MyController",
-        "lineNo": 24
+        "lineNo": 24,
+        "type": "methodinvocation",
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "interfaceinvoke mySession.<javax.servlet.http.HttpSession: void setAttribute(java.lang.String,java.lang.Object)>(\"user\", user)"
+          }
+        ]
       },
       "intermediateFlows": [],
       "description": "The user can send a user name over PathVariable annotation. The handler method uses this value to set the session object  without authenticating the username and its password, therefore there exist the trust boundary violation.\n\ncurl http://localhost:8080/ATTACKER/login?pass=IAMEVIL",

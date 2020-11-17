@@ -2,13 +2,21 @@
   "fileName": "postmapping.jar",
   "findings": [
     {
+      "id": "postmapping1",
       "source": {
         "targetName": "getParameter",
         "targetNo": 1,
         "statement": "String content = request.getParameter(\"content\");",
         "methodName": "public ResponseEntity<Post> createPost(HttpServletRequest request, UriComponentsBuilder uriComponentsBuilder)",
         "className": "de.fraunhofer.iem.springbench.postmapping.controllers.MyController",
-        "lineNo": 28
+        "lineNo": 28,
+        "type": "methodinvocation",
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "content = interfaceinvoke request.<javax.servlet.http.HttpServletRequest: java.lang.String getParameter(java.lang.String)>(\"content\")"
+          }
+        ]
       },
       "sink": {
         "targetName": "exec",
@@ -16,7 +24,14 @@
         "statement": "Runtime.getRuntime().exec(\"mkdir \" + content.trim());",
         "methodName": "public ResponseEntity<Post> createPost(HttpServletRequest request, UriComponentsBuilder uriComponentsBuilder)",
         "className": "de.fraunhofer.iem.springbench.postmapping.controllers.MyController",
-        "lineNo": 40
+        "lineNo": 40,
+        "type": "methodinvocation",
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "virtualinvoke $r5.<java.lang.Runtime: java.lang.Process exec(java.lang.String)>(cmd)"
+          }
+        ]
       },
       "intermediateFlows": [],
       "description": "The user can send a POST with a content through the request parameter. The handler created a post object and a folder. The value is not checked before the folder is created.\n\ncurl -X POST http://localhost:8080/posts?content=attacker%3Brm%20-rf%20*",
