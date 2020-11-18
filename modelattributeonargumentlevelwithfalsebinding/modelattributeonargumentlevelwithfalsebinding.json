@@ -10,11 +10,11 @@
         "methodName": "public void index(@ModelAttribute(binding = false, value = \"DefaultSecurityInformation\") Map<String, String> defaultSetting, HttpServletResponse response)",
         "className": "de.fraunhofer.iem.springbench.modelattributeonargumentlevelwithfalsebinding.controllers.MyController",
         "lineNo": 26,
-        "type": "methodinvocation",
+        "type": "@parameter0",
         "IRs": [
           {
             "type": "Jimple",
-            "IRstatement": ""
+            "IRstatement": "defaultSetting := @parameter0: java.util.Map"
           }
         ]
       },

@@ -16,7 +16,7 @@ These dynamic features are challenging for static analysis writers especially fo
   * SQL injection
     * Description: The handler method uses the cookie value userID and password to validate the session and performs some sensitive information. Since cookie value can be changed by the user, and the proper sanitization not used for cookie values before using it in SQL commands, SQL injection vulnerability exists.  
     * Source: value of the CookieValue annotation in 
-        * Line(s): 13 and 14
+        * Line(s): 13
         * Class: MyController
         * Method: someSensitiveOperation
     * Sink: the first parameter of the method call executeQuery in
