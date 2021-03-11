@@ -3,3 +3,5 @@ onlineshop/.project
 onlineshop/.settings/
 teleforum/target/
 onlineshop/.gitignore
+allBenchmarks/
+allGroundTruth/
