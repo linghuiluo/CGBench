@@ -15,7 +15,7 @@ These dynamic features are challenging for static analysis writers especially fo
 * Taint flows: 
   * Reflexive XSS
     * Description: The user can send a user id over a request parameter. The inithandler method trims all the spaces and sends a respone with Trimming username with the appended user id. Reflexive XSS vulnerability exists.  
-    * Source: the return value of the getParameter method in 
+    * Source: the return value of the RequestParam annotation in
         * Line(s): 25
         * Class: MyController
         * Method: initBinder

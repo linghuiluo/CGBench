@@ -37,12 +37,31 @@ public class MyController {
     }
 
     @GetMapping(value = "/", produces = MediaType.TEXT_PLAIN_VALUE)
-    public void index(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void index(@RequestParam("user") String user, HttpServletResponse response) throws IOException {
+        String responseHTML = createHTML(user);
+        response.setContentType("text/html;charset=UTF-8");
+        response.setCharacterEncoding("UTF-8");
+        //Method append is a sink, responseHTML will be displayed on client's browser. If there is a script then it will be
+        //executed on client's browser.
+        response.getWriter().append(responseHTML);
+    }
 
-        String user = request.getParameter("user");
-        // Authenticate the user and continue with the process,
-        // Here, we will consider that authentication fails and response with Invalid username
+    //This method creates a response HTML page.
+    private static String createHTML(String name) {
 
-        response.getWriter().append("\n\nInvalid User Name.");
+        return "<html>\r\n" +
+                "	<head>\r\n" +
+                "		<meta charset=\"UTF-8\">\r\n" +
+                "		<title>Hello World</title>\r\n" +
+                "	</head>\r\n" +
+                "	<body>\r\n" +
+                "		<script>\r\n" +
+                "			var c = \"secret=this is secret cookie;\" \r\n" +
+                "			document.cookie = c;\r\n" +
+                "		</script>\r\n" + "		<pre>\r\n" +
+                "			Hello " + name + "!! Welcome to myWebsite\r\n." +
+                "		</pre>\r\n" +
+                "	</body>\r\n" +
+                "</html>";
     }
 }
