@@ -5,3 +5,7 @@ teleforum/target/
 onlineshop/.gitignore
 allBenchmarks/
 allGroundTruth/
+*.class
+*.project
+*.prefs
+*.classpath
