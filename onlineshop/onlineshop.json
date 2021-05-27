@@ -2,13 +2,20 @@
   "fileName": "onlineshop.jar",
   "findings": [
     {
+      "ID": 1,
       "source": {
         "targetName": "getParameter",
         "targetNo": 1,
         "statement": "String firstname = request.getParameter(\"firstname\");",
         "methodName": "public void doRegistration(HttpServletRequest request, HttpServletResponse response)",
         "className": "onlineshop.api.ShopController",
-        "lineNo": 51
+        "lineNo": 51,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "sink": {
         "targetName": "sendRedirect",
@@ -16,31 +23,42 @@
         "statement": "response.sendRedirect(str.toString());",
         "methodName": "public void doRegistration(HttpServletRequest request, HttpServletResponse response)",
         "className": "onlineshop.api.ShopController",
-        "lineNo": 65
+        "lineNo": 65,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "intermediateFlows": [
         {
           "statement": "str.append(firstname);",
           "methodName": "public void doRegistration(HttpServletRequest request, HttpServletResponse response)",
           "className": "onlineshop.api.ShopController",
-          "lineNo": 64
+          "lineNo": 64,
+          "ID": 1
         }
       ],
-      "description": "1. Found a sensitive flow to sink [response.sendRedirect(str.toString());] from the source [request.getParameter(\"firstname\");] at line 53 in ShopController.java\n\n",
+      "description": "Reflected XSS",
       "isNegative": false,
-      "attributes": {
-        "Reflected XXS": true,
-        "TruePositive": true
-      }
+      "attributes": {}
     },
     {
+      "ID": 2,
       "source": {
         "targetName": "getParameter",
         "targetNo": 1,
-        "statement": "this.productService.deleteOrders(request.getParameter(\"fileName\"), UserDetailsServiceImpl.getCurrentUser());",
+        "statement": "String fileName = request.getParameter(\"fileName\");",
         "methodName": "public void deleteOrders(HttpServletRequest request, HttpServletResponse response)",
         "className": "onlineshop.api.ShopController",
-        "lineNo": 130
+        "lineNo": 128,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "sink": {
         "targetName": "delete",
@@ -48,75 +66,91 @@
         "statement": "f.delete();",
         "methodName": "public void deleteOrders(String fileName, User user)",
         "className": "onlineshop.service.ProductService",
-        "lineNo": 74
+        "lineNo": 74,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "intermediateFlows": [
         {
-          "statement": "public void deleteOrders(String fileName, User user) {",
-          "methodName": "public void deleteOrders(String fileName, User user)",
-          "className": "onlineshop.service.ProductService",
-          "lineNo": 68
+          "statement": "productService.deleteOrders(fileName, UserDetailsServiceImpl.getCurrentUser());",
+          "methodName": "public void deleteOrders(HttpServletRequest request, HttpServletResponse response)",
+          "className": "onlineshop.api.ShopController",
+          "lineNo": 130,
+          "ID": 1
         },
         {
           "statement": "str.append(fileName);",
           "methodName": "public void deleteOrders(String fileName, User user)",
           "className": "onlineshop.service.ProductService",
-          "lineNo": 70
+          "lineNo": 70,
+          "ID": 2
         },
         {
           "statement": "File f = new File(str.toString());",
           "methodName": "public void deleteOrders(String fileName, User user)",
           "className": "onlineshop.service.ProductService",
-          "lineNo": 72
+          "lineNo": 72,
+          "ID": 3
         }
       ],
-      "description": "2. Found a sensitive flow to sink [f.delete();] from the source [request.getParameter(\"fileName\");] at line 131 in ShopController.java\n",
+      "description": "Path Traversal",
       "isNegative": false,
-      "attributes": {
-        "Path Traversal": true,
-        "TruePositive": true
-      }
+      "attributes": {}
     },
     {
+      "ID": 3,
       "source": {
         "targetName": "getParameter",
         "targetNo": 1,
-        "statement": "model.addAttribute(\"products\", this.productService.getProducts(request.getParameter(\"medName\")));",
+        "statement": "String medName = request.getParameter(\"medName\");",
         "methodName": "public String search(HttpServletRequest request, Model model)",
         "className": "onlineshop.api.ShopController",
-        "lineNo": 122
+        "lineNo": 121,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "sink": {
         "targetName": "createQuery",
         "targetNo": 1,
-        "statement": "return this.em.createQuery(\"SELECT m FROM Medication m\", Medication.class).getResultList();",
-        "methodName": "public List<Medication> getProducts()",
+        "statement": "return this.em.createQuery(\"SELECT m FROM Medication m where m.name like '%\" + medName + \"%'\", Medication.class).getResultList();",
+        "methodName": "public List<Medication> getProducts(String medName)",
         "className": "onlineshop.service.ProductService",
-        "lineNo": 87
+        "lineNo": 92,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
-      "intermediateFlows": [
-        {
-          "statement": "public List<Medication> getProducts() {",
-          "methodName": "public List<Medication> getProducts()",
-          "className": "onlineshop.service.ProductService",
-          "lineNo": 86
-        }
-      ],
-      "description": "3. Found a sensitive flow to sink [em.createQuery(\"SELECT m FROM Medication m where m.name like '%\" + medName + \"%'\", Medication.class)] from the source [request.getParameter(\"medName\");] at line 123 in ShopController.java\n",
+      "intermediateFlows": [],
+      "description": "SQL Injection",
       "isNegative": false,
-      "attributes": {
-        "TruePositive": true,
-        "SQL Injection": true
-      }
+      "attributes": {}
     },
     {
+      "ID": 4,
       "source": {
         "targetName": "getParameter",
         "targetNo": 1,
         "statement": "int medicationId = Integer.parseInt(request.getParameter(\"medicationId\"));",
         "methodName": "public void placeOrder(HttpServletRequest request, HttpServletResponse response)",
         "className": "onlineshop.api.ShopController",
-        "lineNo": 103
+        "lineNo": 103,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "sink": {
         "targetName": "createQuery",
@@ -124,37 +158,49 @@
         "statement": "return (Medication) this.em.createQuery(\"SELECT m FROM Medication m WHERE m.id = \" + medicationId, Medication.class).getSingleResult();",
         "methodName": "public Medication getMedication(long medicationId)",
         "className": "onlineshop.service.ProductService",
-        "lineNo": 105
+        "lineNo": 105,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "intermediateFlows": [
         {
           "statement": "this.productService.placeOrder(UserDetailsServiceImpl.getCurrentUser(), this.productService.getMedication((long) medicationId), (long) quantity);",
           "methodName": "public void placeOrder(HttpServletRequest request, HttpServletResponse response)",
           "className": "onlineshop.api.ShopController",
-          "lineNo": 106
+          "lineNo": 106,
+          "ID": 1
         },
         {
           "statement": "public Medication getMedication(long medicationId) {",
           "methodName": "public Medication getMedication(long medicationId)",
           "className": "onlineshop.service.ProductService",
-          "lineNo": 103
+          "lineNo": 103,
+          "ID": 2
         }
       ],
-      "description": "4. Found a sensitive flow to sink [em.createQuery(\"SELECT m FROM Medication m WHERE m.id = \" + medicationId, Medication.class).getSingleResult();] from the source [request.getParameter(\"medicationId\"));] at line 104 in ShopController.java\n",
-      "isNegative": false,
-      "attributes": {
-        "FalsePositive": true,
-        "SQL Injection": true
-      }
+      "description": "False positive",
+      "isNegative": true,
+      "attributes": {}
     },
     {
+      "ID": 5,
       "source": {
         "targetName": "getParameter",
         "targetNo": 1,
         "statement": "this.commentService.saveComment(new Comment(UserDetailsServiceImpl.getCurrentUser(), request.getParameter(\"comment\"), this.productService.getMedication((long) Integer.parseInt(request.getParameter(\"medicationId\")))));",
         "methodName": "public void createComment(HttpServletRequest request, HttpServletResponse response)",
         "className": "onlineshop.api.ShopController",
-        "lineNo": 115
+        "lineNo": 115,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "sink": {
         "targetName": "createQuery",
@@ -162,31 +208,42 @@
         "statement": "return (Medication) this.em.createQuery(\"SELECT m FROM Medication m WHERE m.id = \" + medicationId, Medication.class).getSingleResult();",
         "methodName": "public Medication getMedication(long medicationId)",
         "className": "onlineshop.service.ProductService",
-        "lineNo": 105
+        "lineNo": 105,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "intermediateFlows": [
         {
           "statement": "public Medication getMedication(long medicationId) {",
           "methodName": "public Medication getMedication(long medicationId)",
           "className": "onlineshop.service.ProductService",
-          "lineNo": 103
+          "lineNo": 103,
+          "ID": 1
         }
       ],
-      "description": "5. Found a sensitive flow to sink [em.createQuery(\"SELECT m FROM Medication m WHERE m.id = \" + medicationId, Medication.class).getSingleResult();] from the source [request.getParameter(\"medicationId\"));] at line 114 in ShopController.java\n",
-      "isNegative": false,
-      "attributes": {
-        "FalsePositive": true,
-        "SQL Injection": true
-      }
+      "description": "False positive.",
+      "isNegative": true,
+      "attributes": {}
     },
     {
+      "ID": 6,
       "source": {
         "targetName": "getParameter",
         "targetNo": 1,
         "statement": "this.commentService.saveComment(new Comment(UserDetailsServiceImpl.getCurrentUser(), request.getParameter(\"comment\"), this.productService.getMedication((long) Integer.parseInt(request.getParameter(\"medicationId\")))));",
         "methodName": "public void createComment(HttpServletRequest request, HttpServletResponse response)",
         "className": "onlineshop.api.ShopController",
-        "lineNo": 115
+        "lineNo": 115,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "sink": {
         "targetName": "persist",
@@ -194,31 +251,42 @@
         "statement": "this.em.persist(comment);",
         "methodName": "public void saveComment(Comment comment)",
         "className": "onlineshop.service.CommentService",
-        "lineNo": 24
+        "lineNo": 24,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "intermediateFlows": [
         {
           "statement": "comment.setText(new Sanitizer().sanitize(comment.getText()));",
           "methodName": "public void saveComment(Comment comment)",
           "className": "onlineshop.service.CommentService",
-          "lineNo": 23
+          "lineNo": 23,
+          "ID": 1
         }
       ],
-      "description": "Found a sensitive flow to sink [em.persist(comment);] from the source [request.getParameter(\"comment\");] at line 113 in ShopController.java\n",
+      "description": "Stored XSS",
       "isNegative": false,
-      "attributes": {
-        "TruePositive": true,
-        "Persistent XXS (needs to be configured)": true
-      }
+      "attributes": {}
     },
     {
+      "ID": 7,
       "source": {
         "targetName": "getParameter",
         "targetNo": 1,
         "statement": "String username = request.getParameter(\"username\");",
         "methodName": "public void doRegistration(HttpServletRequest request, HttpServletResponse response)",
         "className": "onlineshop.api.ShopController",
-        "lineNo": 48
+        "lineNo": 48,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "sink": {
         "targetName": "persist",
@@ -226,49 +294,63 @@
         "statement": "this.entityManager.persist(user);",
         "methodName": "public User createNewUser(User user)",
         "className": "onlineshop.service.UserDetailsServiceImpl",
-        "lineNo": 47
+        "lineNo": 47,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "intermediateFlows": [
         {
           "statement": "public User createNewUser(User user) {",
           "methodName": "public User createNewUser(User user)",
           "className": "onlineshop.service.UserDetailsServiceImpl",
-          "lineNo": 45
+          "lineNo": 45,
+          "ID": 1
         },
         {
           "statement": "user.setPassword(this.passwordEncoder.encode(user.getPassword()));",
           "methodName": "public User createNewUser(User user)",
           "className": "onlineshop.service.UserDetailsServiceImpl",
-          "lineNo": 46
+          "lineNo": 46,
+          "ID": 2
         },
         {
           "statement": "User user = new User(username, password);",
           "methodName": "public void doRegistration(HttpServletRequest request, HttpServletResponse response)",
           "className": "onlineshop.api.ShopController",
-          "lineNo": 56
+          "lineNo": 56,
+          "ID": 3
         },
         {
           "statement": "this.userService.createNewUser(user);",
           "methodName": "public void doRegistration(HttpServletRequest request, HttpServletResponse response)",
           "className": "onlineshop.api.ShopController",
-          "lineNo": 60
+          "lineNo": 60,
+          "ID": 4
         }
       ],
-      "description": "Found a sensitive flow to sink [entityManager.persist(user);] from the source [request.getParameter(\"username\");] at line 50 in ShopController.java\n",
+      "description": "Stored SQL Injection",
       "isNegative": false,
-      "attributes": {
-        "Persistent SQL (needs to be configured)": true,
-        "TruePositive": true
-      }
+      "attributes": {}
     },
     {
+      "ID": 8,
       "source": {
         "targetName": "getParameter",
         "targetNo": 1,
         "statement": "String address = request.getParameter(\"address\");",
         "methodName": "public void doRegistration(HttpServletRequest request, HttpServletResponse response)",
         "className": "onlineshop.api.ShopController",
-        "lineNo": 53
+        "lineNo": 53,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "sink": {
         "targetName": "persist",
@@ -276,43 +358,56 @@
         "statement": "this.entityManager.persist(user);",
         "methodName": "public User createNewUser(User user)",
         "className": "onlineshop.service.UserDetailsServiceImpl",
-        "lineNo": 47
+        "lineNo": 47,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "intermediateFlows": [
         {
           "statement": "user.setAddress(address);",
           "methodName": "public void doRegistration(HttpServletRequest request, HttpServletResponse response)",
           "className": "onlineshop.api.ShopController",
-          "lineNo": 59
+          "lineNo": 59,
+          "ID": 1
         },
         {
           "statement": "this.userService.createNewUser(user);",
           "methodName": "public void doRegistration(HttpServletRequest request, HttpServletResponse response)",
           "className": "onlineshop.api.ShopController",
-          "lineNo": 60
+          "lineNo": 60,
+          "ID": 2
         },
         {
           "statement": "public User createNewUser(User user) {",
           "methodName": "public User createNewUser(User user)",
           "className": "onlineshop.service.UserDetailsServiceImpl",
-          "lineNo": 45
+          "lineNo": 45,
+          "ID": 3
         }
       ],
-      "description": "Found a sensitive flow to sink [entityManager.persist(user);] from the source [request.getParameter(\"address\");] at line 55 in ShopController.java\n",
-      "isNegative": false,
-      "attributes": {
-        "Persistent SQL (needs to be configured)": true,
-        "FalsePositive": true
-      }
+      "description": "False positive.",
+      "isNegative": true,
+      "attributes": {}
     },
     {
+      "ID": 9,
       "source": {
         "targetName": "getParameter",
         "targetNo": 1,
         "statement": "String firstname = request.getParameter(\"firstname\");",
         "methodName": "public void doRegistration(HttpServletRequest request, HttpServletResponse response)",
         "className": "onlineshop.api.ShopController",
-        "lineNo": 51
+        "lineNo": 51,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "sink": {
         "targetName": "persist",
@@ -320,43 +415,56 @@
         "statement": "this.entityManager.persist(user);",
         "methodName": "public User createNewUser(User user)",
         "className": "onlineshop.service.UserDetailsServiceImpl",
-        "lineNo": 47
+        "lineNo": 47,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "intermediateFlows": [
         {
           "statement": "user.setFirstName(firstname);",
           "methodName": "public void doRegistration(HttpServletRequest request, HttpServletResponse response)",
           "className": "onlineshop.api.ShopController",
-          "lineNo": 57
+          "lineNo": 57,
+          "ID": 1
         },
         {
           "statement": "this.userService.createNewUser(user);",
           "methodName": "public void doRegistration(HttpServletRequest request, HttpServletResponse response)",
           "className": "onlineshop.api.ShopController",
-          "lineNo": 60
+          "lineNo": 60,
+          "ID": 2
         },
         {
           "statement": "public User createNewUser(User user) {",
           "methodName": "public User createNewUser(User user)",
           "className": "onlineshop.service.UserDetailsServiceImpl",
-          "lineNo": 45
+          "lineNo": 45,
+          "ID": 3
         }
       ],
-      "description": "Found a sensitive flow to sink [entityManager.persist(user);] from the source [request.getParameter(\"firstname\");] at line 53 in ShopController.java\n",
-      "isNegative": false,
-      "attributes": {
-        "Persistent SQL (needs to be configured)": true,
-        "FalsePositive": true
-      }
+      "description": "False positive.",
+      "isNegative": true,
+      "attributes": {}
     },
     {
+      "ID": 10,
       "source": {
         "targetName": "getParameter",
         "targetNo": 1,
         "statement": "String lastname = request.getParameter(\"lastname\");",
         "methodName": "public void doRegistration(HttpServletRequest request, HttpServletResponse response)",
         "className": "onlineshop.api.ShopController",
-        "lineNo": 52
+        "lineNo": 52,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "sink": {
         "targetName": "persist",
@@ -364,43 +472,56 @@
         "statement": "this.entityManager.persist(user);",
         "methodName": "public User createNewUser(User user)",
         "className": "onlineshop.service.UserDetailsServiceImpl",
-        "lineNo": 47
+        "lineNo": 47,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "intermediateFlows": [
         {
           "statement": "user.setLastName(lastname);",
           "methodName": "public void doRegistration(HttpServletRequest request, HttpServletResponse response)",
           "className": "onlineshop.api.ShopController",
-          "lineNo": 58
+          "lineNo": 58,
+          "ID": 1
         },
         {
           "statement": "this.userService.createNewUser(user);",
           "methodName": "public void doRegistration(HttpServletRequest request, HttpServletResponse response)",
           "className": "onlineshop.api.ShopController",
-          "lineNo": 60
+          "lineNo": 60,
+          "ID": 2
         },
         {
           "statement": "public User createNewUser(User user) {",
           "methodName": "public User createNewUser(User user)",
           "className": "onlineshop.service.UserDetailsServiceImpl",
-          "lineNo": 45
+          "lineNo": 45,
+          "ID": 3
         }
       ],
-      "description": "Found a sensitive flow to sink [entityManager.persist(user);] from the source [request.getParameter(\"lastname\");] at line 54 in ShopController.java\n",
-      "isNegative": false,
-      "attributes": {
-        "Persistent SQL (needs to be configured)": true,
-        "FalsePositive": true
-      }
+      "description": "False positive.",
+      "isNegative": true,
+      "attributes": {}
     },
     {
+      "ID": 11,
       "source": {
         "targetName": "getParameter",
         "targetNo": 1,
         "statement": "String fileName = request.getParameter(\"fileName\");",
         "methodName": "public void getOrders(HttpServletRequest request, HttpServletResponse response)",
         "className": "onlineshop.api.ShopController",
-        "lineNo": 91
+        "lineNo": 91,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "sink": {
         "targetName": "copy",
@@ -408,22 +529,26 @@
         "statement": "IOUtils.copy(new FileInputStream(str.toString()), response.getOutputStream());",
         "methodName": "public void getOrders(HttpServletRequest request, HttpServletResponse response)",
         "className": "onlineshop.api.ShopController",
-        "lineNo": 95
+        "lineNo": 95,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "intermediateFlows": [
         {
           "statement": "str.append(fileName);",
           "methodName": "public void getOrders(HttpServletRequest request, HttpServletResponse response)",
           "className": "onlineshop.api.ShopController",
-          "lineNo": 93
+          "lineNo": 93,
+          "ID": 1
         }
       ],
-      "description": "Path Traversal\n",
+      "description": "Path Traversal.",
       "isNegative": false,
-      "attributes": {
-        "Path Traversal": true,
-        "FalseNegative": true
-      }
+      "attributes": {}
     }
   ]
 }
