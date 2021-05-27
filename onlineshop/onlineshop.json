@@ -123,7 +123,7 @@
         "statement": "return this.em.createQuery(\"SELECT m FROM Medication m where m.name like '%\" + medName + \"%'\", Medication.class).getResultList();",
         "methodName": "public List<Medication> getProducts(String medName)",
         "className": "onlineshop.service.ProductService",
-        "lineNo": 92,
+        "lineNo": 91,
         "IRs": [
           {
             "type": "Jimple",
@@ -237,7 +237,7 @@
         "statement": "this.commentService.saveComment(new Comment(UserDetailsServiceImpl.getCurrentUser(), request.getParameter(\"comment\"), this.productService.getMedication((long) Integer.parseInt(request.getParameter(\"medicationId\")))));",
         "methodName": "public void createComment(HttpServletRequest request, HttpServletResponse response)",
         "className": "onlineshop.api.ShopController",
-        "lineNo": 115,
+        "lineNo": 112,
         "IRs": [
           {
             "type": "Jimple",
