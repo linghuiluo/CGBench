@@ -1,5 +1,4 @@
-<onlinechat.model.LoginMessage: java.lang.String getName()> -> _SOURCE_
 <org.springframework.messaging.Message: java.lang.Object getPayload()> -> _SOURCE_
-<onlinechat.crypto.KeyManagment: javax.crypto.SecretKey getKey(char[],byte[])> -> _SINK_
+org.springframework.web.bind.annotation.RequestParam -> _PARAMETER_SOURCE_
 <javax.persistence.EntityManager: javax.persistence.TypedQuery createQuery(java.lang.String,java.lang.Class)> -> _SINK_
 <org.springframework.messaging.core.MessageSendingOperations: void convertAndSend(java.lang.Object,java.lang.Object)> -> _SINK_
