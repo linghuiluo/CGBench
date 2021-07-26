@@ -3,10 +3,10 @@
   "findings": [
     {
       "source": {
-        "targetName": "@PathVariable("ownerId") int ownerId",
+        "targetName": "@PathVariable(\"ownerId\") int ownerId",
         "targetNo": 1,
-        "statement": "public Owner findOwner(@PathVariable("ownerId") int ownerId) {",
-        "methodName": "public Owner findOwner(@PathVariable("ownerId") int ownerId)",
+        "statement": "public Owner findOwner(@PathVariable(\"ownerId\") int ownerId) {",
+        "methodName": "public Owner findOwner(@PathVariable(\"ownerId\") int ownerId)",
         "className": "org.springframework.samples.petclinic.owner.PetController",
         "lineNo": 54
       },

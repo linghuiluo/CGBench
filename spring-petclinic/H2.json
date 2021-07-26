@@ -3,10 +3,10 @@
   "findings": [
     {
       "source": {
-        "targetName": "@PathVariable("ownerId") int ownerId",
+        "targetName": "@PathVariable(\"ownerId\") int ownerId",
         "targetNo": 1,
-        "statement": "public String initUpdateOwnerForm(@PathVariable("ownerId") int ownerId, Model model) {",
-        "methodName": "public String initUpdateOwnerForm(@PathVariable("ownerId") int ownerId, Model model)",
+        "statement": "public String initUpdateOwnerForm(@PathVariable(\"ownerId\") int ownerId, Model model) {",
+        "methodName": "public String initUpdateOwnerForm(@PathVariable(\"ownerId\") int ownerId, Model model)",
         "className": "org.springframework.samples.petclinic.owner.OwnerController",
         "lineNo": 108
       },
