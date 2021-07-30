@@ -6,7 +6,7 @@
         "targetName": "getParam(\"artistId\")",
         "targetNo": 1,
         "statement": "String artistId = event.request().getParam(\"artistId\");",
-        "methodName": "public void handle(final RoutingContext rc)",
+        "methodName": "public void handle(final RoutingContext event)",
         "className": "io.vertx.demo.musicstore.csv.CSVDownloadHandler",
         "lineNo": 31
       },
@@ -14,7 +14,7 @@
         "targetName": "send",
         "targetNo": 1,
         "statement": "vertx.eventBus().send(DatabaseHandler.ADDRESS, artistId, options, result -> {",
-        "methodName": "public void handle(final RoutingContext rc)",
+        "methodName": "public void handle(final RoutingContext event)",
         "className": "io.vertx.demo.musicstore.csv.CSVDownloadHandler",
         "lineNo": 40
       },
