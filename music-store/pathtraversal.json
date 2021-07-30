@@ -1,0 +1,29 @@
+{
+  "fileName": "pathtraversal.jar",
+  "findings": [
+    {
+      "source": {
+        "targetName": "getParam(\"filename\")",
+        "targetNo": 1,
+        "statement": "String fileName = routingContext.request().getParam(\"filename\");",
+        "methodName": "public void handle(final RoutingContext routingContext)",
+        "className": "io.vertx.demo.musicstore.pathtraversal.PathTraversalHandler",
+        "lineNo": 36
+      },
+      "sink": {
+        "targetName": "new File(fileName)",
+        "targetNo": 1,
+        "statement": "File file = new File(fileName);",
+        "methodName": "public void handle(final RoutingContext routingContext)",
+        "className": "io.vertx.demo.musicstore.pathtraversal.PathTraversalHandler",
+        "lineNo": 39
+      },
+      "intermediateFlows": [],
+      "description": "Path Traversal",
+      "isNegative": false,
+      "attributes": {
+        "Path Traversal": true
+      }
+    }
+  ]
+}

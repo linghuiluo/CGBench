@@ -1,0 +1,79 @@
+{
+  "fileName": "xpath.jar",
+  "findings": [
+    {
+      "source": {
+        "targetName": "getParam(\"user\")",
+        "targetNo": 1,
+        "statement": "String user = routingContext.request().getParam(\"user\");",
+        "methodName": "public void handle(final RoutingContext routingContext)",
+        "className": "io.vertx.demo.musicstore.xpath.XPathHandler",
+        "lineNo": 35
+      },
+      "sink": {
+        "targetName": "compile",
+        "targetNo": 1,
+        "statement": "String name = xPath.compile(xPression).evaluate(xDoc);",
+        "methodName": "protected boolean doLogin(final String user, final String pass)",
+        "className": "io.vertx.demo.musicstore.xpath.XPathTest",
+        "lineNo": 39
+      },
+      "intermediateFlows": [
+        {
+          "statement": "protected boolean doLogin(final String user, final String pass) {",
+          "methodName": "protected boolean doLogin(final String user, final String pass)",
+		  "className": "io.vertx.demo.musicstore.xpath.XPathTest",
+          "lineNo": 24
+        },
+		{
+          "statement": "String xPression = \"/users/user[username='\" + user + \"' and password='\" + pass + \"']/name\";",
+          "methodName": "protected boolean doLogin(final String user, final String pass)",
+		  "className": "io.vertx.demo.musicstore.xpath.XPathTest",
+          "lineNo": 36
+        }
+      ],
+      "description": "Xpath",
+      "isNegative": false,
+      "attributes": {
+        "Xpath": true
+      }
+    },
+	{
+      "source": {
+        "targetName": "getParam(\"pass\")",
+        "targetNo": 1,
+        "statement": "String pass = routingContext.request().getParam(\"pass\");",
+        "methodName": "public void handle(final RoutingContext routingContext)",
+        "className": "io.vertx.demo.musicstore.xpath.XPathHandler",
+        "lineNo": 36
+      },
+      "sink": {
+        "targetName": "compile",
+        "targetNo": 1,
+        "statement": "String name = xPath.compile(xPression).evaluate(xDoc);",
+        "methodName": "protected boolean doLogin(final String user, final String pass)",
+        "className": "io.vertx.demo.musicstore.xpath.XPathTest",
+        "lineNo": 39
+      },
+      "intermediateFlows": [
+        {
+          "statement": "protected boolean doLogin(final String user, final String pass) {",
+          "methodName": "protected boolean doLogin(final String user, final String pass)",
+		  "className": "io.vertx.demo.musicstore.xpath.XPathTest",
+          "lineNo": 24
+        },
+		{
+          "statement": "String xPression = \"/users/user[username='\" + user + \"' and password='\" + pass + \"']/name\";",
+          "methodName": "protected boolean doLogin(final String user, final String pass)",
+		  "className": "io.vertx.demo.musicstore.xpath.XPathTest",
+          "lineNo": 36
+        }
+      ],
+      "description": "Xpath",
+      "isNegative": false,
+      "attributes": {
+        "Xpath": true
+      }
+    }
+  ]
+}
