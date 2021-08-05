@@ -1,0 +1,48 @@
+{
+  "fileName": "sqlinjection1.jar",
+  "findings": [
+    {
+      "source": {
+        "targetName": "queryParam(\"hack\")",
+        "targetNo": 1,
+        "statement": "List<String> artists = rc.queryParam(\"hack\");",
+        "methodName": "public void handle(final RoutingContext rc)",
+        "className": "io.vertx.demo.musicstore.ArtistHandler",
+        "lineNo": 62
+      },
+      "sink": {
+        "targetName": "rxQueryStream",
+        "targetNo": 1,
+        "statement": "return sqlConnection.rxQueryStream(\"SELECT a.name FROM artists a WHERE a.id = \" + artistId)",
+        "methodName": "private Single<JsonObject> findArtist(final SQLConnection sqlConnection, final String artistId)",
+        "className": "io.vertx.demo.musicstore.ArtistHandler",
+        "lineNo": 90
+      },
+      "intermediateFlows": [
+        {
+          "statement": "strArtistId = artists.get(0);",
+          "methodName": "public void handle(final RoutingContext rc)",
+          "className": "io.vertx.demo.musicstore.ArtistHandler",
+          "lineNo": 67
+        },
+		{
+          "statement": "final String searchArtist = strArtistId;",
+          "methodName": "public void handle(final RoutingContext rc)",
+          "className": "io.vertx.demo.musicstore.ArtistHandler",
+          "lineNo": 69
+        },
+        {
+          "statement": "private Single<JsonObject> findArtist(final SQLConnection sqlConnection, final String artistId) {",
+          "methodName": "private Single<JsonObject> findArtist(final SQLConnection sqlConnection, final String artistId)",
+          "className": "io.vertx.demo.musicstore.ArtistHandler",
+          "lineNo": 88
+        }
+      ],
+      "description": "SQL Injection 1",
+      "isNegative": false,
+      "attributes": {
+        "SQL Injection 1": true
+      }
+    }
+  ]
+}

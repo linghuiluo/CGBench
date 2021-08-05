@@ -1,0 +1,48 @@
+{
+  "fileName": "HInjection2.jar",
+  "findings": [
+    {
+      "source": {
+        "targetName": "@PathVariable(\"ownerId\") int ownerId",
+        "targetNo": 1,
+        "statement": "public String initUpdateOwnerForm(@PathVariable(\"ownerId\") int ownerId, Model model) {",
+        "methodName": "public String initUpdateOwnerForm(@PathVariable(\"ownerId\") int ownerId, Model model)",
+        "className": "org.springframework.samples.petclinic.owner.OwnerController",
+        "lineNo": 108
+      },
+      "sink": {
+        "targetName": "getSingleResult",
+        "targetNo": 1,
+        "statement": "return query.getSingleResult();",
+        "methodName": "public Owner findById(Integer id)",
+        "className": "org.springframework.samples.petclinic.owner.OwnerRepositoryCustomImpl",
+        "lineNo": 36
+      },
+      "intermediateFlows": [
+        {
+          "statement": "public Owner findById(Integer id) {",
+          "methodName": "public Owner findById(Integer id)",
+          "className": "org.springframework.samples.petclinic.owner.OwnerRepositoryCustomImpl",
+          "lineNo": 30
+        },
+        {
+          "statement": "String sqlQuery = \"SELECT owner FROM Owner owner left join fetch owner.pets WHERE owner.id = \" + id;",
+          "methodName": "public Owner findById(Integer id)",
+          "className": "org.springframework.samples.petclinic.owner.OwnerRepositoryCustomImpl",
+          "lineNo": 32
+        },
+        {
+          "statement": "TypedQuery<Owner> query = this.entityManager.createQuery(sqlQuery, Owner.class);",
+          "methodName": "public Owner findById(Integer id)",
+          "className": "org.springframework.samples.petclinic.owner.OwnerRepositoryCustomImpl",
+          "lineNo": 34
+        }
+      ],
+      "description": "Hybernate Injection 2",
+      "isNegative": false,
+      "attributes": {
+        "HInjection2": true
+      }
+    }
+  ]
+}

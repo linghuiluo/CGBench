@@ -1,0 +1,29 @@
+{
+  "fileName": "sqlinjection2.jar",
+  "findings": [
+    {
+      "source": {
+        "targetName": "getParam(\"artistId\")",
+        "targetNo": 1,
+        "statement": "String artistId = event.request().getParam(\"artistId\");",
+        "methodName": "public void handle(final RoutingContext event)",
+        "className": "io.vertx.demo.musicstore.csv.CSVDownloadHandler",
+        "lineNo": 31
+      },
+      "sink": {
+        "targetName": "send",
+        "targetNo": 1,
+        "statement": "vertx.eventBus().send(DatabaseHandler.ADDRESS, artistId, options, result -> {",
+        "methodName": "public void handle(final RoutingContext event)",
+        "className": "io.vertx.demo.musicstore.csv.CSVDownloadHandler",
+        "lineNo": 40
+      },
+      "intermediateFlows": [],
+      "description": "SQL Injection 2",
+      "isNegative": false,
+      "attributes": {
+        "SQL Injection 2": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "fileName": "untrusteddeserialization.jar",
+  "findings": [
+    {
+      "source": {
+        "targetName": "fileUploads",
+        "targetNo": 1,
+        "statement": "for (FileUpload f : ctx.fileUploads()) {",
+        "methodName": "public void handle(final RoutingContext ctx)",
+        "className": "io.vertx.demo.musicstore.serialize.DeserializeUploadAsyncHandler",
+        "lineNo": 29
+      },
+      "sink": {
+        "targetName": "deserialize",
+        "targetNo": 1,
+        "statement": "list.add(deserialize(ctx, FILE_UPLOAD_LOCATION + f.fileName()));",
+        "methodName": "public void handle(final RoutingContext ctx)",
+        "className": "io.vertx.demo.musicstore.serialize.DeserializeUploadAsyncHandler",
+        "lineNo": 38
+      },
+      "intermediateFlows": [],
+      "description": "Untrusted Deserialization",
+      "isNegative": false,
+      "attributes": {
+        "Untrusted Deserialization": true
+      }
+    }
+  ]
+}
