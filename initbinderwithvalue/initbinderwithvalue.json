@@ -2,13 +2,21 @@
   "fileName": "initbinderwithvalue.jar",
   "findings": [
     {
+	  "ID": 1,
       "source": {
         "targetName": "@RequestParam(\"user\") String user",
         "targetNo": 1,
         "statement": "public void index(@RequestParam(\"user\") String user, HttpServletResponse response) throws IOException {",
         "methodName": "public void index(@RequestParam(\"user\") String user, HttpServletResponse response)",
         "className": "de.fraunhofer.iem.springbench.initbinderwithvalue.controllers.MyController",
-        "lineNo": 23
+        "lineNo": 23,
+        "type": "@parameter0",
+		"IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "user := @parameter0: java.lang.String"
+          }
+        ]
       },
       "sink": {
         "targetName": "append",
@@ -16,7 +24,14 @@
         "statement": "response.getWriter().append(responseHTML);",
         "methodName": "public void index(@RequestParam(\"user\") String user, HttpServletResponse response)",
         "className": "de.fraunhofer.iem.springbench.initbinderwithvalue.controllers.MyController",
-        "lineNo": 30
+        "lineNo": 30,
+		"type": "methodinvocation",
+		"IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "virtualinvoke $r2.<java.io.PrintWriter: java.io.PrintWriter append(java.lang.CharSequence)>(r5)"
+          }
+        ]
       },
       "intermediateFlows": [
         {
