@@ -172,6 +172,80 @@
       "attributes": {
         "HInjection2": true
       }
+    },
+	{
+      "source": {
+        "targetName": "@Valid Owner owner",
+        "targetNo": 1,
+        "statement": "public String processCreationForm(@Valid Owner owner, BindingResult result) {",
+        "methodName": "public String processCreationForm(@Valid Owner owner, BindingResult result)",
+        "className": "org.springframework.samples.petclinic.owner.OwnerController",
+        "lineNo": 66
+      },
+      "sink": {
+        "targetName": "merge",
+        "targetNo": 1,
+        "statement": "this.entityManager.merge(owner);",
+        "methodName": "public void save(Owner owner)",
+        "className": "org.springframework.samples.petclinic.owner.OwnerRepositoryCustomImpl",
+        "lineNo": 44
+      },
+      "intermediateFlows": [
+        {
+          "statement": "this.owners.save(owner);",
+          "methodName": "public String processCreationForm(@Valid Owner owner, BindingResult result)",
+          "className": "org.springframework.samples.petclinic.owner.OwnerController",
+          "lineNo": 70
+        },
+        {
+          "statement": "public void save(Owner owner) {",
+          "methodName": "public void save(Owner owner)",
+          "className": "org.springframework.samples.petclinic.owner.OwnerRepositoryCustomImpl",
+          "lineNo": 40
+        }
+      ],
+      "description": "Cross-Site Request Forgery 1",
+      "isNegative": false,
+      "attributes": {
+        "Cross-Site Request Forgery": true
+      }
+    },
+	{
+      "source": {
+        "targetName": "@Valid Owner owner",
+        "targetNo": 1,
+        "statement": "public String processCreationForm(@Valid Owner owner, BindingResult result) {",
+        "methodName": "public String processCreationForm(@Valid Owner owner, BindingResult result)",
+        "className": "org.springframework.samples.petclinic.owner.OwnerController",
+        "lineNo": 66
+      },
+      "sink": {
+        "targetName": "persist",
+        "targetNo": 1,
+        "statement": "this.entityManager.persist(owner);",
+        "methodName": "public void save(Owner owner)",
+        "className": "org.springframework.samples.petclinic.owner.OwnerRepositoryCustomImpl",
+        "lineNo": 48
+      },
+      "intermediateFlows": [
+        {
+          "statement": "this.owners.save(owner);",
+          "methodName": "public String processCreationForm(@Valid Owner owner, BindingResult result)",
+          "className": "org.springframework.samples.petclinic.owner.OwnerController",
+          "lineNo": 70
+        },
+        {
+          "statement": "public void save(Owner owner) {",
+          "methodName": "public void save(Owner owner)",
+          "className": "org.springframework.samples.petclinic.owner.OwnerRepositoryCustomImpl",
+          "lineNo": 40
+        }
+      ],
+      "description": "Cross-Site Request Forgery 2",
+      "isNegative": false,
+      "attributes": {
+        "Cross-Site Request Forgery": true
+      }
     }
   ]
 }
