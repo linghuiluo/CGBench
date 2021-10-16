@@ -289,6 +289,30 @@
       "attributes": {
         "Hibernate Injection": true
       }
+    },
+	{
+      "source": {
+        "targetName": "@Valid Pet pet",
+        "targetNo": 1,
+        "statement": "public String processCreationForm(Owner owner, @Valid Pet pet, BindingResult result, ModelMap model) {",
+        "methodName": "public String processCreationForm(Owner owner, @Valid Pet pet, BindingResult result, ModelMap model)",
+        "className": "org.springframework.samples.petclinic.owner.PetController",
+        "lineNo": 77
+      },
+      "sink": {
+        "targetName": "save",
+        "targetNo": 1,
+        "statement": "this.pets.save(pet);",
+        "methodName": "public String processCreationForm(Owner owner, @Valid Pet pet, BindingResult result, ModelMap model)",
+        "className": "org.springframework.samples.petclinic.owner.PetController",
+        "lineNo": 86
+      },
+      "intermediateFlows": [],
+      "description": "Cross-Site Request Forgery 1",
+      "isNegative": false,
+      "attributes": {
+        "Cross-Site Request Forgery 1": true
+      }
     }
   ]
 }
