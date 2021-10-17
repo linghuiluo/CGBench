@@ -596,6 +596,68 @@
       "attributes": {
         "SqlInjectionLesson10": true
       }
+    },
+	{
+      "source": {
+        "targetName": "@RequestParam String username_reg",
+        "targetNo": 1,
+        "statement": "public AttackResult registerNewUser(@RequestParam String username_reg, @RequestParam String email_reg, @RequestParam String password_reg) throws Exception {",
+        "methodName": "public AttackResult registerNewUser(@RequestParam String username_reg, @RequestParam String email_reg, @RequestParam String password_reg)",
+        "className": "org.owasp.webgoat.sql_injection.advanced.SqlInjectionChallenge",
+        "lineNo": 56
+      },
+      "sink": {
+        "targetName": "executeQuery",
+        "targetNo": 1,
+        "statement": "ResultSet resultSet = statement.executeQuery(checkUserQuery);",
+        "methodName": "public AttackResult registerNewUser(@RequestParam String username_reg, @RequestParam String email_reg, @RequestParam String password_reg)",
+        "className": "org.owasp.webgoat.sql_injection.advanced.SqlInjectionChallenge",
+        "lineNo": 65
+      },
+      "intermediateFlows": [
+        {
+          "statement": "String checkUserQuery = \"select userid from sql_challenge_users where userid = '\" + username_reg + \"'\";",
+          "methodName": "public AttackResult registerNewUser(@RequestParam String username_reg, @RequestParam String email_reg, @RequestParam String password_reg)",
+          "className": "org.owasp.webgoat.sql_injection.advanced.SqlInjectionChallenge",
+          "lineNo": 63
+        }
+      ],
+      "description": "Webgoat application: Advanced -> SqlInjectionChallenge",
+      "isNegative": false,
+      "attributes": {
+        "SqlInjectionChallenge": true
+      }
+    },
+	{
+      "source": {
+        "targetName": "@RequestParam String column",
+        "targetNo": 1,
+        "statement": "public List<Server> sort(@RequestParam String column) throws Exception {",
+        "methodName": "public List<Server> sort(@RequestParam String column)",
+        "className": "org.owasp.webgoat.sql_injection.mitigation.Server",
+        "lineNo": 69
+      },
+      "sink": {
+        "targetName": "executeQuery",
+        "targetNo": 1,
+        "statement": "ResultSet rs = preparedStatement.executeQuery();",
+        "methodName": "public List<Server> sort(@RequestParam String column)",
+        "className": "org.owasp.webgoat.sql_injection.mitigation.Server",
+        "lineNo": 74
+      },
+      "intermediateFlows": [
+        {
+          "statement": "PreparedStatement preparedStatement = connection.prepareStatement(\"select id, hostname, ip, mac, status, description from servers  where status <> 'out of order' order by \" + column)) {",
+          "methodName": "public List<Server> sort(@RequestParam String column)",
+          "className": "org.owasp.webgoat.sql_injection.mitigation.Server",
+          "lineNo": 73
+        }
+      ],
+      "description": "Webgoat application: Mitigation -> Server",
+      "isNegative": false,
+      "attributes": {
+        "Server": true
+      }
     }
   ]
 }
