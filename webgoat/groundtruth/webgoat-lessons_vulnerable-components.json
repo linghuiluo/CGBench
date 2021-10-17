@@ -1,0 +1,29 @@
+{
+  "fileName": "vulnerable-components.jar",
+  "findings": [
+    {
+      "source": {
+        "targetName": "@RequestParam String payload",
+        "targetNo": 1,
+        "statement": "AttackResult completed(@RequestParam String payload) {",
+        "methodName": "AttackResult completed(@RequestParam String payload)",
+        "className": "org.owasp.webgoat.vulnerable_components.VulnerableComponentsLesson",
+        "lineNo": 37
+      },
+      "sink": {
+        "targetName": "fromXML",
+        "targetNo": 1,
+        "statement": "Contact expl = (Contact) xstream.fromXML(payload);",
+        "methodName": "AttackResult completed(@RequestParam String payload)",
+        "className": "org.owasp.webgoat.vulnerable_components.VulnerableComponentsLesson",
+        "lineNo": 68
+      },
+      "intermediateFlows": [],
+      "description": "Deserialization  in vulnerable-components module",
+      "isNegative": false,
+      "attributes": {
+        "Deserialization": true
+      }
+    },
+  ]
+}
