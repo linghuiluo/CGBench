@@ -1,0 +1,48 @@
+{
+  "fileName": "xxe.jar",
+  "findings": [
+    {
+      "source": {
+        "targetName": "@RequestBody String commentStr",
+        "targetNo": 1,
+        "statement": "public AttackResult createNewUser(@RequestBody String commentStr, @RequestHeader(\"Content-Type\") String contentType) throws Exception {",
+        "methodName": "public AttackResult createNewUser(@RequestBody String commentStr, @RequestHeader(\"Content-Type\") String contentType)",
+        "className": "org.owasp.webgoat.xxe.ContentTypeAssignment",
+        "lineNo": 53
+      },
+      "sink": {
+        "targetName": "createXMLStreamReader",
+        "targetNo": 1,
+        "statement": "var xsr = xif.createXMLStreamReader(new StringReader(xml));",
+        "methodName": "protected Comment parseXml(String xml)",
+        "className": "org.owasp.webgoat.xxe.Comments",
+        "lineNo": 90
+      },
+      "intermediateFlows": [
+        {
+          "statement": "Comment comment = comments.parseXml(commentStr);",
+          "methodName": "public AttackResult createNewUser(@RequestBody String commentStr, @RequestHeader(\"Content-Type\") String contentType)",
+          "className": "org.owasp.webgoat.xxe.ContentTypeAssignment",
+          "lineNo": 64
+        },
+        {
+          "statement": "protected Comment parseXml(String xml) throws JAXBException, XMLStreamException {",
+          "methodName": "protected Comment parseXml(String xml)",
+          "className": "org.owasp.webgoat.xxe.Comments",
+          "lineNo": 87
+        },
+        {
+          "statement": "var xsr = xif.createXMLStreamReader(new StringReader(xml));",
+          "methodName": "protected Comment parseXml(String xml)",
+          "className": "org.owasp.webgoat.xxe.Comments",
+          "lineNo": 90
+        }
+      ],
+      "description": "Resolving XML external entity  in xxe module",
+      "isNegative": false,
+      "attributes": {
+        "Resolving XML external entity": true
+      }
+    }
+  ]
+}
