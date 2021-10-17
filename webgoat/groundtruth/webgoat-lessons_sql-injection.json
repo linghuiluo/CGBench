@@ -341,10 +341,10 @@
     },
 	{
       "source": {
-        "targetName": "@RequestParam("userid_sql_only_input_validation") String userId",
+        "targetName": "@RequestParam(\"userid_sql_only_input_validation\") String userId",
         "targetNo": 1,
-        "statement": "public AttackResult attack(@RequestParam("userid_sql_only_input_validation") String userId) {",
-        "methodName": "public AttackResult attack(@RequestParam("userid_sql_only_input_validation") String userId)",
+        "statement": "public AttackResult attack(@RequestParam(\"userid_sql_only_input_validation\") String userId) {",
+        "methodName": "public AttackResult attack(@RequestParam(\"userid_sql_only_input_validation\") String userId)",
         "className": "org.owasp.webgoat.sql_injection.mitigation.SqlOnlyInputValidation",
         "lineNo": 48
       },
@@ -359,7 +359,7 @@
       "intermediateFlows": [
         {
           "statement": "AttackResult attackResult = lesson6a.injectableQuery(userId);",
-          "methodName": "public AttackResult attack(@RequestParam("userid_sql_only_input_validation") String userId)",
+          "methodName": "public AttackResult attack(@RequestParam(\"userid_sql_only_input_validation\") String userId)",
           "className": "org.owasp.webgoat.sql_injection.mitigation.SqlOnlyInputValidation",
           "lineNo": 52
         },
