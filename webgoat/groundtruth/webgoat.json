@@ -38,7 +38,7 @@
         "SqlInjectionLesson2": true
       }
     },
-	{
+    {
       "source": {
         "targetName": "@RequestParam String query",
         "targetNo": 1,
@@ -75,7 +75,7 @@
         "SqlInjectionLesson3": true
       }
     },
-	{
+    {
       "source": {
         "targetName": "@RequestParam String query",
         "targetNo": 1,
@@ -112,7 +112,7 @@
         "SqlInjectionLesson4": true
       }
     },
-	{
+    {
       "source": {
         "targetName": "@RequestParam String account",
         "targetNo": 1,
@@ -241,7 +241,7 @@
         "SqlInjectionLesson5a": true
       }
     },
-	{
+    {
       "source": {
         "targetName": "@RequestParam String userid",
         "targetNo": 1,
@@ -296,7 +296,7 @@
         "SqlInjectionLesson5b": true
       }
     },
-	{
+    {
       "source": {
         "targetName": "@RequestParam String userid_6a",
         "targetNo": 1,
@@ -339,7 +339,7 @@
         "SqlInjectionLesson6a": true
       }
     },
-	{
+    {
       "source": {
         "targetName": "@RequestParam(\"userid_sql_only_input_validation\") String userId",
         "targetNo": 1,
@@ -382,7 +382,7 @@
         "SqlInjectionLesson6aFromMitigation": true
       }
     },
-	{
+    {
       "source": {
         "targetName": "@RequestParam String name",
         "targetNo": 1,
@@ -468,7 +468,7 @@
         "SqlInjectionLesson8": true
       }
     },
-	{
+    {
       "source": {
         "targetName": "@RequestParam String name",
         "targetNo": 1,
@@ -554,7 +554,7 @@
         "SqlInjectionLesson9": true
       }
     },
-	{
+    {
       "source": {
         "targetName": "@RequestParam String action_string",
         "targetNo": 1,
@@ -597,7 +597,7 @@
         "SqlInjectionLesson10": true
       }
     },
-	{
+    {
       "source": {
         "targetName": "@RequestParam String username_reg",
         "targetNo": 1,
@@ -628,7 +628,7 @@
         "SqlInjectionChallenge": true
       }
     },
-	{
+    {
       "source": {
         "targetName": "@RequestParam String column",
         "targetNo": 1,
@@ -657,6 +657,196 @@
       "isNegative": false,
       "attributes": {
         "Server": true
+      }
+    },
+    {
+      "source": {
+        "targetName": "@RequestParam String password_login",
+        "targetNo": 1,
+        "statement": "public AttackResult login(@RequestParam String username_login, @RequestParam String password_login) throws Exception {",
+        "methodName": "public AttackResult login(@RequestParam String username_login, @RequestParam String password_login)",
+        "className": "org.owasp.webgoat.challenges.challenge5.Assignment5",
+        "lineNo": 51
+      },
+      "sink": {
+        "targetName": "executeQuery",
+        "targetNo": 1,
+        "statement": "ResultSet resultSet = statement.executeQuery();",
+        "methodName": "public AttackResult login(@RequestParam String username_login, @RequestParam String password_login)",
+        "className": "org.owasp.webgoat.challenges.challenge5.Assignment5",
+        "lineNo": 60
+      },
+      "intermediateFlows": [
+        {
+          "statement": "PreparedStatement statement = connection.prepareStatement(\"select password from challenge_users where userid = '\" + username_login + \"' and password = '\" + password_login + \"'\");",
+          "methodName": "public AttackResult login(@RequestParam String username_login, @RequestParam String password_login)",
+          "className": "org.owasp.webgoat.challenges.challenge5.Assignment5",
+          "lineNo": 59
+        }
+      ],
+      "description": "Webgoat application: Challenge5 -> Assignment5",
+      "isNegative": false,
+      "attributes": {
+        "Assignment5": true
+      }
+    },
+    {
+      "source": {
+        "targetName": "@RequestBody String commentStr",
+        "targetNo": 1,
+        "statement": "public AttackResult createNewUser(@RequestBody String commentStr, @RequestHeader(\"Content-Type\") String contentType) throws Exception {",
+        "methodName": "public AttackResult createNewUser(@RequestBody String commentStr, @RequestHeader(\"Content-Type\") String contentType)",
+        "className": "org.owasp.webgoat.xxe.ContentTypeAssignment",
+        "lineNo": 53
+      },
+      "sink": {
+        "targetName": "createXMLStreamReader",
+        "targetNo": 1,
+        "statement": "var xsr = xif.createXMLStreamReader(new StringReader(xml));",
+        "methodName": "protected Comment parseXml(String xml)",
+        "className": "org.owasp.webgoat.xxe.Comments",
+        "lineNo": 90
+      },
+      "intermediateFlows": [
+        {
+          "statement": "Comment comment = comments.parseXml(commentStr);",
+          "methodName": "public AttackResult createNewUser(@RequestBody String commentStr, @RequestHeader(\"Content-Type\") String contentType)",
+          "className": "org.owasp.webgoat.xxe.ContentTypeAssignment",
+          "lineNo": 64
+        },
+        {
+          "statement": "protected Comment parseXml(String xml) throws JAXBException, XMLStreamException {",
+          "methodName": "protected Comment parseXml(String xml)",
+          "className": "org.owasp.webgoat.xxe.Comments",
+          "lineNo": 87
+        },
+        {
+          "statement": "var xsr = xif.createXMLStreamReader(new StringReader(xml));",
+          "methodName": "protected Comment parseXml(String xml)",
+          "className": "org.owasp.webgoat.xxe.Comments",
+          "lineNo": 90
+        }
+      ],
+      "description": "Resolving XML external entity  in xxe module",
+      "isNegative": false,
+      "attributes": {
+        "Resolving XML external entity": true
+      }
+    },
+    {
+      "source": {
+        "targetName": "@RequestBody String commentStr",
+        "targetNo": 1,
+        "statement": "public AttackResult createNewComment(@RequestBody String commentStr) throws Exception {",
+        "methodName": "public AttackResult createNewComment(@RequestBody String commentStr)",
+        "className": "org.owasp.webgoat.xxe.SimpleXXE",
+        "lineNo": 66
+      },
+      "sink": {
+        "targetName": "createXMLStreamReader",
+        "targetNo": 1,
+        "statement": "var xsr = xif.createXMLStreamReader(new StringReader(xml));",
+        "methodName": "protected Comment parseXml(String xml)",
+        "className": "org.owasp.webgoat.xxe.Comments",
+        "lineNo": 90
+      },
+      "intermediateFlows": [
+        {
+          "statement": "Comment comment = comments.parseXml(commentStr);",
+          "methodName": "public AttackResult createNewComment(@RequestBody String commentStr)",
+          "className": "org.owasp.webgoat.xxe.SimpleXXE",
+          "lineNo": 69
+        },
+        {
+          "statement": "protected Comment parseXml(String xml) throws JAXBException, XMLStreamException {",
+          "methodName": "protected Comment parseXml(String xml)",
+          "className": "org.owasp.webgoat.xxe.Comments",
+          "lineNo": 87
+        },
+        {
+          "statement": "var xsr = xif.createXMLStreamReader(new StringReader(xml));",
+          "methodName": "protected Comment parseXml(String xml)",
+          "className": "org.owasp.webgoat.xxe.Comments",
+          "lineNo": 90
+        }
+      ],
+      "description": "Resolving XML external entity  in xxe module",
+      "isNegative": false,
+      "attributes": {
+        "Resolving XML external entity": true
+      }
+    },
+    {
+      "source": {
+        "targetName": "@RequestParam String url",
+        "targetNo": 1,
+        "statement": "public AttackResult completed(@RequestParam String url) {",
+        "methodName": "public AttackResult completed(@RequestParam String url)",
+        "className": "org.owasp.webgoat.ssrf.SSRFTask2",
+        "lineNo": 45
+      },
+      "sink": {
+        "targetName": "getInputStream",
+        "targetNo": 1,
+        "statement": "BufferedReader in = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));",
+        "methodName": "public AttackResult completed(@RequestParam String url)",
+        "className": "org.owasp.webgoat.ssrf.SSRFTask2",
+        "lineNo": 56
+      },
+      "intermediateFlows": [
+        {
+          "statement": "return furBall(url);",
+          "methodName": "public AttackResult completed(@RequestParam String url)",
+          "className": "org.owasp.webgoat.ssrf.SSRFTask2",
+          "lineNo": 46
+        },
+        {
+          "statement": "protected AttackResult furBall(String url) {",
+          "methodName": "protected AttackResult furBall(String url)",
+          "className": "org.owasp.webgoat.ssrf.SSRFTask2",
+          "lineNo": 49
+        },
+        {
+          "statement": "URL u = new URL(url);",
+          "methodName": "protected AttackResult furBall(String url)",
+          "className": "org.owasp.webgoat.ssrf.SSRFTask2",
+          "lineNo": 54
+        },
+        {
+          "statement": "URLConnection urlConnection = u.openConnection();",
+          "methodName": "protected AttackResult furBall(String url)",
+          "className": "org.owasp.webgoat.ssrf.SSRFTask2",
+          "lineNo": 55
+        }
+      ],
+      "description": "Server-side request forgery  in ssrf module",
+      "isNegative": false,
+      "attributes": {
+        "Server-side request forgery": true
+      }
+    },
+    {
+      "source": {
+        "targetName": "@RequestParam String payload",
+        "targetNo": 1,
+        "statement": "AttackResult completed(@RequestParam String payload) {",
+        "methodName": "AttackResult completed(@RequestParam String payload)",
+        "className": "org.owasp.webgoat.vulnerable_components.VulnerableComponentsLesson",
+        "lineNo": 37
+      },
+      "sink": {
+        "targetName": "fromXML",
+        "targetNo": 1,
+        "statement": "Contact expl = (Contact) xstream.fromXML(payload);",
+        "methodName": "AttackResult completed(@RequestParam String payload)",
+        "className": "org.owasp.webgoat.vulnerable_components.VulnerableComponentsLesson",
+        "lineNo": 68
+      },
+      "intermediateFlows": [],
+      "description": "Deserialization  in vulnerable-components module",
+      "isNegative": false,
+      "attributes": {
+        "Deserialization": true
       }
     }
   ]
