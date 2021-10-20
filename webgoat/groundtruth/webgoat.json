@@ -848,6 +848,30 @@
       "attributes": {
         "Deserialization": true
       }
+    },
+    {
+      "source": {
+        "targetName": "getMessage",
+        "targetNo": 1,
+        "statement": "response.sendError(401, authException.getMessage());",
+        "methodName": "public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException)",
+        "className": "org.owasp.webgoat.AjaxAuthenticationEntryPoint",
+        "lineNo": 53
+      },
+      "sink": {
+        "targetName": "sendError",
+        "targetNo": 1,
+        "statement": "response.sendError(401, authException.getMessage());",
+        "methodName": "public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException)",
+        "className": "org.owasp.webgoat.AjaxAuthenticationEntryPoint",
+        "lineNo": 53
+      },
+      "intermediateFlows": [],
+      "description": "Information exposure through a stack trace",
+      "isNegative": false,
+      "attributes": {
+        "Information exposure through a stack trace": true
+      }
     }
   ]
 }
