@@ -871,7 +871,7 @@
         "targetNo": 1,
         "statement": "public List<Server> sort(@RequestParam String column) throws Exception {",
         "methodName": "public List<Server> sort(@RequestParam String column)",
-        "className": "org.owasp.webgoat.sql_injection.mitigation.Server",
+        "className": "org.owasp.webgoat.sql_injection.mitigation.Servers",
         "lineNo": 69,
         "IRs": [
           {
@@ -885,7 +885,7 @@
         "targetNo": 1,
         "statement": "ResultSet rs = preparedStatement.executeQuery();",
         "methodName": "public List<Server> sort(@RequestParam String column)",
-        "className": "org.owasp.webgoat.sql_injection.mitigation.Server",
+        "className": "org.owasp.webgoat.sql_injection.mitigation.Servers",
         "lineNo": 74,
         "IRs": [
           {
@@ -898,7 +898,7 @@
         {
           "statement": "PreparedStatement preparedStatement = connection.prepareStatement(\"select id, hostname, ip, mac, status, description from servers  where status <> 'out of order' order by \" + column)) {",
           "methodName": "public List<Server> sort(@RequestParam String column)",
-          "className": "org.owasp.webgoat.sql_injection.mitigation.Server",
+          "className": "org.owasp.webgoat.sql_injection.mitigation.Servers",
           "lineNo": 73,
           "ID": 1
         }
