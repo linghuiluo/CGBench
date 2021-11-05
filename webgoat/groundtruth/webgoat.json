@@ -8,7 +8,13 @@
         "statement": "public AttackResult completed(@RequestParam String query) {",
         "methodName": "public AttackResult completed(@RequestParam String query)",
         "className": "org.owasp.webgoat.sql_injection.introduction.SqlInjectionLesson2",
-        "lineNo": 55
+        "lineNo": 55,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "sink": {
         "targetName": "executeQuery",
@@ -16,27 +22,36 @@
         "statement": "ResultSet results = statement.executeQuery(query);",
         "methodName": "protected AttackResult injectableQuery(String query)",
         "className": "org.owasp.webgoat.sql_injection.introduction.SqlInjectionLesson2",
-        "lineNo": 62
+        "lineNo": 62,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "intermediateFlows": [
         {
           "statement": "return injectableQuery(query);",
           "methodName": "public AttackResult completed(@RequestParam String query)",
           "className": "org.owasp.webgoat.sql_injection.introduction.SqlInjectionLesson2",
-          "lineNo": 56
+          "lineNo": 56,
+          "ID": 1
         },
         {
           "statement": "protected AttackResult injectableQuery(String query) {",
           "methodName": "protected AttackResult injectableQuery(String query)",
           "className": "org.owasp.webgoat.sql_injection.introduction.SqlInjectionLesson2",
-          "lineNo": 59
+          "lineNo": 59,
+          "ID": 2
         }
       ],
       "description": "Webgoat application: Introduction -> SqlInjectionLesson2",
       "isNegative": false,
       "attributes": {
         "SqlInjectionLesson2": true
-      }
+      },
+      "ID": 1
     },
     {
       "source": {
@@ -45,7 +60,13 @@
         "statement": "public AttackResult completed(@RequestParam String query) {",
         "methodName": "public AttackResult completed(@RequestParam String query)",
         "className": "org.owasp.webgoat.sql_injection.introduction.SqlInjectionLesson3",
-        "lineNo": 56
+        "lineNo": 56,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "sink": {
         "targetName": "executeUpdate",
@@ -53,27 +74,36 @@
         "statement": "statement.executeUpdate(query);",
         "methodName": "protected AttackResult injectableQuery(String query)",
         "className": "org.owasp.webgoat.sql_injection.introduction.SqlInjectionLesson3",
-        "lineNo": 65
+        "lineNo": 65,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "intermediateFlows": [
         {
           "statement": "return injectableQuery(query);",
           "methodName": "public AttackResult completed(@RequestParam String query)",
           "className": "org.owasp.webgoat.sql_injection.introduction.SqlInjectionLesson3",
-          "lineNo": 57
+          "lineNo": 57,
+          "ID": 1
         },
         {
           "statement": "protected AttackResult injectableQuery(String query) {",
           "methodName": "protected AttackResult injectableQuery(String query)",
           "className": "org.owasp.webgoat.sql_injection.introduction.SqlInjectionLesson3",
-          "lineNo": 60
+          "lineNo": 60,
+          "ID": 2
         }
       ],
       "description": "Webgoat application: Introduction -> SqlInjectionLesson3",
       "isNegative": false,
       "attributes": {
         "SqlInjectionLesson3": true
-      }
+      },
+      "ID": 2
     },
     {
       "source": {
@@ -82,7 +112,13 @@
         "statement": "public AttackResult completed(@RequestParam String query) {",
         "methodName": "public AttackResult completed(@RequestParam String query)",
         "className": "org.owasp.webgoat.sql_injection.introduction.SqlInjectionLesson4",
-        "lineNo": 52
+        "lineNo": 52,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "sink": {
         "targetName": "executeUpdate",
@@ -90,27 +126,36 @@
         "statement": "statement.executeUpdate(query);",
         "methodName": "protected AttackResult injectableQuery(String query)",
         "className": "org.owasp.webgoat.sql_injection.introduction.SqlInjectionLesson4",
-        "lineNo": 59
+        "lineNo": 59,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "intermediateFlows": [
         {
           "statement": "return injectableQuery(query);",
           "methodName": "public AttackResult completed(@RequestParam String query)",
           "className": "org.owasp.webgoat.sql_injection.introduction.SqlInjectionLesson4",
-          "lineNo": 53
+          "lineNo": 53,
+          "ID": 1
         },
         {
           "statement": "protected AttackResult injectableQuery(String query) {",
           "methodName": "protected AttackResult injectableQuery(String query)",
           "className": "org.owasp.webgoat.sql_injection.introduction.SqlInjectionLesson4",
-          "lineNo": 56
+          "lineNo": 56,
+          "ID": 2
         }
       ],
       "description": "Webgoat application: Introduction -> SqlInjectionLesson4",
       "isNegative": false,
       "attributes": {
         "SqlInjectionLesson4": true
-      }
+      },
+      "ID": 3
     },
     {
       "source": {
@@ -119,7 +164,13 @@
         "statement": "public AttackResult completed(@RequestParam String account, @RequestParam String operator, @RequestParam String injection) {",
         "methodName": "public AttackResult completed(@RequestParam String account, @RequestParam String operator, @RequestParam String injection)",
         "className": "org.owasp.webgoat.sql_injection.introduction.SqlInjectionLesson5a",
-        "lineNo": 53
+        "lineNo": 53,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "sink": {
         "targetName": "executeQuery",
@@ -127,33 +178,43 @@
         "statement": "ResultSet results = statement.executeQuery(query);",
         "methodName": "protected AttackResult injectableQuery(String accountName)",
         "className": "org.owasp.webgoat.sql_injection.introduction.SqlInjectionLesson5a",
-        "lineNo": 62
+        "lineNo": 62,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "intermediateFlows": [
         {
           "statement": "return injectableQuery(account + \" \" + operator + \" \" + injection);",
           "methodName": "public AttackResult completed(@RequestParam String account, @RequestParam String operator, @RequestParam String injection)",
           "className": "org.owasp.webgoat.sql_injection.introduction.SqlInjectionLesson5a",
-          "lineNo": 54
+          "lineNo": 54,
+          "ID": 1
         },
         {
           "statement": "protected AttackResult injectableQuery(String accountName) {",
           "methodName": "protected AttackResult injectableQuery(String accountName)",
           "className": "org.owasp.webgoat.sql_injection.introduction.SqlInjectionLesson5a",
-          "lineNo": 57
+          "lineNo": 57,
+          "ID": 2
         },
         {
           "statement": "query = \"SELECT * FROM user_data WHERE first_name = 'John' and last_name = '\" + accountName + \"'\";",
           "methodName": "protected AttackResult injectableQuery(String accountName)",
           "className": "org.owasp.webgoat.sql_injection.introduction.SqlInjectionLesson5a",
-          "lineNo": 60
+          "lineNo": 60,
+          "ID": 3
         }
       ],
       "description": "Webgoat application: Introduction -> SqlInjectionLesson5a",
       "isNegative": false,
       "attributes": {
         "SqlInjectionLesson5a": true
-      }
+      },
+      "ID": 4
     },
     {
       "source": {
@@ -162,7 +223,13 @@
         "statement": "public AttackResult completed(@RequestParam String account, @RequestParam String operator, @RequestParam String injection) {",
         "methodName": "public AttackResult completed(@RequestParam String account, @RequestParam String operator, @RequestParam String injection)",
         "className": "org.owasp.webgoat.sql_injection.introduction.SqlInjectionLesson5a",
-        "lineNo": 53
+        "lineNo": 53,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "sink": {
         "targetName": "executeQuery",
@@ -170,33 +237,43 @@
         "statement": "ResultSet results = statement.executeQuery(query);",
         "methodName": "protected AttackResult injectableQuery(String accountName)",
         "className": "org.owasp.webgoat.sql_injection.introduction.SqlInjectionLesson5a",
-        "lineNo": 62
+        "lineNo": 62,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "intermediateFlows": [
         {
           "statement": "return injectableQuery(account + \" \" + operator + \" \" + injection);",
           "methodName": "public AttackResult completed(@RequestParam String account, @RequestParam String operator, @RequestParam String injection)",
           "className": "org.owasp.webgoat.sql_injection.introduction.SqlInjectionLesson5a",
-          "lineNo": 54
+          "lineNo": 54,
+          "ID": 1
         },
         {
           "statement": "protected AttackResult injectableQuery(String accountName) {",
           "methodName": "protected AttackResult injectableQuery(String accountName)",
           "className": "org.owasp.webgoat.sql_injection.introduction.SqlInjectionLesson5a",
-          "lineNo": 57
+          "lineNo": 57,
+          "ID": 2
         },
         {
           "statement": "query = \"SELECT * FROM user_data WHERE first_name = 'John' and last_name = '\" + accountName + \"'\";",
           "methodName": "protected AttackResult injectableQuery(String accountName)",
           "className": "org.owasp.webgoat.sql_injection.introduction.SqlInjectionLesson5a",
-          "lineNo": 60
+          "lineNo": 60,
+          "ID": 3
         }
       ],
       "description": "Webgoat application: Introduction -> SqlInjectionLesson5a",
       "isNegative": false,
       "attributes": {
         "SqlInjectionLesson5a": true
-      }
+      },
+      "ID": 5
     },
     {
       "source": {
@@ -205,7 +282,13 @@
         "statement": "public AttackResult completed(@RequestParam String account, @RequestParam String operator, @RequestParam String injection) {",
         "methodName": "public AttackResult completed(@RequestParam String account, @RequestParam String operator, @RequestParam String injection)",
         "className": "org.owasp.webgoat.sql_injection.introduction.SqlInjectionLesson5a",
-        "lineNo": 53
+        "lineNo": 53,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "sink": {
         "targetName": "executeQuery",
@@ -213,33 +296,43 @@
         "statement": "ResultSet results = statement.executeQuery(query);",
         "methodName": "protected AttackResult injectableQuery(String accountName)",
         "className": "org.owasp.webgoat.sql_injection.introduction.SqlInjectionLesson5a",
-        "lineNo": 62
+        "lineNo": 62,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "intermediateFlows": [
         {
           "statement": "return injectableQuery(account + \" \" + operator + \" \" + injection);",
           "methodName": "public AttackResult completed(@RequestParam String account, @RequestParam String operator, @RequestParam String injection)",
           "className": "org.owasp.webgoat.sql_injection.introduction.SqlInjectionLesson5a",
-          "lineNo": 54
+          "lineNo": 54,
+          "ID": 1
         },
         {
           "statement": "protected AttackResult injectableQuery(String accountName) {",
           "methodName": "protected AttackResult injectableQuery(String accountName)",
           "className": "org.owasp.webgoat.sql_injection.introduction.SqlInjectionLesson5a",
-          "lineNo": 57
+          "lineNo": 57,
+          "ID": 2
         },
         {
           "statement": "query = \"SELECT * FROM user_data WHERE first_name = 'John' and last_name = '\" + accountName + \"'\";",
           "methodName": "protected AttackResult injectableQuery(String accountName)",
           "className": "org.owasp.webgoat.sql_injection.introduction.SqlInjectionLesson5a",
-          "lineNo": 60
+          "lineNo": 60,
+          "ID": 3
         }
       ],
       "description": "Webgoat application: Introduction -> SqlInjectionLesson5a",
       "isNegative": false,
       "attributes": {
         "SqlInjectionLesson5a": true
-      }
+      },
+      "ID": 6
     },
     {
       "source": {
@@ -248,7 +341,13 @@
         "statement": "public AttackResult completed(@RequestParam String userid, @RequestParam String login_count, HttpServletRequest request) throws IOException {",
         "methodName": "public AttackResult completed(@RequestParam String userid, @RequestParam String login_count, HttpServletRequest request)",
         "className": "org.owasp.webgoat.sql_injection.introduction.SqlInjectionLesson5b",
-        "lineNo": 51
+        "lineNo": 51,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "sink": {
         "targetName": "executeQuery",
@@ -256,45 +355,57 @@
         "statement": "ResultSet results = query.executeQuery();",
         "methodName": "protected AttackResult injectableQuery(String login_count, String accountName)",
         "className": "org.owasp.webgoat.sql_injection.introduction.SqlInjectionLesson5b",
-        "lineNo": 71
+        "lineNo": 71,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "intermediateFlows": [
         {
           "statement": "return injectableQuery(login_count, userid);",
           "methodName": "public AttackResult completed(@RequestParam String userid, @RequestParam String login_count, HttpServletRequest request)",
           "className": "org.owasp.webgoat.sql_injection.introduction.SqlInjectionLesson5b",
-          "lineNo": 52
+          "lineNo": 52,
+          "ID": 1
         },
         {
           "statement": "protected AttackResult injectableQuery(String login_count, String accountName) {",
           "methodName": "protected AttackResult injectableQuery(String login_count, String accountName)",
           "className": "org.owasp.webgoat.sql_injection.introduction.SqlInjectionLesson5b",
-          "lineNo": 55
+          "lineNo": 55,
+          "ID": 2
         },
         {
           "statement": "String queryString = \"SELECT * From user_data WHERE Login_Count = ? and userid= \" + accountName;",
           "methodName": "protected AttackResult injectableQuery(String login_count, String accountName)",
           "className": "org.owasp.webgoat.sql_injection.introduction.SqlInjectionLesson5b",
-          "lineNo": 56
+          "lineNo": 56,
+          "ID": 3
         },
         {
           "statement": "PreparedStatement query = connection.prepareStatement(queryString, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);",
           "methodName": "protected AttackResult injectableQuery(String login_count, String accountName)",
           "className": "org.owasp.webgoat.sql_injection.introduction.SqlInjectionLesson5b",
-          "lineNo": 58
+          "lineNo": 58,
+          "ID": 4
         },
         {
           "statement": "query.setInt(1, count);",
           "methodName": "protected AttackResult injectableQuery(String login_count, String accountName)",
           "className": "org.owasp.webgoat.sql_injection.introduction.SqlInjectionLesson5b",
-          "lineNo": 68
+          "lineNo": 68,
+          "ID": 5
         }
       ],
       "description": "Webgoat application: Introduction -> SqlInjectionLesson5b",
       "isNegative": false,
       "attributes": {
         "SqlInjectionLesson5b": true
-      }
+      },
+      "ID": 7
     },
     {
       "source": {
@@ -303,7 +414,13 @@
         "statement": "public AttackResult completed(@RequestParam String userid_6a) {",
         "methodName": "public AttackResult completed(@RequestParam String userid_6a)",
         "className": "org.owasp.webgoat.sql_injection.advanced.SqlInjectionLesson6a",
-        "lineNo": 51
+        "lineNo": 51,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "sink": {
         "targetName": "executeQuery",
@@ -311,33 +428,43 @@
         "statement": "ResultSet results = statement.executeQuery(query);",
         "methodName": "public AttackResult injectableQuery(String accountName)",
         "className": "org.owasp.webgoat.sql_injection.advanced.SqlInjectionLesson6a",
-        "lineNo": 67
+        "lineNo": 67,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "intermediateFlows": [
         {
           "statement": "return injectableQuery(userid_6a);",
           "methodName": "public AttackResult completed(@RequestParam String userid_6a)",
           "className": "org.owasp.webgoat.sql_injection.advanced.SqlInjectionLesson6a",
-          "lineNo": 52
+          "lineNo": 52,
+          "ID": 1
         },
         {
           "statement": "public AttackResult injectableQuery(String accountName) {",
           "methodName": "public AttackResult injectableQuery(String accountName)",
           "className": "org.owasp.webgoat.sql_injection.advanced.SqlInjectionLesson6a",
-          "lineNo": 56
+          "lineNo": 56,
+          "ID": 2
         },
         {
           "statement": "query = \"SELECT * FROM user_data WHERE last_name = '\" + accountName + \"'\";",
           "methodName": "public AttackResult injectableQuery(String accountName)",
           "className": "org.owasp.webgoat.sql_injection.advanced.SqlInjectionLesson6a",
-          "lineNo": 60
+          "lineNo": 60,
+          "ID": 3
         }
       ],
       "description": "Webgoat application: Advanced -> SqlInjectionLesson6a",
       "isNegative": false,
       "attributes": {
         "SqlInjectionLesson6a": true
-      }
+      },
+      "ID": 8
     },
     {
       "source": {
@@ -346,7 +473,13 @@
         "statement": "public AttackResult attack(@RequestParam(\"userid_sql_only_input_validation\") String userId) {",
         "methodName": "public AttackResult attack(@RequestParam(\"userid_sql_only_input_validation\") String userId)",
         "className": "org.owasp.webgoat.sql_injection.mitigation.SqlOnlyInputValidation",
-        "lineNo": 48
+        "lineNo": 48,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "sink": {
         "targetName": "executeQuery",
@@ -354,33 +487,43 @@
         "statement": "ResultSet results = statement.executeQuery(query);",
         "methodName": "public AttackResult injectableQuery(String accountName)",
         "className": "org.owasp.webgoat.sql_injection.advanced.SqlInjectionLesson6a",
-        "lineNo": 67
+        "lineNo": 67,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "intermediateFlows": [
         {
           "statement": "AttackResult attackResult = lesson6a.injectableQuery(userId);",
           "methodName": "public AttackResult attack(@RequestParam(\"userid_sql_only_input_validation\") String userId)",
           "className": "org.owasp.webgoat.sql_injection.mitigation.SqlOnlyInputValidation",
-          "lineNo": 52
+          "lineNo": 52,
+          "ID": 1
         },
         {
           "statement": "public AttackResult injectableQuery(String accountName) {",
           "methodName": "public AttackResult injectableQuery(String accountName)",
           "className": "org.owasp.webgoat.sql_injection.advanced.SqlInjectionLesson6a",
-          "lineNo": 56
+          "lineNo": 56,
+          "ID": 2
         },
         {
           "statement": "query = \"SELECT * FROM user_data WHERE last_name = '\" + accountName + \"'\";",
           "methodName": "public AttackResult injectableQuery(String accountName)",
           "className": "org.owasp.webgoat.sql_injection.advanced.SqlInjectionLesson6a",
-          "lineNo": 60
+          "lineNo": 60,
+          "ID": 3
         }
       ],
       "description": "Webgoat application: Mitigation -> SqlInjectionLesson6a",
       "isNegative": false,
       "attributes": {
         "SqlInjectionLesson6aFromMitigation": true
-      }
+      },
+      "ID": 9
     },
     {
       "source": {
@@ -389,7 +532,13 @@
         "statement": "public AttackResult completed(@RequestParam String name, @RequestParam String auth_tan) {",
         "methodName": "public AttackResult completed(@RequestParam String name, @RequestParam String auth_tan)",
         "className": "org.owasp.webgoat.sql_injection.introduction.SqlInjectionLesson8",
-        "lineNo": 53
+        "lineNo": 53,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "sink": {
         "targetName": "executeQuery",
@@ -397,33 +546,43 @@
         "statement": "ResultSet results = statement.executeQuery(query);",
         "methodName": "protected AttackResult injectableQueryConfidentiality(String name, String auth_tan)",
         "className": "org.owasp.webgoat.sql_injection.introduction.SqlInjectionLesson8",
-        "lineNo": 65
+        "lineNo": 65,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "intermediateFlows": [
         {
           "statement": "return injectableQueryConfidentiality(name, auth_tan);",
           "methodName": "public AttackResult completed(@RequestParam String name, @RequestParam String auth_tan)",
           "className": "org.owasp.webgoat.sql_injection.introduction.SqlInjectionLesson8",
-          "lineNo": 54
+          "lineNo": 54,
+          "ID": 1
         },
         {
           "statement": "protected AttackResult injectableQueryConfidentiality(String name, String auth_tan) {",
           "methodName": "protected AttackResult injectableQueryConfidentiality(String name, String auth_tan)",
           "className": "org.owasp.webgoat.sql_injection.introduction.SqlInjectionLesson8",
-          "lineNo": 57
+          "lineNo": 57,
+          "ID": 2
         },
         {
           "statement": "String query = \"SELECT * FROM employees WHERE last_name = '\" + name + \"' AND auth_tan = '\" + auth_tan + \"'\";",
           "methodName": "protected AttackResult injectableQueryConfidentiality(String name, String auth_tan)",
           "className": "org.owasp.webgoat.sql_injection.introduction.SqlInjectionLesson8",
-          "lineNo": 59
+          "lineNo": 59,
+          "ID": 3
         }
       ],
       "description": "Webgoat application: Introduction -> SqlInjectionLesson8",
       "isNegative": false,
       "attributes": {
         "SqlInjectionLesson8": true
-      }
+      },
+      "ID": 10
     },
     {
       "source": {
@@ -432,7 +591,13 @@
         "statement": "public AttackResult completed(@RequestParam String name, @RequestParam String auth_tan) {",
         "methodName": "public AttackResult completed(@RequestParam String name, @RequestParam String auth_tan)",
         "className": "org.owasp.webgoat.sql_injection.introduction.SqlInjectionLesson8",
-        "lineNo": 53
+        "lineNo": 53,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "sink": {
         "targetName": "executeQuery",
@@ -440,33 +605,43 @@
         "statement": "ResultSet results = statement.executeQuery(query);",
         "methodName": "protected AttackResult injectableQueryConfidentiality(String name, String auth_tan)",
         "className": "org.owasp.webgoat.sql_injection.introduction.SqlInjectionLesson8",
-        "lineNo": 65
+        "lineNo": 65,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "intermediateFlows": [
         {
           "statement": "return injectableQueryConfidentiality(name, auth_tan);",
           "methodName": "public AttackResult completed(@RequestParam String name, @RequestParam String auth_tan)",
           "className": "org.owasp.webgoat.sql_injection.introduction.SqlInjectionLesson8",
-          "lineNo": 54
+          "lineNo": 54,
+          "ID": 1
         },
         {
           "statement": "protected AttackResult injectableQueryConfidentiality(String name, String auth_tan) {",
           "methodName": "protected AttackResult injectableQueryConfidentiality(String name, String auth_tan)",
           "className": "org.owasp.webgoat.sql_injection.introduction.SqlInjectionLesson8",
-          "lineNo": 57
+          "lineNo": 57,
+          "ID": 2
         },
         {
           "statement": "String query = \"SELECT * FROM employees WHERE last_name = '\" + name + \"' AND auth_tan = '\" + auth_tan + \"'\";",
           "methodName": "protected AttackResult injectableQueryConfidentiality(String name, String auth_tan)",
           "className": "org.owasp.webgoat.sql_injection.introduction.SqlInjectionLesson8",
-          "lineNo": 59
+          "lineNo": 59,
+          "ID": 3
         }
       ],
       "description": "Webgoat application: Introduction -> SqlInjectionLesson8",
       "isNegative": false,
       "attributes": {
         "SqlInjectionLesson8": true
-      }
+      },
+      "ID": 11
     },
     {
       "source": {
@@ -475,7 +650,13 @@
         "statement": "public AttackResult completed(@RequestParam String name, @RequestParam String auth_tan) {",
         "methodName": "public AttackResult completed(@RequestParam String name, @RequestParam String auth_tan)",
         "className": "org.owasp.webgoat.sql_injection.introduction.SqlInjectionLesson9",
-        "lineNo": 55
+        "lineNo": 55,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "sink": {
         "targetName": "executeQuery",
@@ -483,33 +664,43 @@
         "statement": "ResultSet results = statement.executeQuery(query);",
         "methodName": "protected AttackResult injectableQueryIntegrity(String name, String auth_tan)",
         "className": "org.owasp.webgoat.sql_injection.introduction.SqlInjectionLesson9",
-        "lineNo": 66
+        "lineNo": 66,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "intermediateFlows": [
         {
           "statement": "return injectableQueryIntegrity(name, auth_tan);",
           "methodName": "public AttackResult completed(@RequestParam String name, @RequestParam String auth_tan)",
           "className": "org.owasp.webgoat.sql_injection.introduction.SqlInjectionLesson9",
-          "lineNo": 56
+          "lineNo": 56,
+          "ID": 1
         },
         {
           "statement": "protected AttackResult injectableQueryIntegrity(String name, String auth_tan) {",
           "methodName": "protected AttackResult injectableQueryIntegrity(String name, String auth_tan)",
           "className": "org.owasp.webgoat.sql_injection.introduction.SqlInjectionLesson9",
-          "lineNo": 59
+          "lineNo": 59,
+          "ID": 2
         },
         {
           "statement": "String query = \"SELECT * FROM employees WHERE last_name = '\" + name + \"' AND auth_tan = '\" + auth_tan + \"'\";",
           "methodName": "protected AttackResult injectableQueryIntegrity(String name, String auth_tan)",
           "className": "org.owasp.webgoat.sql_injection.introduction.SqlInjectionLesson9",
-          "lineNo": 61
+          "lineNo": 61,
+          "ID": 3
         }
       ],
       "description": "Webgoat application: Introduction -> SqlInjectionLesson9",
       "isNegative": false,
       "attributes": {
         "SqlInjectionLesson9": true
-      }
+      },
+      "ID": 12
     },
     {
       "source": {
@@ -518,7 +709,13 @@
         "statement": "public AttackResult completed(@RequestParam String name, @RequestParam String auth_tan) {",
         "methodName": "public AttackResult completed(@RequestParam String name, @RequestParam String auth_tan)",
         "className": "org.owasp.webgoat.sql_injection.introduction.SqlInjectionLesson9",
-        "lineNo": 55
+        "lineNo": 55,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "sink": {
         "targetName": "executeQuery",
@@ -526,33 +723,43 @@
         "statement": "ResultSet results = statement.executeQuery(query);",
         "methodName": "protected AttackResult injectableQueryIntegrity(String name, String auth_tan)",
         "className": "org.owasp.webgoat.sql_injection.introduction.SqlInjectionLesson9",
-        "lineNo": 66
+        "lineNo": 66,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "intermediateFlows": [
         {
           "statement": "return injectableQueryIntegrity(name, auth_tan);",
           "methodName": "public AttackResult completed(@RequestParam String name, @RequestParam String auth_tan)",
           "className": "org.owasp.webgoat.sql_injection.introduction.SqlInjectionLesson9",
-          "lineNo": 56
+          "lineNo": 56,
+          "ID": 1
         },
         {
           "statement": "protected AttackResult injectableQueryIntegrity(String name, String auth_tan) {",
           "methodName": "protected AttackResult injectableQueryIntegrity(String name, String auth_tan)",
           "className": "org.owasp.webgoat.sql_injection.introduction.SqlInjectionLesson9",
-          "lineNo": 59
+          "lineNo": 59,
+          "ID": 2
         },
         {
           "statement": "String query = \"SELECT * FROM employees WHERE last_name = '\" + name + \"' AND auth_tan = '\" + auth_tan + \"'\";",
           "methodName": "protected AttackResult injectableQueryIntegrity(String name, String auth_tan)",
           "className": "org.owasp.webgoat.sql_injection.introduction.SqlInjectionLesson9",
-          "lineNo": 61
+          "lineNo": 61,
+          "ID": 3
         }
       ],
       "description": "Webgoat application: Introduction -> SqlInjectionLesson9",
       "isNegative": false,
       "attributes": {
         "SqlInjectionLesson9": true
-      }
+      },
+      "ID": 13
     },
     {
       "source": {
@@ -561,7 +768,13 @@
         "statement": "public AttackResult completed(@RequestParam String action_string) {",
         "methodName": "public AttackResult completed(@RequestParam String action_string)",
         "className": "org.owasp.webgoat.sql_injection.introduction.SqlInjectionLesson10",
-        "lineNo": 52
+        "lineNo": 52,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "sink": {
         "targetName": "executeQuery",
@@ -569,33 +782,43 @@
         "statement": "ResultSet results = statement.executeQuery(query);",
         "methodName": "protected AttackResult injectableQueryAvailability(String action)",
         "className": "org.owasp.webgoat.sql_injection.introduction.SqlInjectionLesson10",
-        "lineNo": 63
+        "lineNo": 63,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "intermediateFlows": [
         {
           "statement": "return injectableQueryAvailability(action_string);",
           "methodName": "public AttackResult completed(@RequestParam String action_string)",
           "className": "org.owasp.webgoat.sql_injection.introduction.SqlInjectionLesson10",
-          "lineNo": 53
+          "lineNo": 53,
+          "ID": 1
         },
         {
           "statement": "protected AttackResult injectableQueryAvailability(String action) {",
           "methodName": "protected AttackResult injectableQueryAvailability(String action)",
           "className": "org.owasp.webgoat.sql_injection.introduction.SqlInjectionLesson10",
-          "lineNo": 56
+          "lineNo": 56,
+          "ID": 2
         },
         {
           "statement": "String query = \"SELECT * FROM access_log WHERE action LIKE '%\" + action + \"%'\";",
           "methodName": "protected AttackResult injectableQueryAvailability(String action)",
           "className": "org.owasp.webgoat.sql_injection.introduction.SqlInjectionLesson10",
-          "lineNo": 58
+          "lineNo": 58,
+          "ID": 3
         }
       ],
       "description": "Webgoat application: Introduction -> SqlInjectionLesson10",
       "isNegative": false,
       "attributes": {
         "SqlInjectionLesson10": true
-      }
+      },
+      "ID": 14
     },
     {
       "source": {
@@ -604,7 +827,13 @@
         "statement": "public AttackResult registerNewUser(@RequestParam String username_reg, @RequestParam String email_reg, @RequestParam String password_reg) throws Exception {",
         "methodName": "public AttackResult registerNewUser(@RequestParam String username_reg, @RequestParam String email_reg, @RequestParam String password_reg)",
         "className": "org.owasp.webgoat.sql_injection.advanced.SqlInjectionChallenge",
-        "lineNo": 56
+        "lineNo": 56,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "sink": {
         "targetName": "executeQuery",
@@ -612,21 +841,29 @@
         "statement": "ResultSet resultSet = statement.executeQuery(checkUserQuery);",
         "methodName": "public AttackResult registerNewUser(@RequestParam String username_reg, @RequestParam String email_reg, @RequestParam String password_reg)",
         "className": "org.owasp.webgoat.sql_injection.advanced.SqlInjectionChallenge",
-        "lineNo": 65
+        "lineNo": 65,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "intermediateFlows": [
         {
           "statement": "String checkUserQuery = \"select userid from sql_challenge_users where userid = '\" + username_reg + \"'\";",
           "methodName": "public AttackResult registerNewUser(@RequestParam String username_reg, @RequestParam String email_reg, @RequestParam String password_reg)",
           "className": "org.owasp.webgoat.sql_injection.advanced.SqlInjectionChallenge",
-          "lineNo": 63
+          "lineNo": 63,
+          "ID": 1
         }
       ],
       "description": "Webgoat application: Advanced -> SqlInjectionChallenge",
       "isNegative": false,
       "attributes": {
         "SqlInjectionChallenge": true
-      }
+      },
+      "ID": 15
     },
     {
       "source": {
@@ -635,7 +872,13 @@
         "statement": "public List<Server> sort(@RequestParam String column) throws Exception {",
         "methodName": "public List<Server> sort(@RequestParam String column)",
         "className": "org.owasp.webgoat.sql_injection.mitigation.Server",
-        "lineNo": 69
+        "lineNo": 69,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "sink": {
         "targetName": "executeQuery",
@@ -643,21 +886,29 @@
         "statement": "ResultSet rs = preparedStatement.executeQuery();",
         "methodName": "public List<Server> sort(@RequestParam String column)",
         "className": "org.owasp.webgoat.sql_injection.mitigation.Server",
-        "lineNo": 74
+        "lineNo": 74,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "intermediateFlows": [
         {
           "statement": "PreparedStatement preparedStatement = connection.prepareStatement(\"select id, hostname, ip, mac, status, description from servers  where status <> 'out of order' order by \" + column)) {",
           "methodName": "public List<Server> sort(@RequestParam String column)",
           "className": "org.owasp.webgoat.sql_injection.mitigation.Server",
-          "lineNo": 73
+          "lineNo": 73,
+          "ID": 1
         }
       ],
       "description": "Webgoat application: Mitigation -> Server",
       "isNegative": false,
       "attributes": {
         "Server": true
-      }
+      },
+      "ID": 16
     },
     {
       "source": {
@@ -666,7 +917,13 @@
         "statement": "public AttackResult login(@RequestParam String username_login, @RequestParam String password_login) throws Exception {",
         "methodName": "public AttackResult login(@RequestParam String username_login, @RequestParam String password_login)",
         "className": "org.owasp.webgoat.challenges.challenge5.Assignment5",
-        "lineNo": 51
+        "lineNo": 51,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "sink": {
         "targetName": "executeQuery",
@@ -674,21 +931,29 @@
         "statement": "ResultSet resultSet = statement.executeQuery();",
         "methodName": "public AttackResult login(@RequestParam String username_login, @RequestParam String password_login)",
         "className": "org.owasp.webgoat.challenges.challenge5.Assignment5",
-        "lineNo": 60
+        "lineNo": 60,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "intermediateFlows": [
         {
           "statement": "PreparedStatement statement = connection.prepareStatement(\"select password from challenge_users where userid = '\" + username_login + \"' and password = '\" + password_login + \"'\");",
           "methodName": "public AttackResult login(@RequestParam String username_login, @RequestParam String password_login)",
           "className": "org.owasp.webgoat.challenges.challenge5.Assignment5",
-          "lineNo": 59
+          "lineNo": 59,
+          "ID": 1
         }
       ],
       "description": "Webgoat application: Challenge5 -> Assignment5",
       "isNegative": false,
       "attributes": {
         "Assignment5": true
-      }
+      },
+      "ID": 17
     },
     {
       "source": {
@@ -697,7 +962,13 @@
         "statement": "public AttackResult createNewUser(@RequestBody String commentStr, @RequestHeader(\"Content-Type\") String contentType) throws Exception {",
         "methodName": "public AttackResult createNewUser(@RequestBody String commentStr, @RequestHeader(\"Content-Type\") String contentType)",
         "className": "org.owasp.webgoat.xxe.ContentTypeAssignment",
-        "lineNo": 53
+        "lineNo": 53,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "sink": {
         "targetName": "createXMLStreamReader",
@@ -705,33 +976,43 @@
         "statement": "var xsr = xif.createXMLStreamReader(new StringReader(xml));",
         "methodName": "protected Comment parseXml(String xml)",
         "className": "org.owasp.webgoat.xxe.Comments",
-        "lineNo": 90
+        "lineNo": 90,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "intermediateFlows": [
         {
           "statement": "Comment comment = comments.parseXml(commentStr);",
           "methodName": "public AttackResult createNewUser(@RequestBody String commentStr, @RequestHeader(\"Content-Type\") String contentType)",
           "className": "org.owasp.webgoat.xxe.ContentTypeAssignment",
-          "lineNo": 64
+          "lineNo": 64,
+          "ID": 1
         },
         {
           "statement": "protected Comment parseXml(String xml) throws JAXBException, XMLStreamException {",
           "methodName": "protected Comment parseXml(String xml)",
           "className": "org.owasp.webgoat.xxe.Comments",
-          "lineNo": 87
+          "lineNo": 87,
+          "ID": 2
         },
         {
           "statement": "var xsr = xif.createXMLStreamReader(new StringReader(xml));",
           "methodName": "protected Comment parseXml(String xml)",
           "className": "org.owasp.webgoat.xxe.Comments",
-          "lineNo": 90
+          "lineNo": 90,
+          "ID": 3
         }
       ],
       "description": "Resolving XML external entity  in xxe module",
       "isNegative": false,
       "attributes": {
         "Resolving XML external entity": true
-      }
+      },
+      "ID": 18
     },
     {
       "source": {
@@ -740,7 +1021,13 @@
         "statement": "public AttackResult createNewComment(@RequestBody String commentStr) throws Exception {",
         "methodName": "public AttackResult createNewComment(@RequestBody String commentStr)",
         "className": "org.owasp.webgoat.xxe.SimpleXXE",
-        "lineNo": 66
+        "lineNo": 66,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "sink": {
         "targetName": "createXMLStreamReader",
@@ -748,33 +1035,43 @@
         "statement": "var xsr = xif.createXMLStreamReader(new StringReader(xml));",
         "methodName": "protected Comment parseXml(String xml)",
         "className": "org.owasp.webgoat.xxe.Comments",
-        "lineNo": 90
+        "lineNo": 90,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "intermediateFlows": [
         {
           "statement": "Comment comment = comments.parseXml(commentStr);",
           "methodName": "public AttackResult createNewComment(@RequestBody String commentStr)",
           "className": "org.owasp.webgoat.xxe.SimpleXXE",
-          "lineNo": 69
+          "lineNo": 69,
+          "ID": 1
         },
         {
           "statement": "protected Comment parseXml(String xml) throws JAXBException, XMLStreamException {",
           "methodName": "protected Comment parseXml(String xml)",
           "className": "org.owasp.webgoat.xxe.Comments",
-          "lineNo": 87
+          "lineNo": 87,
+          "ID": 2
         },
         {
           "statement": "var xsr = xif.createXMLStreamReader(new StringReader(xml));",
           "methodName": "protected Comment parseXml(String xml)",
           "className": "org.owasp.webgoat.xxe.Comments",
-          "lineNo": 90
+          "lineNo": 90,
+          "ID": 3
         }
       ],
       "description": "Resolving XML external entity  in xxe module",
       "isNegative": false,
       "attributes": {
         "Resolving XML external entity": true
-      }
+      },
+      "ID": 19
     },
     {
       "source": {
@@ -783,7 +1080,13 @@
         "statement": "public AttackResult completed(@RequestParam String url) {",
         "methodName": "public AttackResult completed(@RequestParam String url)",
         "className": "org.owasp.webgoat.ssrf.SSRFTask2",
-        "lineNo": 45
+        "lineNo": 45,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "sink": {
         "targetName": "getInputStream",
@@ -791,39 +1094,50 @@
         "statement": "BufferedReader in = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));",
         "methodName": "public AttackResult completed(@RequestParam String url)",
         "className": "org.owasp.webgoat.ssrf.SSRFTask2",
-        "lineNo": 56
+        "lineNo": 56,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "intermediateFlows": [
         {
           "statement": "return furBall(url);",
           "methodName": "public AttackResult completed(@RequestParam String url)",
           "className": "org.owasp.webgoat.ssrf.SSRFTask2",
-          "lineNo": 46
+          "lineNo": 46,
+          "ID": 1
         },
         {
           "statement": "protected AttackResult furBall(String url) {",
           "methodName": "protected AttackResult furBall(String url)",
           "className": "org.owasp.webgoat.ssrf.SSRFTask2",
-          "lineNo": 49
+          "lineNo": 49,
+          "ID": 2
         },
         {
           "statement": "URL u = new URL(url);",
           "methodName": "protected AttackResult furBall(String url)",
           "className": "org.owasp.webgoat.ssrf.SSRFTask2",
-          "lineNo": 54
+          "lineNo": 54,
+          "ID": 3
         },
         {
           "statement": "URLConnection urlConnection = u.openConnection();",
           "methodName": "protected AttackResult furBall(String url)",
           "className": "org.owasp.webgoat.ssrf.SSRFTask2",
-          "lineNo": 55
+          "lineNo": 55,
+          "ID": 4
         }
       ],
       "description": "Server-side request forgery  in ssrf module",
       "isNegative": false,
       "attributes": {
         "Server-side request forgery": true
-      }
+      },
+      "ID": 20
     },
     {
       "source": {
@@ -832,7 +1146,13 @@
         "statement": "AttackResult completed(@RequestParam String payload) {",
         "methodName": "AttackResult completed(@RequestParam String payload)",
         "className": "org.owasp.webgoat.vulnerable_components.VulnerableComponentsLesson",
-        "lineNo": 37
+        "lineNo": 37,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "sink": {
         "targetName": "fromXML",
@@ -840,14 +1160,21 @@
         "statement": "Contact expl = (Contact) xstream.fromXML(payload);",
         "methodName": "AttackResult completed(@RequestParam String payload)",
         "className": "org.owasp.webgoat.vulnerable_components.VulnerableComponentsLesson",
-        "lineNo": 68
+        "lineNo": 68,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "intermediateFlows": [],
       "description": "Deserialization  in vulnerable-components module",
       "isNegative": false,
       "attributes": {
         "Deserialization": true
-      }
+      },
+      "ID": 21
     },
     {
       "source": {
@@ -856,7 +1183,13 @@
         "statement": "response.sendError(401, authException.getMessage());",
         "methodName": "public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException)",
         "className": "org.owasp.webgoat.AjaxAuthenticationEntryPoint",
-        "lineNo": 53
+        "lineNo": 53,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "sink": {
         "targetName": "sendError",
@@ -864,14 +1197,21 @@
         "statement": "response.sendError(401, authException.getMessage());",
         "methodName": "public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException)",
         "className": "org.owasp.webgoat.AjaxAuthenticationEntryPoint",
-        "lineNo": 53
+        "lineNo": 53,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": ""
+          }
+        ]
       },
       "intermediateFlows": [],
       "description": "Information exposure through a stack trace",
       "isNegative": false,
       "attributes": {
         "Information exposure through a stack trace": true
-      }
+      },
+      "ID": 22
     }
   ]
 }
