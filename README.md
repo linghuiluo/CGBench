@@ -1,12 +1,8 @@
 # CGBench
 Benchmark Suite For Call Graph Construction
-## Android
-- chat_hook_case_1
 
-## Spring
-- onlineshop
-- onlinechat
-- teleforum
+## Spring Boot Apps
+### Micro Benchmarks
 - simplecontroller
 - simplerestcontroller
 - requestmapping
@@ -46,3 +42,11 @@ Benchmark Suite For Call Graph Construction
 - beanwithclassxmlconfiguration
 - sessionattribute
 - sessionattributes
+### Middle Size Benchmarks
+- onlineshop
+- onlinechat
+- teleforum
+- webgoat
+- music-store
+## Google Guice
+- guice
