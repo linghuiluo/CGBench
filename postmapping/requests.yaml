@@ -1,0 +1,21 @@
+requests:
+  - curlCmd:
+      - 'curl'
+      - '-X POST'
+      - 'http://localhost:8080/posts?content=attacker; echo attacker'
+  - curlCmd:
+      - 'curl'
+      - '-X GET'
+      - 'http://localhost:8080/posts'
+  - curlCmd:
+      - 'curl'
+      - '-X POST'
+      - 'http://localhost:8080/'
+  - curlCmd:
+      - 'curl'
+      - '-X POST'
+      - 'http://localhost:8080/posts?con=attacker; echo attacker'
+  - curlCmd:
+      - 'curl'
+      - '-X POST'
+      - 'http://localhost:8080/dummy?content=attacker; echo attacker'

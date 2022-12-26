@@ -1,0 +1,25 @@
+requests:
+  - curlCmd:
+      - 'curl'
+      - '-X GET'
+      - 'http://localhost:8080/'
+  - curlCmd:
+      - 'curl'
+      - '-X GET'
+      - 'http://localhost:8080/?userName=hi'
+  - curlCmd:
+      - 'curl'
+      - '-X POST'
+      - 'http://localhost:8080/?userName=hi'
+  - curlCmd:
+      - 'curl'
+      - '-X GET'
+      - 'http://localhost:8080/?usame=ranjith'
+  - curlCmd:
+      - 'curl'
+      - '-X GET'
+      - 'http://localhost:8080/dummy'
+  - curlCmd:
+      - 'curl'
+      - '-X GET'
+      - 'http://localhost:8080/?userName=<script>alert("Hello Ranjith")</script>'

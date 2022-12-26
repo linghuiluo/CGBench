@@ -1,0 +1,25 @@
+requests:
+  - curlCmd:
+      - 'curl'
+      - '-X GET'
+      - 'http://localhost:8080/?user=ranjith&pass=pass'
+  - curlCmd:
+      - 'curl'
+      - '-X POST'
+      - 'http://localhost:8080/'
+  - curlCmd:
+      - 'curl'
+      - '-X GET'
+      - 'http://localhost:8080'
+  - curlCmd:
+      - 'curl'
+      - '-X GET'
+      - 'http://localhost:8080/?user=123456&pass=546'
+  - curlCmd:
+      - 'curl'
+      - '-X GET'
+      - 'http://localhost:8080/?uer=ranjith&pass=pass'
+  - curlCmd:
+      - 'curl'
+      - '-X GET'
+      - 'http://localhost:8080/dummy'

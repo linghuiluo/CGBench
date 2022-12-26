@@ -9,3 +9,14 @@ allGroundTruth/
 *.project
 *.prefs
 *.classpath
+.idea
+*.dot
+*.ser
+.DS_Store
+*.dst
+*error.txt
+*stats.txt
+*.iml
+target
+*.svg
+avighna-output/

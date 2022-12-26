@@ -1,0 +1,29 @@
+requests:
+  - curlCmd:
+      - 'curl'
+      - '-X GET'
+      - 'http://localhost:8080/ATTACKER/login?pass=IAMEVIL'
+  - curlCmd:
+      - 'curl'
+      - '-X PATCH'
+      - 'http://localhost:8080/ATTACKER/login?pass=IAMEVIL'
+  - curlCmd:
+      - 'curl'
+      - '-X GET'
+      - 'http://localhost:8080/ATTACKER/login'
+  - curlCmd:
+      - 'curl'
+      - '-X GET'
+      - 'http://localhost:8080/ATTACKER'
+  - curlCmd:
+      - 'curl'
+      - '-X GET'
+      - 'http://localhost:8080/'
+  - curlCmd:
+      - 'curl'
+      - '-X GET'
+      - 'http://localhost:8080/ranjith/login?pass=IAMEVIL'
+  - curlCmd:
+      - 'curl'
+      - '-X GET'
+      - 'http://localhost:8080/ranjith/dummy?pass=IAMEVIL'

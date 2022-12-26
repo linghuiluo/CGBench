@@ -1,0 +1,33 @@
+requests:
+  - curlCmd:
+      - 'curl'
+      - '-X GET'
+      - 'http://localhost:8080/retrieve/EID=1;ENAME=ranjith'
+  - curlCmd:
+      - 'curl'
+      - '-X POST'
+      - 'http://localhost:8080/retrieve/EID=1;ENAME=ranjith'
+  - curlCmd:
+      - 'curl'
+      - '-X GET'
+      - 'http://localhost:8080/retrieve/EID=1'
+  - curlCmd:
+      - 'curl'
+      - '-X GET'
+      - 'http://localhost:8080/retrieve/1'
+  - curlCmd:
+      - 'curl'
+      - '-X GET'
+      - 'http://localhost:8080/retrieve'
+  - curlCmd:
+      - 'curl'
+      - '-X GET'
+      - 'http://localhost:8080'
+  - curlCmd:
+      - 'curl'
+      - '-X GET'
+      - 'http://localhost:8080/dummy'
+  - curlCmd:
+      - 'curl'
+      - '-X GET'
+      - 'http://localhost:8080/dummy/EID=1;ENAME=ranjith'

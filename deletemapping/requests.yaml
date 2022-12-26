@@ -1,0 +1,29 @@
+requests:
+  - curlCmd:
+      - 'curl'
+      - '-X DELETE'
+      - 'http://localhost:8080/delete?UID=ranjith&fileName=jupiter.txt'
+  - curlCmd:
+      - 'curl'
+      - '-X GET'
+      - 'http://localhost:8080/delete?UID=ranjith&fileName=jupiter.txt'
+  - curlCmd:
+      - 'curl'
+      - '-X DELETE'
+      - 'http://localhost:8080/delete?UID=ranjith'
+  - curlCmd:
+      - 'curl'
+      - '-X DELETE'
+      - 'http://localhost:8080/delete'
+  - curlCmd:
+      - 'curl'
+      - '-X DELETE'
+      - 'http://localhost:8080/'
+  - curlCmd:
+      - 'curl'
+      - '-X DELETE'
+      - 'http://localhost:8080'
+  - curlCmd:
+      - 'curl'
+      - '-X DELETE'
+      - 'http://localhost:8080/delete?UID=32165&fileName=215'
