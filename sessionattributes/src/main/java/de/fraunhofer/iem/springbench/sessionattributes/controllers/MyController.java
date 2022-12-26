@@ -1,14 +1,14 @@
 package de.fraunhofer.iem.springbench.sessionattributes.controllers;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
-@Controller
+@RestController
 @SessionAttributes("userName")
 public class MyController {
     @GetMapping(value = "/")
