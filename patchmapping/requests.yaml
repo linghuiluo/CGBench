@@ -1,33 +1,41 @@
 requests:
   - curlCmd:
       - 'curl'
-      - '-X PATCH'
+      - '-X'
+      - 'PATCH'
       - 'http://localhost:8080/changeEmail?newEmail=attacker@evil.com&UID=1'
   - curlCmd:
       - 'curl'
-      - '-X GET'
+      - '-X'
+      - 'GET'
       - 'http://localhost:8080/changeEmail?newEmail=attacker@evil.com&UID=1'
   - curlCmd:
       - 'curl'
-      - '-X PATCH'
+      - '-X'
+      - 'PATCH'
       - 'http://localhost:8080/changeEmail?newEmail=attacker@evil.com'
   - curlCmd:
       - 'curl'
-      - '-X PATCH'
+      - '-X'
+      - 'PATCH'
       - 'http://localhost:8080/changeEmail?UID=1'
   - curlCmd:
       - 'curl'
-      - '-X PATCH'
+      - '-X'
+      - 'PATCH'
       - 'http://localhost:8080/changeEmail'
   - curlCmd:
       - 'curl'
-      - '-X PATCH'
+      - '-X'
+      - 'PATCH'
       - 'http://localhost:8080/'
   - curlCmd:
       - 'curl'
-      - '-X PATCH'
+      - '-X'
+      - 'PATCH'
       - 'http://localhost:8080/dummy?newEmail=attacker@evil.com&UID=1'
   - curlCmd:
       - 'curl'
-      - '-X PATCH'
-      - 'http://localhost:8080/changeEmail?newEmail=attacker@evil.com&UID=1 OR 1 = 1'
+      - '-X'
+      - 'PATCH'
+      - 'http://localhost:8080/changeEmail?newEmail=attacker@evil.com&UID=1%20OR%201%20=%201'

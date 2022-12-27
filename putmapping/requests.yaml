@@ -1,21 +1,26 @@
 requests:
   - curlCmd:
       - 'curl'
-      - '-X PUT'
+      - '-X'
+      - 'PUT'
       - 'http://localhost:8080/user/5'
   - curlCmd:
       - 'curl'
-      - '-X POST'
+      - '-X'
+      - 'POST'
       - 'http://localhost:8080/user/5'
   - curlCmd:
       - 'curl'
-      - '-X PUT'
+      - '-X'
+      - 'PUT'
       - 'http://localhost:8080/user'
   - curlCmd:
       - 'curl'
-      - '-X PUT'
+      - '-X'
+      - 'PUT'
       - 'http://localhost:8080/'
   - curlCmd:
       - 'curl'
-      - '-X PUT'
+      - '-X'
+      - 'PUT'
       - 'http://localhost:8080/user/ran'

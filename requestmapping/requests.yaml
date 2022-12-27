@@ -1,37 +1,46 @@
 requests:
   - curlCmd:
       - 'curl'
-      - '-X GET'
+      - '-X'
+      - 'GET'
       - 'http://localhost:8080/home?url=ranjith'
   - curlCmd:
       - 'curl'
-      - '-X POST'
+      - '-X'
+      - 'POST'
       - 'http://localhost:8080/home?url=ranjith'
   - curlCmd:
       - 'curl'
-      - '-X DELETE'
+      - '-X'
+      - 'DELETE'
       - 'http://localhost:8080/home?url=ranjith'
   - curlCmd:
       - 'curl'
-      - '-X GET'
+      - '-X'
+      - 'GET'
       - 'http://localhost:8080/home'
   - curlCmd:
       - 'curl'
-      - '-X GET'
+      - '-X'
+      - 'GET'
       - 'http://localhost:8080/'
   - curlCmd:
       - 'curl'
-      - '-X POST'
+      - '-X'
+      - 'POST'
       - 'http://localhost:8080/'
   - curlCmd:
       - 'curl'
-      - '-X POST'
+      - '-X'
+      - 'POST'
       - 'http://localhost:8080/home'
   - curlCmd:
       - 'curl'
-      - '-X GET'
+      - '-X'
+      - 'GET'
       - 'http://localhost:8080/home?url=123'
   - curlCmd:
       - 'curl'
-      - '-X GET'
+      - '-X'
+      - 'GET'
       - 'http://localhost:8080/hpe?url=ranjith'

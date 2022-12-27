@@ -1,13 +1,16 @@
 requests:
   - curlCmd:
       - 'curl'
-      - '-X GET'
+      - '-X'
+      - 'GET'
       - 'http://localhost:8080'
   - curlCmd:
       - 'curl'
-      - '-X GET'
+      - '-X'
+      - 'GET'
       - 'http://localhost:8080/'
   - curlCmd:
       - 'curl'
-      - '-X GET'
+      - '-X'
+      - 'GET'
       - 'http://localhost:8080/dummy'

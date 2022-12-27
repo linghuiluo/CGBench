@@ -1,21 +1,26 @@
 requests:
   - curlCmd:
       - 'curl'
-      - '-X POST'
-      - 'http://localhost:8080/posts?content=attacker; echo attacker'
+      - '-X'
+      - 'POST'
+      - 'http://localhost:8080/posts?content=attacker;%20echo%20attacker'
   - curlCmd:
       - 'curl'
-      - '-X GET'
+      - '-X'
+      - 'GET'
       - 'http://localhost:8080/posts'
   - curlCmd:
       - 'curl'
-      - '-X POST'
+      - '-X'
+      - 'POST'
       - 'http://localhost:8080/'
   - curlCmd:
       - 'curl'
-      - '-X POST'
-      - 'http://localhost:8080/posts?con=attacker; echo attacker'
+      - '-X'
+      - 'POST'
+      - 'http://localhost:8080/posts?con=attacker;%20echo%20attacker'
   - curlCmd:
       - 'curl'
-      - '-X POST'
-      - 'http://localhost:8080/dummy?content=attacker; echo attacker'
+      - '-X'
+      - 'POST'
+      - 'http://localhost:8080/dummy?content=attacker;%20echo%20attacker'

@@ -1,33 +1,41 @@
 requests:
   - curlCmd:
       - 'curl'
-      - '-X GET'
+      - '-X'
+      - 'GET'
       - 'http://localhost:8080/login?userName=ranjith'
   - curlCmd:
       - 'curl'
-      - '-X POST'
+      - '-X'
+      - 'POST'
       - 'http://localhost:8080/login?userName=ranjith'
   - curlCmd:
       - 'curl'
-      - '-X GET'
+      - '-X'
+      - 'GET'
       - 'http://localhost:8080/login?usame=ranjith'
   - curlCmd:
       - 'curl'
-      - '-X GET'
+      - '-X'
+      - 'GET'
       - 'http://localhost:8080'
   - curlCmd:
       - 'curl'
-      - '-X GET'
+      - '-X'
+      - 'GET'
       - 'http://localhost:8080/'
   - curlCmd:
       - 'curl'
-      - '-X GET'
+      - '-X'
+      - 'GET'
       - 'http://localhost:8080/currentUser'
   - curlCmd:
       - 'curl'
-      - '-X GET'
+      - '-X'
+      - 'GET'
       - 'http://localhost:8080/dummy'
   - curlCmd:
       - 'curl'
-      - '-X GET'
-      - 'http://localhost:8080/login?userName=<script>alert("Hello Ranjith")</script>'
+      - '-X'
+      - 'GET'
+      - 'http://localhost:8080/login?userName=%3Cscript%3Ealert%28%22Hello%20Ranjith%22%29%3C%2Fscript%3E'
