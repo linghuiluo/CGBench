@@ -13,7 +13,7 @@ requests:
       - 'curl'
       - '-X'
       - 'GET'
-      - 'http://localhost:8080/encryptMyMessage?meage=ranjith'
+      - 'http://localhost:8080/encryptMyMessage?message=ranjith'
   - curlCmd:
       - 'curl'
       - '-X'
